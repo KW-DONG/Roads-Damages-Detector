@@ -117,7 +117,7 @@ Item {
                     text: qsTr("Select")
                     font.family: "Microsoft YaHei"
                     onClicked: {
-                        index = 2
+                        pathIndex = 2
                         fds.open()
                     }
                 }
@@ -143,7 +143,7 @@ Item {
                     text: qsTr("Select")
                     font.family: "Microsoft YaHei"
                     onClicked: {
-                        index = 3
+                        pathIndex = 3
                         fds.open()
                     }
                 }
