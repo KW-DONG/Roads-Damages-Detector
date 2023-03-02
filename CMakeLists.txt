@@ -16,6 +16,8 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS form)
 
+include_directories(./src ./form)
+
 set(PROJECT_SOURCES
         src/main.cpp
         src/homepage.h src/homepage.cpp form/homepage.ui
