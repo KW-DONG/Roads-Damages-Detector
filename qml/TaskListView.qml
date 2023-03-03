@@ -80,7 +80,7 @@ Item {
                 anchors.fill: parent
                 delegate: Item {
                     id: taskItem
-                    width: parent.width
+                    width: taskListRect.width
                     height: 40
                     MouseArea {
                         id: taskItemMouseArea
@@ -97,7 +97,6 @@ Item {
                                 color: "#ffffff"
                                 font.pointSize: 12
                                 font.family: "Microsoft YaHei"
-                                visible: !editMode
                             }
                             MouseArea {
                                 anchors.right: parent.right
@@ -120,7 +119,6 @@ Item {
                         onClicked: {
                             taskView.currentIndex = index
                             taskListData.index = index
-                            console.log(index)
                         }
                     }
                 }
@@ -129,11 +127,8 @@ Item {
                     list: taskListData
                 }
             }
-
         }
-
     }
-
 }
 
 
