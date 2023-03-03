@@ -15,9 +15,6 @@ Item {
                 color: "blue"
                 implicitWidth: 400
                 implicitHeight: 300
-                anchors.left: parent.left
-                anchors.top: parent.top
-                anchors.topMargin: 10
                 /*
                 PaintItem {
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -30,11 +27,8 @@ Item {
                 */
             }
             TextArea {
-                anchors.top: borderImage.bottom
-                anchors.right: borderImage.right
-                anchors.left: borderImage.left
+                implicitWidth: borderImage.width
                 Layout.fillHeight: true
-                anchors.topMargin: 10
                 enabled: false
             }
         }
@@ -46,12 +40,86 @@ Item {
                 font.family: "Microsoft YaHei"
                 font.pointSize: 12
             }
+            Rectangle {
+                implicitHeight: 100
+                ScrollView {
+                    anchors.fill: parent
+                    ColumnLayout
+                    {
+                       anchors.fill: parent
+                       Text {
+                           color: "#ffffff"
+                           text: "GNSS: "
+                           font.family: "Microsoft YaHei"
+                       }
+                       Text {
+                           color: "#ffffff"
+                           text: "Confidence: "
+                           font.family: "Microsoft YaHei"
+                       }
+                       Text {
+                           color: "#ffffff"
+                           text: "Classification: "
+                           font.family: "Microsoft YaHei"
+                       }
+
+
+                    }
+                }
+            }
+
             Text {
                 color: "#ffffff"
                 text: "Device"
                 font.family: "Microsoft YaHei"
                 font.pointSize: 12
             }
+            Rectangle {
+                ScrollView {
+                    anchors.fill: parent
+                    Text {
+
+                    }
+
+
+                }
+            }
+            Item {
+                Layout.fillHeight: true
+            }
+            Text {
+                color: "#ffffff"
+                text: "Current Task"
+                font.family: "Microsoft YaHei"
+                font.pointSize: 12
+            }
+            ComboBox {
+
+            }
+            Text {
+                color: "#ffffff"
+                text: "Select Image"
+                font.family: "Microsoft YaHei"
+                font.pointSize: 12
+            }
+            Row {
+                spacing: 10
+                TextField {
+                    width: 200
+                }
+                Button {
+                    text: "Select"
+                }
+            }
+            Button {
+                implicitHeight: 50
+                implicitWidth: parent.width
+                text: "Start"
+
+            }
+        }
+        Item {
+            Layout.fillWidth: true
         }
     }
 }
