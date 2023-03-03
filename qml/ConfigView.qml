@@ -195,7 +195,7 @@ Item {
 
     FileDialog {
         id: fds
-        selectFolder: true
+
         onAccepted: {
             if (pathIndex === 1)
             {
