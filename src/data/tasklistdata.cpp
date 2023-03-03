@@ -9,6 +9,12 @@ TaskListData::TaskListData(QObject *parent)
 {
     std::cout << "read config" << std::endl;
     readConfig();
+    refresh();
+}
+
+TaskListData::~TaskListData()
+{
+    saveConfig();
 }
 
 QVector<TaskListData_t>* TaskListData::data() const
@@ -261,6 +267,7 @@ void TaskListData::readConfig()
                     else if (xml.name() == QLatin1String("model"))
                         _task.modelType = xml.readElementText().toInt();
                 }
+                mItems.append(_task);
             }
         }
     }
