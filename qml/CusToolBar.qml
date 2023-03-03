@@ -17,7 +17,7 @@ Item {
     }
 
     Rectangle {
-        color: "#1e2f31"
+        color: "indigo"
         anchors.fill: parent
         visible: true
 
