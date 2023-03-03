@@ -6,25 +6,25 @@ import QtQuick.Layouts 1.15
 import PaintItemModule 1.0
 
 Item {
+    id: homeItem
     RowLayout {
         anchors.fill: parent
-        spacing: 10
+        spacing: 20
         ColumnLayout {
+            spacing: 10
             Rectangle {
                 id: borderImage
-                color: "blue"
-                implicitWidth: 400
-                implicitHeight: 300
-                /*
+                color: "darkslateblue"
+                implicitWidth: homeItem.width > 580 ? homeItem.width - 280 : 300
+                implicitHeight: homeItem.height * 0.7
                 PaintItem {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
-                    width: parent.height < parent.width / 4 * 3 ? (parent.height / 3 * 4) : (parent.width)
-                    height: parent.height < parent.width / 4 * 3 ? (parent.height) : (parent.width / 4 * 3)
-                    //anchors.fill: parent
+                    width: parent.height < parent.width / 4 * 3 ? (parent.height / 3 * 4 - 4) : (parent.width - 4)
+                    height: parent.height < parent.width / 4 * 3 ? (parent.height - 4) : (parent.width / 4 * 3 - 4)
                     //img: core.showImg
                 }
-                */
+
             }
             TextArea {
                 implicitWidth: borderImage.width
@@ -34,11 +34,12 @@ Item {
         }
         ColumnLayout {
             Layout.fillHeight: true
+            spacing: 10
             Text {
                 color: "#ffffff"
                 text: "Result"
                 font.family: "Microsoft YaHei"
-                font.pointSize: 12
+                font.pointSize: 20
             }
             Rectangle {
                 implicitHeight: 100
@@ -51,16 +52,19 @@ Item {
                            color: "#ffffff"
                            text: "GNSS: "
                            font.family: "Microsoft YaHei"
+                           font.pointSize: 12
                        }
                        Text {
                            color: "#ffffff"
                            text: "Confidence: "
                            font.family: "Microsoft YaHei"
+                           font.pointSize: 12
                        }
                        Text {
                            color: "#ffffff"
                            text: "Classification: "
                            font.family: "Microsoft YaHei"
+                           font.pointSize: 12
                        }
 
 
@@ -68,22 +72,7 @@ Item {
                 }
             }
 
-            Text {
-                color: "#ffffff"
-                text: "Device"
-                font.family: "Microsoft YaHei"
-                font.pointSize: 12
-            }
-            Rectangle {
-                ScrollView {
-                    anchors.fill: parent
-                    Text {
 
-                    }
-
-
-                }
-            }
             Item {
                 Layout.fillHeight: true
             }
@@ -94,7 +83,7 @@ Item {
                 font.pointSize: 12
             }
             ComboBox {
-
+                implicitWidth: 200
             }
             Text {
                 color: "#ffffff"
@@ -115,11 +104,7 @@ Item {
                 implicitHeight: 50
                 implicitWidth: parent.width
                 text: "Start"
-
             }
-        }
-        Item {
-            Layout.fillWidth: true
         }
     }
 }
