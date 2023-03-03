@@ -25,6 +25,7 @@ class TaskListData : public QObject
     Q_OBJECT
 public:
     explicit TaskListData(QObject *parent = nullptr);
+    ~TaskListData();
     Q_PROPERTY(QString modelPath READ modelPath WRITE setModelPath NOTIFY modelPathChanged);
     Q_PROPERTY(QString weightPath READ weightPath WRITE setWeightPath NOTIFY weightPathChanged);
     Q_PROPERTY(QString classPath READ classPath WRITE setClassPath NOTIFY classPathChanged);
