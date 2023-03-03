@@ -1,10 +1,14 @@
 #include "tasklistdata.h"
 #include <iostream>
+#include <QFile>
+
+#define CONFIG_PATH "./config.xml"
 
 TaskListData::TaskListData(QObject *parent)
     : QObject{parent}
 {
-
+    std::cout << "read config" << std::endl;
+    readConfig();
 }
 
 QVector<TaskListData_t>* TaskListData::data() const
@@ -219,3 +223,79 @@ int TaskListData::modelType()
         return mItems[_index].modelType;
     return 0;
 }
+
+void TaskListData::readConfig()
+{
+    QFile file(CONFIG_PATH);
+    if (!file.open(QFile::ReadOnly | QFile::Text))
+    {
+        saveConfig();
+        return;
+    }
+
+    QXmlStreamReader xml(&file);
+
+    if (xml.readNextStartElement())
+    {
+        while (xml.readNextStartElement())
+        {
+            if (xml.name() == QLatin1String("task"))
+            {
+                TaskListData_t _task;
+                while (xml.readNextStartElement())
+                {
+                    if (xml.name() == QLatin1String("title"))
+                        _task.title = xml.readElementText();
+                    else if (xml.name() == QLatin1String("modelpath"))
+                        _task.modelPath = xml.readElementText();
+                    else if (xml.name() == QLatin1String("weightpath"))
+                        _task.weightPath = xml.readElementText();
+                    else if (xml.name() == QLatin1String("classpath"))
+                        _task.classPath = xml.readElementText();
+                    else if (xml.name() == QLatin1String("confidence"))
+                        _task.confidence = xml.readElementText().toDouble();
+                    else if (xml.name() == QLatin1String("threshold"))
+                        _task.threshold = xml.readElementText().toDouble();
+                    else if (xml.name() == QLatin1String("algorithm"))
+                        _task.algorithm = xml.readElementText().toInt();
+                    else if (xml.name() == QLatin1String("model"))
+                        _task.modelType = xml.readElementText().toInt();
+                }
+            }
+        }
+    }
+
+    file.close();
+}
+
+void TaskListData::saveConfig()
+{
+    QFile file(CONFIG_PATH);
+
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        QXmlStreamWriter xml(&file);
+        xml.setAutoFormatting(true);
+        xml.writeStartDocument();
+        xml.writeStartElement("document");
+
+        for (int i = 0; i < mItems.size(); i++)
+        {
+            xml.writeStartElement("task");
+            xml.writeTextElement("title", mItems[i].title);
+            xml.writeTextElement("modelpath", mItems[i].modelPath);
+            xml.writeTextElement("weightpath", mItems[i].weightPath);
+            xml.writeTextElement("classpath", mItems[i].classPath);
+            xml.writeTextElement("confidence", QString::number(mItems[i].confidence));
+            xml.writeTextElement("threshold", QString::number(mItems[i].threshold));
+            xml.writeTextElement("algorithm", QString::number(mItems[i].algorithm));
+            xml.writeTextElement("model", QString::number(mItems[i].modelType));
+            xml.writeEndElement();
+        }
+
+        xml.writeEndElement();
+        xml.writeEndDocument();
+        file.close();
+    }
+}
+

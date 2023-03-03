@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QString>
 #include <QVector>
+#include <QXmlStreamWriter>
+#include <QXmlStreamReader>
 
 struct TaskListData_t
 {
@@ -90,6 +92,10 @@ public slots:
     int modelType();
 
     int size();
+
+private:
+    void readConfig();
+    void saveConfig();
 
 private:
     QVector<TaskListData_t> mItems;
