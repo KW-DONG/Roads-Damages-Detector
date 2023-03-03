@@ -1,11 +1,11 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
-import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
+import QtQuick.Controls.Universal 2.15
 import QtQuick.Dialogs 1.3
 
-Item {
+Pane {
     property int index: 0
     property string filePath: ""
 
@@ -77,9 +77,7 @@ Item {
                     implicitWidth: 300
                     implicitHeight: 31
                     font.family: "Arial"
-                    text: jobList.imgPath
                     onEditingFinished: {
-                        jobList.imgPath = text
                         focus = true
                     }
                 }
@@ -107,9 +105,7 @@ Item {
                     implicitWidth: 300
                     implicitHeight: 31
                     font.family: "Arial"
-                    text: jobList.resultPath
                     onEditingFinished: {
-                        jobList.resultPath = text
                         focus = true;
                     }
                 }
@@ -215,22 +211,18 @@ Item {
     }
     FileDialog {
         id: fds
-        selectFolder: true
         onAccepted: {
             if (index === 1)
             {
                 filePath = fds.folder
-                jobList.setLogPath(filePath.substring(8, fds.folder.length))
             }
             else if (index === 2)
             {
                 filePath = fds.folder
-                jobList.setImgPath(filePath.substring(8, fds.folder.length))
             }
             else if (index === 3)
             {
                 filePath = fds.folder
-                jobList.setResultPath(filePath.substring(8, fds.folder.length))
             }
         }
         onRejected: {
