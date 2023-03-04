@@ -1,11 +1,11 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
+import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
-import QtQuick.Controls.Universal 2.15
 import QtQuick.Dialogs 1.3
 
-Pane {
+Item {
     property int index: 0
     property string filePath: ""
 
@@ -31,101 +31,15 @@ Pane {
                 height: 10
             }
             Text {
-                text: qsTr("Path")
-                font.pointSize: 14
                 color: "#ffffff"
+                text: qsTr("是否上电自启动")
+                font.pointSize: 11
                 font.family: "Microsoft YaHei"
-            }
-            Item {
-                height: 5
-            }
 
-            Text {
-                text: qsTr("Log path")
-                font.pointSize: 11
-                color: "#ffffff"
-                font.family: "Microsoft YaHei"
             }
-            Row {
-                spacing: 10
-                TextField {
-                    implicitWidth: 300
-                    implicitHeight: 31
-                    font.family: "Arial"
-                }
-                Button {
-                    text: qsTr("Select")
-                    font.family: "Microsoft YaHei"
-                    onClicked: {
-                        index = 1
-                        fds.open()
-                    }
-                }
-            }
-            Item {
-                height: 5
-            }
-            Text {
-                color: "#ffffff"
-                text: qsTr("图片路径")
-                font.pointSize: 11
-                font.family: "Microsoft YaHei"
-            }
-            Row {
-                spacing: 10
-                TextField {
-                    implicitWidth: 300
-                    implicitHeight: 31
-                    font.family: "Arial"
-                    onEditingFinished: {
-                        focus = true
-                    }
-                }
-                Button {
-                    text: qsTr("选择")
-                    font.family: "Microsoft YaHei"
-                    onClicked: {
-                        index = 2
-                        fds.open()
-                    }
-                }
-            }
-            Item {
-                height: 5
-            }
-            Text {
-                color: "#ffffff"
-                text: qsTr("结果路径")
-                font.pointSize: 11
-                font.family: "Microsoft YaHei"
-            }
-            Row {
-                spacing: 10
-                TextField {
-                    implicitWidth: 300
-                    implicitHeight: 31
-                    font.family: "Arial"
-                    onEditingFinished: {
-                        focus = true;
-                    }
-                }
-
-                Button {
-                    text: qsTr("选择")
-                    font.family: "Microsoft YaHei"
-                    onClicked: {
-                        index = 3
-                        fds.open()
-                    }
-                }
-            }
-            Item {
-                height: 20
-            }
-            Text {
-                color: "#ffffff"
-                text: qsTr("数据格式设置")
-                font.pointSize: 14
+            Switch {
+                id: sw1
+                text: position === 0 ? qsTr("关") : qsTr("开")
                 font.family: "Microsoft YaHei"
             }
             Item {
@@ -133,100 +47,117 @@ Pane {
             }
             Text {
                 color: "#ffffff"
-                text: qsTr("Long")
-                font.pointSize: 11
+                text: qsTr("需自启动的任务")
                 font.family: "Microsoft YaHei"
+                font.pointSize: 11
+            }
+            ComboBox {
+                enabled: sw1.position === 1
+                font.pointSize: 10
+                implicitWidth: 200
+            }
+            Text {
+                color: "#ffffff"
+                text: qsTr("相机分辨率")
+                font.family: "Microsoft YaHei"
+                font.pointSize: 11
+            }
+            ComboBox {
+                font.pointSize: 10
+                implicitWidth: 200
+            }
+            Text {
+                color: "#ffffff"
+                text: qsTr("GPS通信模式")
+                font.family: "Microsoft YaHei"
+                font.pointSize: 11
+            }
+            ComboBox {
+                font.pointSize: 10
+                implicitWidth: 200
+            }
+            Text {
+                color: "#ffffff"
+                text: qsTr("外部触发")
+                font.family: "Microsoft YaHei"
+                font.pointSize: 11
             }
             ComboBox {
                 model: ListModel {
                     ListElement {
-                        text: qsTr("AB CD")
+                        text: qsTr("是")
                     }
                     ListElement {
-                        text: qsTr("CD AB")
-                    }
-                    ListElement {
-                        text: qsTr("BA DC")
-                    }
-                    ListElement {
-                        text: qsTr("DC BA")
+                        text: qsTr("否")
                     }
                 }
-            }
-
-            Item {
-                height: 5
+                font.pointSize: 10
+                implicitWidth: 200
             }
             Text {
                 color: "#ffffff"
-                text: qsTr("Float")
-                font.pointSize: 11
+                text: qsTr("GPIO端口号")
                 font.family: "Microsoft YaHei"
+                font.pointSize: 11
             }
+             SpinBox {
+                 font.pointSize: 10
+                 implicitWidth: 200
+             }
+            Text {
+                color: "#ffffff"
+                text: qsTr("信号输出")
+                font.family: "Microsoft YaHei"
+                font.pointSize: 11
+            }
+
+
             ComboBox {
                 model: ListModel {
                     ListElement {
-                        text: qsTr("AB CD")
+                        text: qsTr("是")
                     }
                     ListElement {
-                        text: qsTr("CD AB")
-                    }
-                    ListElement {
-                        text: qsTr("BA DC")
-                    }
-                    ListElement {
-                        text: qsTr("DC BA")
+                        text: qsTr("否")
                     }
                 }
-            }
-            Item {
-                height: 5
+                font.pointSize: 10
+                implicitWidth: 200
             }
             Text {
                 color: "#ffffff"
-                text: qsTr("Double")
-                font.pointSize: 11
+                text: qsTr("GPIO端口号")
                 font.family: "Microsoft YaHei"
+                font.pointSize: 11
             }
-            ComboBox {
-                implicitWidth: 150
-                implicitHeight: 30
-                model: ListModel {
-                    ListElement {
-                        text: qsTr("AB CD EF GH")
-                    }
-                    ListElement {
-                        text: qsTr("GH EF CD AB")
-                    }
-                    ListElement {
-                        text: qsTr("BA DC FE HG")
-                    }
-                    ListElement {
-                        text: qsTr("HG FE DC BA")
-                    }
-                }
-            }
-
+             SpinBox {
+             font.pointSize: 10
+             implicitWidth: 200
+             }
         }
     }
     FileDialog {
         id: fds
+        selectFolder: true
         onAccepted: {
             if (index === 1)
             {
                 filePath = fds.folder
+                jobList.setLogPath(filePath.substring(8, fds.folder.length))
             }
             else if (index === 2)
             {
                 filePath = fds.folder
+                jobList.setImgPath(filePath.substring(8, fds.folder.length))
             }
             else if (index === 3)
             {
                 filePath = fds.folder
+                jobList.setResultPath(filePath.substring(8, fds.folder.length))
             }
         }
         onRejected: {
 
         }
-    }
+    }   
 }
