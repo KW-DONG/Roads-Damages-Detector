@@ -30,10 +30,8 @@ QVariant TaskListModel::data(const QModelIndex &index, int role) const
 
     switch (role)
     {
-        case TaskRole::TitleRole:
+        case NameRole:
             return QVariant(item.title);
-        case TaskRole::DescriptionRole:
-            return QVariant(item.description);
     }
     return QVariant();
 }
@@ -44,7 +42,7 @@ bool TaskListModel::setData(const QModelIndex &index, const QVariant &value, int
 
     switch (role)
     {
-        case TaskRole::TitleRole:
+        case NameRole:
         {
             QString temp = value.toString();
             pList->setTitle(temp);
@@ -66,8 +64,7 @@ Qt::ItemFlags TaskListModel::flags(const QModelIndex& index) const
 QHash<int, QByteArray> TaskListModel::roleNames() const
 {
     QHash<int, QByteArray> names;
-    names[TaskRole::TitleRole] = "title";
-    names[TaskRole::DescriptionRole] = "description";
+    names[NameRole] = "title";
     return names;
 }
 
