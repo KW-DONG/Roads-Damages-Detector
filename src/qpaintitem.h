@@ -8,9 +8,9 @@
 #include <QQuickWindow>
 #include <QImage>
 #include <QPainter>
+#include <QTimer>
 
-
-class PaintItem : public QQuickItem
+class PaintItem : public QQuickPaintedItem
 {
     Q_OBJECT
     Q_PROPERTY(QImage img WRITE updateImage)
@@ -18,7 +18,7 @@ class PaintItem : public QQuickItem
     Q_PROPERTY(int imgHeight READ getHeight NOTIFY heightChanged)
 
 public:
-    explicit PaintItem(QQuickItem *parent = nullptr);
+    explicit PaintItem(QQuickPaintedItem *parent = nullptr);
     ~PaintItem();
 signals:
     void widthChanged();
@@ -31,9 +31,10 @@ public slots:
 
 protected:
     QSGNode* updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *) override;
-    //void paint(QPainter *painter);
+    void paint(QPainter *painter) override;
 private:
     QImage m_imageThumb;
+    QTimer* m_timer;
 };
 
 
