@@ -37,7 +37,4 @@ private:
     int index;
 };
 
-
-
-
 #endif
