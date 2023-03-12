@@ -22,7 +22,8 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.height < parent.width / 4 * 3 ? (parent.height / 3 * 4 - 4) : (parent.width - 4)
                     height: parent.height < parent.width / 4 * 3 ? (parent.height - 4) : (parent.width / 4 * 3 - 4)
-                    //img: core.showImg
+                    img: monitor.img
+                    antialiasing: true
                 }
 
             }
@@ -66,12 +67,9 @@ Item {
                            font.family: "Microsoft YaHei"
                            font.pointSize: 12
                        }
-
-
                     }
                 }
             }
-
 
             Item {
                 Layout.fillHeight: true
@@ -84,6 +82,10 @@ Item {
             }
             ComboBox {
                 implicitWidth: 200
+                model: monitor.taskList
+                onCurrentIndexChanged: {
+                    monitor.currentTask = currentIndex
+                }
             }
             Text {
                 color: "#ffffff"
@@ -103,7 +105,10 @@ Item {
             Button {
                 implicitHeight: 50
                 implicitWidth: parent.width
-                text: "Start"
+                text: monitor.run ? qsTr("Stop") : qsTr("Start")
+                onClicked: {
+                    monitor.runButton()
+                }
             }
         }
     }
