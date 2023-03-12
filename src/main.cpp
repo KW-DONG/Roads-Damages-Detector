@@ -5,7 +5,7 @@
 #include "tasklistmodel.h"
 #include "resultlistmodel.h"
 #include "qpaintitem.h"
-
+#include "monitor.h"
 
 int main(int argc, char *argv[])
 {
@@ -23,11 +23,15 @@ int main(int argc, char *argv[])
 
     TaskListData taskListData;
     ResultListData resultListData;
+    Monitor monitor;
+    monitor.setResultListData(&resultListData);
+    monitor.setTaskListData(&taskListData);
 
     QQmlApplicationEngine engine;
     QQmlContext *root = engine.rootContext();
     root->setContextProperty("taskListData",&taskListData);
     root->setContextProperty("resultListData", &resultListData);
+    root->setContextProperty("monitor", &monitor);
 
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
