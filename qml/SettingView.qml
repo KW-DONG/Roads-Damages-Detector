@@ -133,7 +133,10 @@ Item {
              SpinBox {
              font.pointSize: 10
              implicitWidth: 200
-             }
+            }
+            Item {
+                height: 60
+            }
         }
     }
     FileDialog {
