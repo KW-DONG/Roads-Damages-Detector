@@ -1,0 +1,42 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/CusTitleBar.qml</file>
+        <file>icon/add_gray.png</file>
+        <file>icon/add_white.png</file>
+        <file>icon/angle_gray.png</file>
+        <file>icon/angle_white.png</file>
+        <file>icon/cam_white.png</file>
+        <file>icon/close_white.png</file>
+        <file>icon/data_gray.png</file>
+        <file>icon/data_white.png</file>
+        <file>icon/delete_gray.png</file>
+        <file>icon/delete_white.png</file>
+        <file>icon/expand_gray.png</file>
+        <file>icon/expand_white.png</file>
+        <file>icon/home_gray.png</file>
+        <file>icon/home_white.png</file>
+        <file>icon/mail_white.png</file>
+        <file>icon/max_white.png</file>
+        <file>icon/min_white.png</file>
+        <file>icon/norm_white.png</file>
+        <file>icon/process_gray.png</file>
+        <file>icon/process_white.png</file>
+        <file>icon/scale_gray.png</file>
+        <file>icon/scale_white.png</file>
+        <file>icon/score_gray.png</file>
+        <file>icon/score_white.png</file>
+        <file>icon/setting_gray.png</file>
+        <file>icon/setting_white.png</file>
+        <file>icon/size_gray.png</file>
+        <file>icon/size_white.png</file>
+        <file>icon/task_white.png</file>
+        <file>qml/CusToolBar.qml</file>
+        <file>qml/MainForm.qml</file>
+        <file>qml/ConfigView.qml</file>
+        <file>qml/HomeView.qml</file>
+        <file>qml/ResultView.qml</file>
+        <file>qml/SettingView.qml</file>
+        <file>qml/TaskListView.qml</file>
+    </qresource>
+</RCC>
