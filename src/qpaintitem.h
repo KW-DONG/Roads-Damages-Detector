@@ -8,7 +8,6 @@
 #include <QQuickWindow>
 #include <QImage>
 #include <QPainter>
-#include <QTimer>
 
 class PaintItem : public QQuickPaintedItem
 {
@@ -34,7 +33,6 @@ protected:
     void paint(QPainter *painter) override;
 private:
     QImage m_imageThumb;
-    QTimer* m_timer;
 };
 
 
