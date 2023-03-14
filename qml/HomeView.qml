@@ -83,22 +83,25 @@ Item {
             ComboBox {
                 implicitWidth: 200
                 model: monitor.taskList
+                enabled: !monitor.run
                 onCurrentIndexChanged: {
                     monitor.currentTask = currentIndex
                 }
             }
             Text {
                 color: "#ffffff"
-                text: "Select Image"
+                text: qsTr("Select Image")
                 font.family: "Microsoft YaHei"
                 font.pointSize: 12
             }
             Row {
                 spacing: 10
                 TextField {
+                    enabled: !monitor.run
                     width: 200
                 }
                 Button {
+                    enabled: !monitor.run
                     text: "Select"
                 }
             }
@@ -106,6 +109,7 @@ Item {
                 implicitHeight: 50
                 implicitWidth: parent.width
                 text: monitor.run ? qsTr("Stop") : qsTr("Start")
+
                 onClicked: {
                     monitor.runButton()
                 }
