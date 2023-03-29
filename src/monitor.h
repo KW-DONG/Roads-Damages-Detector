@@ -5,6 +5,8 @@
 #include <QStringList>
 #include <QImage>
 #include <QMutex>
+#include <QDate>
+#include <QTime>
 #include "resultlistdata.h"
 #include "tasklistdata.h"
 #include "camera.h"
@@ -66,11 +68,14 @@ private:
 
     //properties
     int _currentTask;
+    int _currentResult;
     bool _run;
     QString _localImgPath;
     QStringList _log;
     QMutex mutex;
     QImage _img;
+    QDate* pDate;
+    QTime* pTime;
 
     MyCallback myCallback;
 
