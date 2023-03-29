@@ -2,7 +2,7 @@
 #include <iostream>
 #include <QFile>
 
-#define CONFIG_PATH "./config.xml"
+#define CONFIG_PATH "./task.xml"
 
 TaskListData::TaskListData(QObject *parent)
     : QObject{parent}
