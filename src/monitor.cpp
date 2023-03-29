@@ -1,8 +1,13 @@
 #include "monitor.h"
+#include <QDateTime>
 
 Monitor::Monitor()
 {
     _run = false;
+
+    pDate = new QDate;
+    pTime = new QTime;
+
     myCallback.monitor = this;
     camera = new Camera();
     camera->registerSceneCallback(&myCallback);
@@ -12,9 +17,9 @@ void Monitor::runDetection(const cv::Mat& mat)
 {
     mutex.lock();
     _img = QImage(mat.data, mat.cols, mat.rows, QImage::Format_BGR888);
-    mutex.unlock();
-    cv::waitKey(50);
+    mutex.unlock(); 
     emit imgChanged();
+    cv::waitKey(50);
 }
 
 void Monitor::setCurrentTask(int i)
@@ -79,6 +84,14 @@ void Monitor::runButton()
     else
     {
         _run = true;
+        //append result list
+        ResultListData_t _result;
+
+        _result.date = QDateTime::currentDateTime().toString("yyyy_MM_dd_hh_mm_ss");
+        _result.name = QDateTime::currentDateTime().toString("MMddhhmmss");
+        _result.method = "NCNN";
+
+        pResultListData->addResult(_result);
         camera->start();
     }
     emit runChanged();
