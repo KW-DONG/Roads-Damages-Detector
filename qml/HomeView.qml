@@ -81,6 +81,7 @@ Item {
                 font.pointSize: 12
             }
             ComboBox {
+                id: taskComboBox
                 implicitWidth: 200
                 model: monitor.taskList
                 enabled: !monitor.run
@@ -109,7 +110,7 @@ Item {
                 implicitHeight: 50
                 implicitWidth: parent.width
                 text: monitor.run ? qsTr("Stop") : qsTr("Start")
-
+                enabled: taskComboBox.currentIndex != -1
                 onClicked: {
                     monitor.runButton()
                 }
