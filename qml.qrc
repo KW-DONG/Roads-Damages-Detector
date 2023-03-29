@@ -38,5 +38,9 @@
         <file>qml/ResultView.qml</file>
         <file>qml/SettingView.qml</file>
         <file>qml/TaskListView.qml</file>
+        <file>icon/left_gray.png</file>
+        <file>icon/left_white.png</file>
+        <file>icon/right_gray.png</file>
+        <file>icon/right_white.png</file>
     </qresource>
 </RCC>
