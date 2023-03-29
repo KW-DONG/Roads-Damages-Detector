@@ -11,7 +11,7 @@ class TaskListModel : public QAbstractListModel
     Q_PROPERTY(TaskListData* list READ list WRITE setList)
 
     enum {
-        NameRole = Qt::UserRole,
+        NameRole = Qt::UserRole
     };
 
     Q_INVOKABLE void refresh();
