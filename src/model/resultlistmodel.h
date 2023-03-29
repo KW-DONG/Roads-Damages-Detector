@@ -12,6 +12,7 @@ class ResultListModel : public QAbstractListModel
 
     enum {
         NameRole = Qt::UserRole,
+        DateRole
     };
 
     Q_INVOKABLE void refresh();
