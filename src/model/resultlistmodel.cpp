@@ -33,6 +33,8 @@ QVariant ResultListModel::data(const QModelIndex &index, int role) const
     {
         case NameRole:
             return QVariant(item.name);
+        case DateRole:
+            return QVariant(item.date);
     }
     return QVariant();
 }
@@ -65,7 +67,8 @@ Qt::ItemFlags ResultListModel::flags(const QModelIndex& index) const
 QHash<int, QByteArray> ResultListModel::roleNames() const
 {
     QHash<int, QByteArray> names;
-    names[NameRole] = "name";
+    names[NameRole] = "title";
+    names[DateRole] = "date";
     return names;
 }
 
