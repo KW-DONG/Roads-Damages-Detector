@@ -13,11 +13,14 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui Qml Quick QuickControls2 REQUIRED)
 find_package(OpenCV REQUIRED)
+#find_package(Threads REQUIRED)
 
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 include_directories(./src ./src/data ./src/model ./src/driver ./qml)
 
+
 set(PROJECT_SOURCES
+        src/driver/camera.h src/driver/camera.cpp
         src/main.cpp
         src/monitor.h src/monitor.cpp
         src/qpaintitem.h src/qpaintitem.cpp
@@ -25,9 +28,9 @@ set(PROJECT_SOURCES
         src/data/resultlistdata.h src/data/resultlistdata.cpp
         src/model/tasklistmodel.h src/model/tasklistmodel.cpp
         src/model/resultlistmodel.h src/model/resultlistmodel.cpp
-        src/driver/camera.h src/driver/camera.cpp
         qml.qrc
 )
+
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Monitor
@@ -52,8 +55,8 @@ else()
     endif()
 endif()
 
-target_link_libraries(Monitor
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::QuickControls2 ${OpenCV_LIBS})
+target_link_libraries(Monitor PUBLIC ${OpenCV_LIBS}
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::QuickControls2)
 
 set_target_properties(Monitor PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
