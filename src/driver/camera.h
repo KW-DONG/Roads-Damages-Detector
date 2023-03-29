@@ -7,6 +7,7 @@ class Camera {
 public:
 	struct SceneCallback {
 		virtual void nextScene(const cv::Mat &mat) = 0;
+        //virtual void beforeStop() = 0;
 	};
 
 	Camera() = default;
