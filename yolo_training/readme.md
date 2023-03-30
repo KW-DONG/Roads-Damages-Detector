@@ -7,7 +7,7 @@
 |Yolov5_litec|4.57M|9.2|50.9|32.5|59.15ms|
 ## model results details compare
 ### yolov5s training details 
-![yolov5srd](https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/yolov5lite_result.png)
+![yolov5srd](https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/yolov5s_results.png)
 ### yolov5_lite training details
 ![yolov5_literd](https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/yolov5lite_result.png)
 We can see that with the epoch increase, loss decrease and precision increase in yolov5s model and yolov5_lite model. As for -mAP@0.5, these two model can reach 0.6 while as for mAP@0.5:0.95, yolov5s a little higher than yolov5_lite. Considering the -running time and accuracy, we finally use yolov5_lite which is quicker and the accuracy is also high.
