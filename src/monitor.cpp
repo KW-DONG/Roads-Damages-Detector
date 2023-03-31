@@ -15,19 +15,22 @@ Monitor::Monitor()
 }
 
 void Monitor::runDetection(const cv::Mat& mat)
-{
-    std::string paramPath = "/home/lochcliff/ProgramFiles/Roads-Damages-Detector/bin/best.param";
-    std::string modelPath = "/home/lochcliff/ProgramFiles/Roads-Damages-Detector/bin/best.bin";
-
-    mNcnn.loadParam(paramPath);
-    mNcnn.loadModel(modelPath);
+{ 
     std::vector<ncnn::Object> objects;
-    mNcnn.detect(mat,objects);
+
     cv::Mat dst;
-    std::vector<std::string> className = {"DOO", "D10", "D20", "D30", "D40", "D43"};
+    cv::resize(mat, dst, cv::Size(mat.cols,mat.rows), cv::INTER_LINEAR);
+    mNcnn.detect(dst,objects);
 
-    mNcnn.drawObjects(mat, dst, objects, className);
+    std::vector<std::string> className;
 
+    for (int i = 0; i < 100; i++)
+    {
+        className.push_back(std::to_string(i));
+    }
+
+
+    mNcnn.drawObjects(dst, dst, objects, className);
 
     mutex.lock();
     _img = QImage(dst.data, dst.cols, dst.rows, QImage::Format_BGR888);
@@ -107,6 +110,12 @@ void Monitor::runButton()
         _result.method = "NCNN";
 
         pResultListData->addResult(_result);
+        std::string paramPath = "/home/lochcliff/ProgramFiles/Roads-Damages-Detector/bin/best.param";
+        std::string modelPath = "/home/lochcliff/ProgramFiles/Roads-Damages-Detector/bin/best.bin";
+
+        mNcnn.loadParam(paramPath);
+        mNcnn.loadModel(modelPath);
+
         camera->start();
     }
     emit runChanged();

@@ -29,7 +29,6 @@ private:
     float sigmoid(float x);
     void generateProposals(const ncnn::Mat& anchors, int stride, const ncnn::Mat& in_pad, const ncnn::Mat& feat_blob, float prob_threshold, std::vector<Object>& objects);
 
-    ncnn::Net mNet;
     std::string mParamPath;
     std::string mModelPath;
 };

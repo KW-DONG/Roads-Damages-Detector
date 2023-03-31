@@ -18,12 +18,10 @@ void CusNCNN::loadModel(const std::string& str)
 
 int CusNCNN::detect(const cv::Mat& bgr, std::vector<Object>& objects)
 {
+    ncnn::Net mNet;
     mNet.opt.use_vulkan_compute = true;
     mNet.load_param(mParamPath.c_str());
     mNet.load_model(mModelPath.c_str());
-
-    //mNet.load_param("/home/lochcliff/ProgramFiles/Roads-Damages-Detector/bin/best.param");
-    //mNet.load_model("/home/lochcliff/ProgramFiles/Roads-Damages-Detector/bin/best.bin");
 
     const int target_size = 640;
     const float prob_threshold = 0.25f;
