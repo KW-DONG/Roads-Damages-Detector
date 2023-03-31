@@ -16,12 +16,25 @@ Monitor::Monitor()
 
 void Monitor::runDetection(const cv::Mat& mat)
 {
-    mutex.lock();
-    _img = QImage(mat.data, mat.cols, mat.rows, QImage::Format_BGR888);
-    mutex.unlock(); 
-    QThread::msleep(50);
-    emit imgChanged();
+    std::string paramPath = "/home/lochcliff/ProgramFiles/Roads-Damages-Detector/bin/best.param";
+    std::string modelPath = "/home/lochcliff/ProgramFiles/Roads-Damages-Detector/bin/best.bin";
 
+    mNcnn.loadParam(paramPath);
+    mNcnn.loadModel(modelPath);
+    std::vector<ncnn::Object> objects;
+    mNcnn.detect(mat,objects);
+    cv::Mat dst;
+    std::vector<std::string> className = {"DOO", "D10", "D20", "D30", "D40", "D43"};
+
+    mNcnn.drawObjects(mat, dst, objects, className);
+
+
+    mutex.lock();
+    _img = QImage(dst.data, dst.cols, dst.rows, QImage::Format_BGR888);
+    mutex.unlock(); 
+
+    emit imgChanged();
+    QThread::msleep(50);
 }
 
 void Monitor::setCurrentTask(int i)

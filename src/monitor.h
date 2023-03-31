@@ -10,6 +10,7 @@
 #include "resultlistdata.h"
 #include "tasklistdata.h"
 #include "camera.h"
+#include "cusncnn.h"
 
 class Monitor : public QObject
 {
@@ -78,7 +79,7 @@ private:
     QTime* pTime;
 
     MyCallback myCallback;
-
+    ncnn::CusNCNN mNcnn;
 };
 
 #endif

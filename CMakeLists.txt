@@ -9,6 +9,10 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(ncnn_DIR "/home/lochcliff/ProgramFiles/ncnn/build/install/lib/cmake/ncnn")
+
+find_package(ncnn REQUIRED)
+
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui Qml Quick QuickControls2 REQUIRED)
@@ -16,7 +20,15 @@ find_package(OpenCV REQUIRED)
 #find_package(Threads REQUIRED)
 
 include_directories( ${OpenCV_INCLUDE_DIRS} )
-include_directories(./src ./src/data ./src/model ./src/driver ./qml)
+include_directories(./src
+                    ./src/data
+                    ./src/model
+                    ./src/driver
+                    ./qml
+                    ./src/algorithm
+                    /home/lochcliff/ProgramFiles/ncnn/src
+                    /home/lochcliff/ProgramFiles/ncnn/build/src
+                    )
 
 
 set(PROJECT_SOURCES
@@ -28,6 +40,7 @@ set(PROJECT_SOURCES
         src/data/resultlistdata.h src/data/resultlistdata.cpp
         src/model/tasklistmodel.h src/model/tasklistmodel.cpp
         src/model/resultlistmodel.h src/model/resultlistmodel.cpp
+        src/algorithm/cusncnn.h src/algorithm/cusncnn.cpp
         qml.qrc
 )
 
@@ -55,7 +68,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(Monitor PUBLIC ${OpenCV_LIBS}
+target_link_libraries(Monitor PUBLIC ${OpenCV_LIBS} ncnn
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::QuickControls2)
 
 set_target_properties(Monitor PROPERTIES
