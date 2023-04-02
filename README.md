@@ -13,6 +13,7 @@ There are three types of roads damages: alligator cracks, linear cracks and poth
 </div>
 
 ## Team Organization:
+
 |Name|ID|Role|
 |---|---|---|
 |Kaiwen DONG|2749039D|C++ Engineer|
@@ -35,6 +36,7 @@ Overall, the C++ engineer's role is to ensure that the C++ algorithms and data s
 4. Proficiency in deep learning frameworks, and strong mathematical and statistical knowledge, capable of understanding and applying the principles and mathematical models behind machine learning algorithms.
 5. Collaborating with other team members such as the C++ engineer, testing engineer, and project manager to ensure smooth project progress.
 6. Continuously improving and optimizing the road damage detection application to enhance the accuracy and efficiency of the detection.
+
 In summary, the software engineer responsible would be responsible for integrating and optimizing the YOLOv3 model, conducting model training and testing, ensuring the smooth integration and collaboration of the model with the application, and continuously improving and optimizing the road damage detection application to enhance the accuracy and efficiency of detection.
 
 ### Yang LIU:
@@ -48,3 +50,14 @@ In summary, the software engineer responsible would be responsible for integrati
 2. Assist engineers with daily tasks and project management, such as scheduling meetings, taking meeting notes, and tracking task progress.
 3. Collect and organize project information and technical documents to help engineers better understand project background and technical details.
 4. Assist engineers in technical research and experimentation, such as writing code, running tests, and writing technical documentation.
+
+
+## Process Management:
+
+1. Project process monitoring: Ensure that the project's progress and results meet expectations and achieve project goals.
+2. Schedule, scope, and cost management: Define the project scope, develop a Work Breakdown Structure (WBS), and strictly manage project change management in conjunction with project schedule and cost.
+3. Risk management: Identify potential risks and focus on technical challenges by analyzing the project. Take corresponding risk response measures to minimize risks.
+4. Quality control: This includes developing test plans, test cases, test reports, etc.
+5. Communication management: Simple issues will be communicated through WeChat or other means, while major issues will be discussed in online or offline meetings. Difficulties that require the assistance of the professor can be addressed via email or during the weekly lab time on Wednesdays. Ensure effective communication between project team members and the professor.
+
+
