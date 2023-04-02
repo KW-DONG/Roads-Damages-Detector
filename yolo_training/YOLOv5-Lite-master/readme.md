@@ -38,6 +38,8 @@ run the code
 the "roads_damage.yaml" define the training dataset and test dataset.
 ### 3.3 Getting training model and result
 ![yolov5_literd](https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/yolov5lite_result.png)
+![yolov5lite_confusionmatrix](https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/yolov5lite_confusion_matrix.png)
+As shown the confusionmatrix of yolov5lite_c model, we can find that D00 D40 may be confused with background maybe there are less pictures added. D10 are more likely to be detected while D30 is more difficult to be detected.
 ### 3.4 Transferming .pt file to .onnx file for NCNN framework prepare
 run the code  
 `!cd /content/drive/MyDrive/YOLOv5-Lite-master_full && python -m onnxsim /content/drive/MyDrive/YOLOv5-Lite-master_full/runs/train/exp3/weights/best.onnx /content/drive/MyDrive/YOLOv5-Lite-master_full/runs/train/exp3/weights/best-sim.onnx`  Finally, we 
