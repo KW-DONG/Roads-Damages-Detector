@@ -126,3 +126,6 @@ Additional features:
 3. Ability to recognize other objects
 
 Final output presentation (QT): Page design + coding
+
+
+## Technical Documents:
