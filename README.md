@@ -37,7 +37,7 @@ Overall, the C++ engineer's role is to ensure that the C++ algorithms and data s
 5. Collaborating with other team members such as the C++ engineer, testing engineer, and project manager to ensure smooth project progress.
 6. Continuously improving and optimizing the road damage detection application to enhance the accuracy and efficiency of the detection.
 
-In summary, the software engineer responsible would be responsible for integrating and optimizing the YOLOv3 model, conducting model training and testing, ensuring the smooth integration and collaboration of the model with the application, and continuously improving and optimizing the road damage detection application to enhance the accuracy and efficiency of detection.
+In summary, the software engineer responsible would be responsible for integrating and optimizing the YOLOv5 model, conducting model training and testing, ensuring the smooth integration and collaboration of the model with the application, and continuously improving and optimizing the road damage detection application to enhance the accuracy and efficiency of detection.
 
 ### Yang LIU:
 1. Develop the user interface design for the product based on the product manager's product plan and functionality requirements.
