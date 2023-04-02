@@ -64,8 +64,30 @@ In summary, the software engineer responsible would be responsible for integrati
 <div align="left">
 <img src="images/Architecture.png" height=120/>
 </div>
+
 ### Hardware: 
-*Raspberry 
-*Pi Camera
-*GPS Module Receiver
+1. Raspberry 
+2. Pi Camera
+3. GPS Module Receiver
+
 ### Software: 
+<div align="left">
+<img src="images/software.png" height=120/>
+</div>
+
+### Input: 
+1. Camera video stream
+2. GPS coordinates
+3. Deep learning model
+4. Deep learning model weights
+5. Deep learning classification table
+6. Image preprocessing parameters
+
+### Output: 
+During detection, real-time display of images with identified boxes is available; detection results such as type, confidence score, size, etc. can be displayed and text reports can be sent to email; logs can also be displayed.
+Additional features:
+1. Support for traditional image preprocessing
+2. Display of maps with GPS coordinates
+3. Ability to recognize other objects
+
+Final output presentation (QT): Page design + coding
