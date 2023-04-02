@@ -59,6 +59,22 @@ In summary, the software engineer responsible would be responsible for integrati
 3. Risk management: Identify potential risks and focus on technical challenges by analyzing the project. Take corresponding risk response measures to minimize risks.
 4. Quality control: This includes developing test plans, test cases, test reports, etc.
 5. Communication management: Simple issues will be communicated through WeChat or other means, while major issues will be discussed in online or offline meetings. Difficulties that require the assistance of the professor can be addressed via email or during the weekly lab time on Wednesdays. Ensure effective communication between project team members and the professor.
+6. Configuration management plan——Branching and merging strategy：
+
+  --6.1 Keep the main branch stable：
+  The main branch is typically the most important branch in the codebase and should be kept stable. This means only well-tested code should be merged into the main branch. All development work should be done in other branches.
+  
+  --6.2 Use a development branch for work：
+  To prevent any issues on the main branch, create a development branch to do all work. This branch should be created from the main branch and code should be merged back into the main branch once the development work is complete.
+  
+  --6.3 Use feature branches for functionality development：
+  When adding new functionality, create a feature branch from the development branch. Do the development work on the feature branch, ensuring the code is testable and stable, then merge the feature branch back into the development branch.
+  
+  --6.4 Conduct code reviews regularly：
+  Conduct regular code reviews to ensure all code meets the codebase's standards. The review process should be done on the feature branches, not the main branch.
+  
+  --6.5 Keep branches clean：
+  Once a feature branch has completed its work and has been merged back into the development branch, it should be deleted. This keeps the branches clean and avoids confusion or mistaken merges.
 
 ## Architecture:
 <div align="left">
