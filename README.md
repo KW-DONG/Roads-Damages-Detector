@@ -164,62 +164,77 @@ Combined with pi, camera and GPS, the product can be equipped in a common staff 
 3. Call back GPS module in real time. 
 4. Send the location information and roads damages messages.
 
-### Product Functions
-#### Function list: 
-Basic functions:
-1.Real time detection;
-2.Display a picture with an identification box;
-3.Test results include type, confidence and size;
-4.Send a text report to the mailbox;
-5.Display Log.
-Additional functions:
-1.Support traditional graphics preprocessing; ​
-2.Display a map with GPS coordinate; 
-3.Recognize other things.
-Priority: 
-1.Real time detection;
-2.Display a picture with an identification box;
-3.Test results include type, confidence and size;
-4.Send a text report to the mailbox;
-5.Display Log;
-6.Display a map with GPS coordinate;
-7.Support traditional graphics preprocessing; 
-8.Recognize other things.
+## Product Functions
+### Function list: 
+#### Basic functions:
+1. Real time detection;
+2. Display a picture with an identification box;
+3. Test results include type, confidence and size;
+4. Send a text report to the mailbox;
+5. Display Log.
+#### Additional functions:
+1. Support traditional graphics preprocessing;
+2. Display a map with GPS coordinate;
+3. Recognize other things.
+### Priority: 
+1. Real time detection;
+2. Display a picture with an identification box;
+3. Test results include type, confidence and size;
+4. Send a text report to the mailbox;
+5. Display Log;
+6. Support traditional graphics preprocessing; 
+7. Display a map with GPS coordinate;
+8. Recognize other things.
 
-4. Data Requirements
-Data list: 
+## Data Requirements
+### Data list: 
 Images of pavements like alligator, crack, liner crack, potholes, etc.
-Data format: 
+### Data format: 
 Live images.
-Data collection: 
+### Data collection: 
 Users can manually input and import data, or obtain data through existing data.
 
-5. UI/UX design
-UI design: 
+## UI/UX design
+### UI design: 
 A concise and beautiful interface is designed to facilitate user’s operation and use.
-UX design: 
+### UX design: 
 Design easy-to-use, user friendly interactive ways to enhance the user experience.
-Design idea:
-1.Home Page
+### Design idea:
+#### 1. Home Page
 Blue frame on the left: Images captured by the live camera.
 Grey frame on the left: Real-time Log.
 Frames on the right: Type, confidence, size of the task .
-2.Task Page
+#### 2. Task Page
 Name of the task.
+
 Camera: openCV parameters.
+
 Algorithm.
+
 Model type: Dark net, tensorflow, etc.
+
 Model path: File path to import the algorithm.
+
 Class path: Class to detect the path of the target (pavements like alligator, crack, liner crack, and potholes).
+
 Weight path: File path of weight.
+
 Algorithm parameters: Confidence, threshold, etc.
-3. Result Page
+
+#### 3. Result Page
 Information about the entire process from the beginning to the end of the detection
 A list of the result.
 
-UI Prototype:
-1.Home Page
+### UI Prototype:
+#### 1. Home Page
+<div align="left">
+  ![Home Page](https://user-images.githubusercontent.com/108115404/229377429-d1725834-d0d0-4b4f-9cd7-acf555fc7ead.png)
+</div>
 
-2.Task Page
+#### 2. Task Page
+<div align="left">
+  ![Task Page](https://user-images.githubusercontent.com/108115404/229377470-8174e50b-86ab-4365-b315-3d49f2a0c21f.png)
 
-3.Result Page
+</div>
+
+#### 3. Result Page
