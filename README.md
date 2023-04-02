@@ -63,8 +63,9 @@ In summary, the software engineer responsible would be responsible for integrati
 ## Architecture:
 <div align="left">
 <img src="images/Architecture.png" height=120/>
-  <img src="images/Alligator_crack.png" height=120/>
-<img src="images/Linear_crack.png" height=120/>
-<img src="images/pothole.png" height=120/>
-
 </div>
+### Hardware: 
+*Raspberry 
+*Pi Camera
+*GPS Module Receiver
+### Software: 
