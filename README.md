@@ -59,6 +59,11 @@ In summary, the software engineer responsible would be responsible for integrati
 3. Risk management: Identify potential risks and focus on technical challenges by analyzing the project. Take corresponding risk response measures to minimize risks.
 4. Quality control: This includes developing test plans, test cases, test reports, etc.
 5. Communication management: Simple issues will be communicated through WeChat or other means, while major issues will be discussed in online or offline meetings. Difficulties that require the assistance of the professor can be addressed via email or during the weekly lab time on Wednesdays. Ensure effective communication between project team members and the professor.
+
+|Week|Time|Meeting|Period|
+|---|---|---|---|
+Tuesday|10:00-12:00|Team meeting，Library Building|1.5-2h|
+Wednesday|15:00-17:00|Lab meeting|2h|
 6. Configuration management plan
 
 6.1 Branching and merging strategy：
