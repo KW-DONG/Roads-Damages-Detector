@@ -1,17 +1,16 @@
-# yolo test
-## yolov3-tiny, yolov5s, yolov5_litec compare
+# yolo test report
+## test process
+### Step1. Compare the trained model (yolov3-tiny, yolov5s, yolov5_lite) in terms of params, size, map@0.5:0.95, map@.5:0.95, and running time.
+### Step2. After comparing the models performance, we finally choose yolov5_litec model since its higher accuracy than yolov3 tiny and faster than yolov5. Then, we test the images utilizing yolov5_litec (ncnn) on different equipments.
+
+## yolov3-tiny, yolov5s, yolov5_litec compare results
 |model|Params|Size(M)|Map@0.5()|Map@.5:0.95|Running time on laptop(480*320 )(ms)|
 |:---:|:---:|:---:|:---:|:---:|:---:|
 |Yolov3-tiny|	6.06|	23.0|	33.1|	16.6|	None|
 |Yolov5s|7.23M|14.0|56.0|37.2|113.23ms|
 |Yolov5_litec|4.57M|9.2|50.9|32.5|59.15ms|
-## model results details compare
-### yolov5s training details 
-![yolov5srd](https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/yolov5s_results.png)
-### yolov5_lite training details
-![yolov5_literd](https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/yolov5lite_result.png)
-We can see that with the epoch increase, loss decrease and precision increase in yolov5s model and yolov5_lite model. As for -mAP@0.5, these two model can reach 0.6 while as for mAP@0.5:0.95, yolov5s a little higher than yolov5_lite. Considering the -running time and accuracy, we finally use yolov5_lite which is quicker and the accuracy is also high.
-## label and description
+
+## label and description 
 
 |Label|	Describe|
 |:--:|:--:|
@@ -22,11 +21,7 @@ We can see that with the epoch increase, loss decrease and precision increase in
 |D43|White cross blur|
 |D30|Road rut|
 
-## yolov5_litec resultes analysis
-
-![yolov5lite_confusionmatrix](https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/yolov5lite_confusion_matrix.png)
-As shown the confusionmatrix of yolov5lite_c model, we can find that D00 D40 may be confused with background maybe there are less pictures added. D10 are more likely to be detected while D30 is more difficult to be detected.
-## images test utilizing yolov5_litec(ncnn)
+## images test utilizing yolov5_litec(ncnn) results
 
 |File_name|size|Label&confidence|Laptop_time|RaspberryPi1_time|
 |:---:|:---:|:---:|:---:|:---:|
