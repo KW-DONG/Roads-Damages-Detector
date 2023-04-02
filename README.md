@@ -129,3 +129,8 @@ Final output presentation (QT): Page design + coding
 
 
 ## Technical Documents:
+my yolov5 training process: https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_training/yolov5#readme.md
+
+my yolov5_lite training process: https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_training/YOLOv5-Lite-master#readme.md
+
+yolo training compare and test: https://github.com/KW-DONG/Roads-Damages-Detector/blob/yolo_training/yolo_training/readme.md
