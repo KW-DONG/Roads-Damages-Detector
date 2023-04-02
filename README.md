@@ -60,4 +60,7 @@ In summary, the software engineer responsible would be responsible for integrati
 4. Quality control: This includes developing test plans, test cases, test reports, etc.
 5. Communication management: Simple issues will be communicated through WeChat or other means, while major issues will be discussed in online or offline meetings. Difficulties that require the assistance of the professor can be addressed via email or during the weekly lab time on Wednesdays. Ensure effective communication between project team members and the professor.
 
-
+## Architecture:
+<div align="left">
+<img src="images/Architecture.png" height=120/>
+</div>
