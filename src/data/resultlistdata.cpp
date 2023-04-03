@@ -32,16 +32,6 @@ QVector<ResultListData_t>* ResultListData::data() const
     return (QVector<ResultListData_t>*)&mItems;
 }
 
-bool ResultListData::loadResult(const QString& path)
-{
-    return true;
-}
-
-bool ResultListData::saveResult(const QString& path)
-{
-    return true;
-}
-
 int ResultListData::size()
 {
     return mItems.size();
@@ -49,6 +39,14 @@ int ResultListData::size()
 
 void ResultListData::addResult(ResultListData_t value)
 {
+    //create result folder
+    QString _resultPath = resultFolderPath + "/" +
+            value.date;
+
+    QDir dir(_resultPath);
+    if (!dir.exists())
+        dir.mkdir(_resultPath);
+
     emit preResultAppend();
     mItems.push_back(value);
     emit postResultAppend();
@@ -64,6 +62,8 @@ void ResultListData::removeResult(int id)
 void ResultListData::setIndex(int value)
 {
     currentResult = value;
+    setImgIdx(0);
+    imgNumChanged();
 }
 
 int ResultListData::index()
@@ -74,10 +74,16 @@ int ResultListData::index()
 QImage ResultListData::img()
 {
     //read image
+    if (mItems.size() == 0)
+        return QImage();
+
+    std::cout << "mItems size: " << mItems.size() << std::endl;
     QString _imgPath = resultFolderPath + "/" +
             mItems[currentResult].date + "/" +
             mItems[currentResult].imgName[currentImg];
+    std::cout << "_img: " << _imgPath.toStdString() << std::endl;
     QImage _img(_imgPath);
+
 
     //draw rectangle
     QPainter painter(&_img);
@@ -87,6 +93,9 @@ QImage ResultListData::img()
     painter.drawRect(rect);
     QPoint point(rect.x(), rect.y() - 20);
     painter.drawText(point, QString::number(mItems[currentResult].confidence[currentImg]));
+    QPoint point1(rect.x(), rect.y() - 10);
+    painter.drawText(point1, QString::number(mItems[currentResult].label[currentImg]));
+
     return _img;
 }
 
@@ -99,6 +108,9 @@ void ResultListData::setImgIdx(int value)
 {
     currentImg = value;
     emit imgIdxChanged();
+    emit imgChanged();
+    emit imgNameChanged();
+    emit imgShowIdxChanged();
 }
 
 int ResultListData::imgIdx()
@@ -122,8 +134,13 @@ QString ResultListData::imgShowIdx()
         return "0 / 0";
 
     QString str = QString::number(currentImg) + " / " +
-            QString::number(mItems[currentResult].imgName.size());
+            QString::number(mItems[currentResult].imgName.size()-1);
     return str;
+}
+
+QString ResultListData::getResultFolderPath()
+{
+    return resultFolderPath;
 }
 
 void ResultListData::readSave()
@@ -154,7 +171,14 @@ void ResultListData::readSave()
                         _result.method = xml.readElementText();
                     else if (xml.name() == QLatin1String("data"))
                     {
-                        QFile csvFile(xml.readElementText());
+                        QString elementText = xml.readElementText();
+
+                        QString currentResultPath = resultFolderPath + "/" +
+                                                    elementText + "/" +
+                                                    elementText + ".csv";
+
+                        std::cout << currentResultPath.toStdString() << std::endl;
+                        QFile csvFile(currentResultPath);
                         csvFile.open(QIODevice::ReadOnly | QIODevice::Text);
                         QTextStream in(&csvFile);
                         int i = 0;
@@ -165,11 +189,14 @@ void ResultListData::readSave()
                             if (i!= 0)
                             {
                                 list = fileLine.split(",", QString::SkipEmptyParts);
-                                _result.imgName.append(list[1]);
-                                _result.longitude.append(list[2].toDouble());
-                                _result.latitude.append(list[3].toDouble());
-                                _result.label.append(list[4].toInt());
-                                _result.confidence.append(list[5].toDouble());
+                                _result.imgName.push_back(list[1]);
+                                std::cout << list[1].toStdString() << std::endl;
+                                _result.longitude.push_back(list[2].toDouble());
+                                _result.latitude.push_back(list[3].toDouble());
+                                _result.label.push_back(list[4].toInt());
+                                _result.confidence.push_back(list[5].toDouble());
+                                QRect roi(list[6].toInt(),list[7].toInt(),list[8].toInt(),list[9].toInt());
+                                _result.roi.push_back(roi);
                             }
                             i++;
                         }
@@ -214,7 +241,7 @@ void ResultListData::save()
             QFile csvFile(resultSubFolderPath);
             csvFile.open(QIODevice::WriteOnly | QIODevice::Text);
             QTextStream out(&csvFile);
-            out << tr("index,image,logitude,latitude,label,confidence,\n");
+            out << tr("index,image,logitude,latitude,label,confidence,x,y,w,h\n");
             for (int j = 0; j < mItems[i].label.size(); j++)
             {
                 out << j << ","
@@ -222,7 +249,11 @@ void ResultListData::save()
                     << mItems[i].longitude[j] << ","
                     << mItems[i].latitude[j] << ","
                     << mItems[i].label[j] << ","
-                    << mItems[i].confidence[j] << ",\n";
+                    << mItems[i].confidence[j] << ","
+                    << mItems[i].roi[j].x() << ","
+                    << mItems[i].roi[j].y() << ","
+                    << mItems[i].roi[j].width() << ","
+                    << mItems[i].roi[j].height() << ",\n";
             }
             csvFile.close();
         }
