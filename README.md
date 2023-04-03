@@ -1,9 +1,9 @@
 # Roads Damages Detector
 
-## Project Overview:
+## 1. Project Overview
 The Roads Damages Detector project aims to develop a mobile application that uses roads damages detection technology to detect and classify road damages such as potholes, cracks, and other issues in real-time. The application will be designed to be efficient and user-friendly, helping road maintenance crews to identify and repair road damages more quickly. The detection algorithm will be deployed on a Raspberry Pi and operate in real-time, with the location of each damage recorded via a GNSS module and a report generated after each detection mission.
 
-## Backgrounds：
+## 2. Backgrounds
 There are three types of roads damages: alligator cracks, linear cracks and pothole cracks. The repair methods and task urgency of these threes are different, it is necessary to do investigations before taking action.
 
 <div align="left">
@@ -12,7 +12,7 @@ There are three types of roads damages: alligator cracks, linear cracks and poth
 <img src="images/pothole.png" height=120/>
 </div>
 
-## Team Organization:
+## 3. Team Organization
 
 |Name|ID|Role|
 |---|---|---|
@@ -51,7 +51,7 @@ In summary, the software engineer responsible would be responsible for integrati
 3. Collect and organize project information and technical documents to help engineers better understand project background and technical details.
 4. Assist engineers in technical research and experimentation, such as writing code, running tests, and writing technical documentation.
 
-## Architecture:
+## 4. Architecture
 <div align="left">
 <img src="images/Architecture.png" height=240/>
 </div>
@@ -83,8 +83,8 @@ Additional features:
 
 Final output presentation (QT): Page design + coding
 
-
-## Technical Documents:
+## 5. Documents
+### Technical Documents:
 Product Requirements Document:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Product%20Requirements%20Document.md
 
@@ -97,7 +97,7 @@ https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_traini
 yolo training compare and test:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/yolo_training/yolo_training/readme.md
 
-## Process Management:
+### Process Management:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Process%20Management.md
 
 
