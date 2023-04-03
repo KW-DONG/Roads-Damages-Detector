@@ -103,7 +103,11 @@ cmake 编译流程:?---Wenjia
 
 测试文档?--yujie
 
-### Process Management:
+### Management File
+Plan: ?--yujie
+
+Process Management:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Process%20Management.md
+
 ### Promotion of the Work:
 ?--yang liu
