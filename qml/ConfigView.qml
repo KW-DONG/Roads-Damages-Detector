@@ -98,32 +98,6 @@ Item {
             }
             Text {
                 color: "#ffffff"
-                text: "Class Path"
-                font.family: "Microsoft YaHei"
-                font.pointSize: 12
-            }
-            Row {
-                spacing: 10
-                TextField {
-                    implicitWidth: 300
-                    implicitHeight: 31
-                    font.family: "Arial"
-                    text: taskListData.classPath
-                    onTextEdited: {
-                        taskListData.classPath = text
-                    }
-                }
-                Button {
-                    text: qsTr("Select")
-                    font.family: "Microsoft YaHei"
-                    onClicked: {
-                        pathIndex = 2
-                        fds.open()
-                    }
-                }
-            }
-            Text {
-                color: "#ffffff"
                 text: "Weight Path"
                 font.family: "Microsoft YaHei"
                 font.pointSize: 12
@@ -198,25 +172,12 @@ Item {
 
         onAccepted: {
             if (pathIndex === 1)
-            {
-                filePath = fds.folder
-                taskListData.modelPath = filePath.substring(8, fds.folder.length)
-            }
+                taskListData.modelPath = fds.fileUrl
             else if (pathIndex === 2)
-            {
-                filePath = fds.folder
-                taskListData.classPath = filePath.substring(8, fds.folder.length)
-            }
+                taskListData.classPath = fds.fileUrl
             else if (pathIndex === 3)
-            {
-                filePath = fds.folder
-                taskListData.weightPath = filePath.substring(8, fds.folder.length)
-            }
+                taskListData.weightPath = fds.fileUrl
         }
-        onRejected: {
-
-        }
+        onRejected: {}
     }
-
-
 }
