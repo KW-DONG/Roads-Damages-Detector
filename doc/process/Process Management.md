@@ -14,8 +14,10 @@ Simple issues will be communicated through WeChat or other means, while major is
 |---|---|---|---|
 Tuesday|10:00-12:00|Team meeting，Library Building|1.5-2h|
 Wednesday|15:00-17:00|Lab meeting|2h|
-## 6. Configuration management plan:
 
+Minutes of the Meeting: https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Minutes%20of%20the%20Meeting.md
+## 6. Configuration management plan:
+ 
 ### 6.1 Branching and merging strategy：
 
   --6.1.1 Keep the main branch stable：
