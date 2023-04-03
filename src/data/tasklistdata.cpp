@@ -53,7 +53,6 @@ void TaskListData::addTask()
     task.title += std::to_string(cnt).c_str();
     cnt++;
     task.algorithm = 0;
-    task.classPath = "null";
     task.modelPath = "null";
     task.weightPath = "null";
     task.confidence = 0.5;
@@ -122,7 +121,11 @@ void TaskListData::setModelPath(QString& value)
 {
     if (mItems.size() > _index)
     {
-        mItems[_index].modelPath = value;
+#ifdef WIN32
+        mItems[_index].modelPath = value.toStdString().substr(8, value.size()).c_str();
+#else
+        mItems[_index].modelPath = value.toStdString().substr(7, value.size()).c_str();
+#endif
         emit modelPathChanged();
     }
 }
@@ -138,7 +141,11 @@ void TaskListData::setWeightPath(QString& value)
 {
     if (mItems.size() > _index)
     {
-        mItems[_index].weightPath = value;
+#ifdef WIN32
+        mItems[_index].weightPath = value.toStdString().substr(8, value.size()).c_str();
+#else
+        mItems[_index].weightPath = value.toStdString().substr(7, value.size()).c_str();
+#endif
         emit weightPathChanged();
     }
 }
@@ -147,22 +154,6 @@ QString TaskListData::weightPath()
 {
     if (mItems.size() > _index)
         return mItems[_index].weightPath;
-    return "null";
-}
-
-void TaskListData::setClassPath(QString& value)
-{
-    if (mItems.size() > _index)
-    {
-        mItems[_index].classPath = value;
-        emit classPathChanged();
-    }
-}
-
-QString TaskListData::classPath()
-{
-    if (mItems.size() > _index)
-        return mItems[_index].classPath;
     return "null";
 }
 
@@ -256,8 +247,6 @@ void TaskListData::readConfig()
                         _task.modelPath = xml.readElementText();
                     else if (xml.name() == QLatin1String("weightpath"))
                         _task.weightPath = xml.readElementText();
-                    else if (xml.name() == QLatin1String("classpath"))
-                        _task.classPath = xml.readElementText();
                     else if (xml.name() == QLatin1String("confidence"))
                         _task.confidence = xml.readElementText().toDouble();
                     else if (xml.name() == QLatin1String("threshold"))
@@ -292,7 +281,6 @@ void TaskListData::saveConfig()
             xml.writeTextElement("title", mItems[i].title);
             xml.writeTextElement("modelpath", mItems[i].modelPath);
             xml.writeTextElement("weightpath", mItems[i].weightPath);
-            xml.writeTextElement("classpath", mItems[i].classPath);
             xml.writeTextElement("confidence", QString::number(mItems[i].confidence));
             xml.writeTextElement("threshold", QString::number(mItems[i].threshold));
             xml.writeTextElement("algorithm", QString::number(mItems[i].algorithm));
