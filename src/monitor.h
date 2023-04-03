@@ -20,13 +20,16 @@ class Monitor : public QObject
     Q_PROPERTY(QStringList taskList READ taskList NOTIFY taskListChanged)
     Q_PROPERTY(QImage img READ img NOTIFY imgChanged)
     Q_PROPERTY(bool run READ run NOTIFY runChanged)
+    Q_PROPERTY(QString currentGNSSStr READ currentGNSSStr NOTIFY currentGNSSStrChanged)
+    Q_PROPERTY(QString currentConfidenceStr READ currentConfidenceStr NOTIFY currentConfidenceStrChanged)
+    Q_PROPERTY(QString currentClassificationStr READ currentClassificationStr NOTIFY currentClassificationStrChanged)
 
 public:
     Monitor();
 
     void runDetection(const cv::Mat& mat);
 
-    struct MyCallback : Camera::SceneCallback {
+    struct MyCameraCallback : Camera::SceneCallback {
         Monitor* monitor = nullptr;
         virtual void nextScene(const cv::Mat &mat) {
                     if (nullptr != monitor) {
@@ -41,17 +44,24 @@ signals:
     void logChanged();
     void taskListChanged();
     void runChanged();
-
     void imgChanged();
+    void currentGNSSStrChanged();
+    void currentConfidenceStrChanged();
+    void currentClassificationStrChanged();
 
 public slots:
     void setCurrentTask(int i);
     int currentTask();
 
-    void setLocalImgPath(QString path);
-    QString localImgPath();
+    void setCurrentGNSS(double lat, double log);
+    QString currentGNSSStr();
 
-    QStringList log();
+    void setCurrentConfidence(double value);
+    QString currentConfidenceStr();
+
+    void setCurrentClassification(int value);
+    QString currentClassificationStr();
+
     QStringList taskList();
 
     bool run();
@@ -68,18 +78,21 @@ private:
     ResultListData* pResultListData;
 
     //properties
-    int _currentTask;
-    int _currentResult;
-    bool _run;
-    QString _localImgPath;
-    QStringList _log;
+    int mCurrentTask;
+    int mCurrentResult;
+    bool mRun;
     QMutex mutex;
-    QImage _img;
+    QImage mImg;
     QDate* pDate;
     QTime* pTime;
 
-    MyCallback myCallback;
+    MyCameraCallback myCameraCallback;
     ncnn::CusNCNN mNcnn;
+
+    double mCurrentLatitude = 0.0;
+    double mCurrentLongitude = 0.0;
+    double mCurrentConfidence = 0.0;
+    int mCurrentClassification = 0;
 };
 
 #endif
