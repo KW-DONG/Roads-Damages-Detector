@@ -87,6 +87,10 @@ Item {
         ColumnLayout {
             spacing: 10
             anchors.fill: parent
+            Item {
+                height:10
+            }
+
             Text {
                 Layout.alignment: Qt.AlignVCenter
                 ColumnLayout.leftMargin: 50
@@ -105,8 +109,8 @@ Item {
                         source: parent.containsMouse ? "../icon/left_white.png" : "../icon/left_gray.png"
                     }
                     onClicked: {
-                        if (resultListData.imgIdx > 1)
-                            resultListData--
+                        if (resultListData.imgIdx > 0)
+                            resultListData.imgIdx--
                     }
                 }
                 Rectangle {
@@ -120,6 +124,7 @@ Item {
                         width: parent.height < parent.width / 4 * 3 ? (parent.height / 3 * 4 - 4) : (parent.width - 4)
                         height: parent.height < parent.width / 4 * 3 ? (parent.height - 4) : (parent.width / 4 * 3 - 4)
                         antialiasing: true
+                        img: resultListData.img
                     }
                 }
                 MouseArea {
@@ -130,8 +135,8 @@ Item {
                         source: parent.containsMouse ? "../icon/right_white.png" : "../icon/right_gray.png"
                     }
                     onClicked: {
-                        if (resultListData.imgIdx < resultListData.imgNum)
-                            resultListData++
+                        if (resultListData.imgIdx < resultListData.imgNum - 1)
+                            resultListData.imgIdx++
                     }
                 }
             }
