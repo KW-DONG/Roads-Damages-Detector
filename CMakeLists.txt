@@ -9,9 +9,10 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if(CMAKE_SYSTEM_NAME MATCHES "Linux")
 set(ncnn_DIR "/home/lochcliff/ProgramFiles/ncnn/build/install/lib/cmake/ncnn")
-
 find_package(ncnn REQUIRED)
+endif()
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
@@ -26,13 +27,16 @@ include_directories(./src
                     ./src/driver
                     ./qml
                     ./src/algorithm
-                    /home/lochcliff/ProgramFiles/ncnn/src
-                    /home/lochcliff/ProgramFiles/ncnn/build/src
+                    C:/ncnn/src
+                    C:/ncnn/build/src
+                    #/home/lochcliff/ProgramFiles/ncnn/src
+                    #/home/lochcliff/ProgramFiles/ncnn/build/src
                     )
 
 
 set(PROJECT_SOURCES
         src/driver/camera.h src/driver/camera.cpp
+        #src/driver/serial_win.h src/driver/serial_win.cpp
         src/main.cpp
         src/monitor.h src/monitor.cpp
         src/qpaintitem.h src/qpaintitem.cpp
@@ -68,8 +72,11 @@ else()
     endif()
 endif()
 
-target_link_libraries(Monitor PUBLIC ${OpenCV_LIBS} ncnn
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::QuickControls2)
+target_link_libraries(Monitor PUBLIC ${OpenCV_LIBS}
+    #ncnn
+    C:/ncnn/build/src/Release/ncnn.lib
+    #C:/ncnn/build/src/Debug/ncnnd.lib
+    PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::QuickControls2)
 
 set_target_properties(Monitor PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
