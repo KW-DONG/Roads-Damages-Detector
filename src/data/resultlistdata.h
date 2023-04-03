@@ -5,6 +5,7 @@
 #include <QString>
 #include <QVector>
 #include <QImage>
+#include <opencv2/opencv.hpp>
 
 struct ResultListData_t
 {
@@ -25,7 +26,7 @@ class ResultListData : public QObject
     Q_PROPERTY(int index READ index WRITE setIndex NOTIFY indexChanged)
     Q_PROPERTY(QImage img READ img NOTIFY imgChanged)
     Q_PROPERTY(int imgNum READ imgNum NOTIFY imgNumChanged)
-    Q_PROPERTY(int imgIdx READ imgIdx NOTIFY imgIdxChanged)
+    Q_PROPERTY(int imgIdx READ imgIdx WRITE setImgIdx NOTIFY imgIdxChanged)
     Q_PROPERTY(QString imgName READ imgName NOTIFY imgNameChanged)
     Q_PROPERTY(QString imgShowIdx READ imgShowIdx NOTIFY imgShowIdxChanged)
 
@@ -34,8 +35,6 @@ public:
     ~ResultListData();
 
     QVector<ResultListData_t>* data() const;
-    bool loadResult(const QString& path);
-    bool saveResult(const QString& path);
     int size();
 
 signals:
@@ -64,10 +63,11 @@ public slots:
 
     void setImgIdx(int value);
     int imgIdx();
+
     QString imgName();
     QString imgShowIdx();
+    QString getResultFolderPath();
 
-private:
     void readSave();
     void save();
 
