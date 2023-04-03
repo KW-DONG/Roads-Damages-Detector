@@ -97,7 +97,13 @@ https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_traini
 yolo training compare and test:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/yolo_training/yolo_training/readme.md
 
+cmake 编译流程:?---Wenjia
+
+硬件文档：GPS文档、相机、树莓派? 程序设计（UML图）?--kaiwen
+
+测试文档?--yujie
+
 ### Process Management:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Process%20Management.md
-
-
+### Promotion of the Work:
+?--yang liu
