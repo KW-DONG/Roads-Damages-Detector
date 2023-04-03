@@ -6,21 +6,28 @@
 PaintItem::PaintItem(QQuickPaintedItem *parent) : QQuickPaintedItem(parent)
 {
     setFlag(ItemHasContents, true);
+    m_imageThumb = QImage(640,480,QImage::Format_RGB888);
 }
 
 PaintItem::~PaintItem()
 {
-    std::cout << "paint item destroyed" << std::endl;
+
 }
 
 void PaintItem::updateImage(const QImage &image)
 {
-    m_imageThumb = image;
+    if (image.size().isEmpty())
+    {
+        m_imageThumb = QImage();
+    }
+    else
+    {
+        m_imageThumb = image;
+    }
+
     emit widthChanged();
     emit heightChanged();
     update();
-
-    //std::cout << "paint item update" << std::endl;
 }
 
 /*
