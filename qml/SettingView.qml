@@ -32,14 +32,14 @@ Item {
             }
             Text {
                 color: "#ffffff"
-                text: qsTr("是否上电自启动")
+                text: qsTr("Autostart on Power On")
                 font.pointSize: 11
                 font.family: "Microsoft YaHei"
 
             }
             Switch {
                 id: sw1
-                text: position === 0 ? qsTr("关") : qsTr("开")
+                text: position === 0 ? qsTr("Off") : qsTr("On")
                 font.family: "Microsoft YaHei"
             }
             Item {
@@ -47,7 +47,7 @@ Item {
             }
             Text {
                 color: "#ffffff"
-                text: qsTr("需自启动的任务")
+                text: qsTr("Tasks to Auto-start")
                 font.family: "Microsoft YaHei"
                 font.pointSize: 11
             }
@@ -58,7 +58,7 @@ Item {
             }
             Text {
                 color: "#ffffff"
-                text: qsTr("相机分辨率")
+                text: qsTr("Camera Resolution")
                 font.family: "Microsoft YaHei"
                 font.pointSize: 11
             }
@@ -68,7 +68,7 @@ Item {
             }
             Text {
                 color: "#ffffff"
-                text: qsTr("GPS通信模式")
+                text: qsTr("GPS Communication Mode")
                 font.family: "Microsoft YaHei"
                 font.pointSize: 11
             }
@@ -78,17 +78,17 @@ Item {
             }
             Text {
                 color: "#ffffff"
-                text: qsTr("外部触发")
+                text: qsTr("External Trigger")
                 font.family: "Microsoft YaHei"
                 font.pointSize: 11
             }
             ComboBox {
                 model: ListModel {
                     ListElement {
-                        text: qsTr("是")
+                        text: qsTr("Yes")
                     }
                     ListElement {
-                        text: qsTr("否")
+                        text: qsTr("No")
                     }
                 }
                 font.pointSize: 10
@@ -96,7 +96,7 @@ Item {
             }
             Text {
                 color: "#ffffff"
-                text: qsTr("GPIO端口号")
+                text: qsTr("GPIO Port Number")
                 font.family: "Microsoft YaHei"
                 font.pointSize: 11
             }
@@ -106,7 +106,7 @@ Item {
              }
             Text {
                 color: "#ffffff"
-                text: qsTr("信号输出")
+                text: qsTr("Signal Output")
                 font.family: "Microsoft YaHei"
                 font.pointSize: 11
             }
@@ -115,10 +115,10 @@ Item {
             ComboBox {
                 model: ListModel {
                     ListElement {
-                        text: qsTr("是")
+                        text: qsTr("Yes")
                     }
                     ListElement {
-                        text: qsTr("否")
+                        text: qsTr("No")
                     }
                 }
                 font.pointSize: 10
@@ -126,7 +126,7 @@ Item {
             }
             Text {
                 color: "#ffffff"
-                text: qsTr("GPIO端口号")
+                text: qsTr("GPIO Port Number")
                 font.family: "Microsoft YaHei"
                 font.pointSize: 11
             }
