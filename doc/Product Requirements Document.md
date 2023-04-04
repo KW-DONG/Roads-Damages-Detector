@@ -6,7 +6,7 @@ Roads Damages Detector
 A mobile application that uses roads damages detection technology to detect and classify road damages such as potholes, cracks, and other issues in real-time. The application will be designed to be efficient and user-friendly, helping road maintenance crews to identify and repair road damages more quickly. The detection algorithm will be deployed on a Raspberry Pi and operate in real-time, with the location of each damage recorded via a GNSS module and a report generated after each detection mission.
 ### Target users: 
 Road maintenance crews.
-Competitive product analysis: 
+### Competitive product analysis: 
 Visual check of field technicians who detect pavement Failure. 
 
 ## User Requirements
