@@ -25,7 +25,6 @@ Item {
                     img: monitor.img
                     antialiasing: true
                 }
-
             }
         }
         ColumnLayout {
