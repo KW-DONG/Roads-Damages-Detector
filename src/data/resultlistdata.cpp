@@ -18,7 +18,6 @@ ResultListData::ResultListData(QObject *parent)
     QDir dir(resultFolderPath);
     if (!dir.exists())
         dir.mkdir(resultFolderPath);
-
     readSave();
 }
 
@@ -77,11 +76,9 @@ QImage ResultListData::img()
     if (mItems.size() == 0)
         return QImage();
 
-    std::cout << "mItems size: " << mItems.size() << std::endl;
     QString _imgPath = resultFolderPath + "/" +
             mItems[currentResult].date + "/" +
             mItems[currentResult].imgName[currentImg];
-    std::cout << "_img: " << _imgPath.toStdString() << std::endl;
     QImage _img(_imgPath);
 
 
@@ -177,7 +174,6 @@ void ResultListData::readSave()
                                                     elementText + "/" +
                                                     elementText + ".csv";
 
-                        std::cout << currentResultPath.toStdString() << std::endl;
                         QFile csvFile(currentResultPath);
                         csvFile.open(QIODevice::ReadOnly | QIODevice::Text);
                         QTextStream in(&csvFile);
@@ -188,9 +184,8 @@ void ResultListData::readSave()
                             QString fileLine = in.readLine();
                             if (i!= 0)
                             {
-                                list = fileLine.split(",", QString::SkipEmptyParts);
+                                list = fileLine.split(",", Qt::SkipEmptyParts);
                                 _result.imgName.push_back(list[1]);
-                                std::cout << list[1].toStdString() << std::endl;
                                 _result.longitude.push_back(list[2].toDouble());
                                 _result.latitude.push_back(list[3].toDouble());
                                 _result.label.push_back(list[4].toInt());
