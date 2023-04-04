@@ -83,7 +83,67 @@ Additional features:
 
 Final output presentation (QT): Page design + coding
 
-## 5. Documents
+
+## 5. How to Build
+### Prerequisites
+Make sure the following software is installed on your system:
+
+C++ compiler
+
+CMake (version 3.10 or higher)
+
+Make (Linux and macOS) or Visual Studio (Windows)
+
+### Build instructions
+#### 1) Use the system's package manager to install these libraries:
+
+--qtdedavative5-dev: contains the QML modules for Qt 5, which can be used to develop Qt Quick-based applications. 
+
+--qtquickcontrols2-5-dev: contains the Qt Quick Controls 2 module, which provides a set of reusable UI controls. 
+
+--libopenCV-dev: is the development files of the OpenCV computer vision library, providing the header files and library files needed for compilation and linking. 
+
+For example, on Ubuntu, install these libraries using the following command:
+
+sudo apt-get install qml-module-qtquick2 qml-module-qtquick-controls2 libopencv-dev
+
+#### 2) Clone the project repository:
+
+git clone https://github.com/your-username/your-project.git
+
+#### 3) Navigate to the project directory:
+
+cd your-project
+
+#### 4) Create a build directory:
+
+mkdir build
+
+#### 5) Navigate to the build directory:
+
+cd build
+
+#### 6) Generate build files using CMake:
+
+cmake ..
+
+Note: You can specify additional options to CMake as needed.
+
+#### 7) Build the project using Make (on Linux and macOS):
+
+make
+
+Or build the project using Visual Studio (on Windows):
+
+Open the project solution in Visual Studio and build it.
+
+#### 8) Run the project:
+
+./your-project
+
+Note: This assumes that the project generates an executable named "your-project". If your project generates a different executable name, replace "your-project" with the correct name.
+
+## 6. Documents
 ### Technical Documents:
 Product Requirements Document:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Product%20Requirements%20Document.md
@@ -97,7 +157,7 @@ https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_traini
 yolo training compare and test:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/yolo_training/yolo_training/readme.md
 
-cmake 编译流程:?---Wenjia
+
 
 硬件文档：GPS文档、相机、树莓派? 程序设计（UML图）?--kaiwen
 
