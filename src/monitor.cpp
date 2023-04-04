@@ -21,6 +21,7 @@ Monitor::Monitor()
     pCamera = new Camera();
     pCamera->registerSceneCallback(&myCameraCallback);
 
+    myGNSSCallback.monitor = this;
     pGNSS = new GTU7();
     pGNSS->registerSerialCallback(&myGNSSCallback);
 }
@@ -96,6 +97,7 @@ int Monitor::currentTask()
 
 void Monitor::setCurrentGNSS(double lat, double log)
 {
+    std::cout << "setCurrentGNSS" << std::endl;
     mCurrentLatitude = lat;
     mCurrentLongitude = log;
     emit currentGNSSStrChanged();

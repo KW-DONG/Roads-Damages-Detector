@@ -14,22 +14,26 @@ void GTU7::getMessage()
 {
     if (mSerialCallback == nullptr) return;
     std::string data = receive();
+    //std::cout << data << std::endl;
     std::vector<std::string> vStr;
     std::string delimiter = ",";
     size_t pos = data.find("$GPGLL");
     if (pos != std::string::npos)
     {
-        std::cout << "Found" << std::endl;
         std::string croppedStr = data.substr(pos, data.length());
         for (int i = 0; i < 5 && pos != std::string::npos; i++)
         {
             pos = croppedStr.find(delimiter);
-            if (pos == 0)
+            std::string sub = croppedStr.substr(0, pos);
+            if (sub.size() == 0)
                 return;
-            vStr.push_back(croppedStr.substr(0, pos));
+            std::cout << "sub: " << sub << std::endl;
+            vStr.push_back(sub);
             croppedStr.erase(0, pos + delimiter.length());
         }
-        double lat = vStr[2] == "N" ? std::stod(vStr[0]) : -std::stod(vStr[0]);
+
+        std::cout << "Found" << vStr.size() << std::endl;
+        double lat = vStr[2] == "N" ? std::stod(vStr[1]) : -std::stod(vStr[1]);
         double lon = vStr[4] == "W" ? std::stod(vStr[3]) : -std::stod(vStr[3]);
         std::cout << "latitude: " << lat << " longitude: " << lon << std::endl;
         mSerialCallback->next(lat, lon);
