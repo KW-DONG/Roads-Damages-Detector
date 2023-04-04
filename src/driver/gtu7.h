@@ -2,12 +2,7 @@
 #define _GTU7_H
 
 #include <thread>
-
-#ifdef WIN32
-#include "serial_win.h"
-#else
-#include "serial_linux.h"
-#endif
+#include "serial.h"
 
 class GTU7 : public SerialPort
 {

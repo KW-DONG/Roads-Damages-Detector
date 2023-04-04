@@ -15,11 +15,11 @@ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
     set(NCNN_INCLUDE_PATH "/home/lochcliff/ProgramFiles/ncnn/src"
                          "/home/lochcliff/ProgramFiles/ncnn/build/src")
     set(NCNN_LIB ncnn)
-    set(SERIALPORT_SRC "src/driver/serial_linux.h" "src/driver/serial_linux.cpp")
+    set(SERIALPORT_SRC "src/driver/serial.h" "src/driver/serial_linux.cpp")
 else()
     set(NCNN_INCLUDE_PATH "C:/ncnn/src" "C:/ncnn/build/src")
     set(NCNN_LIB "C:/ncnn/build/src/Release/ncnn.lib")
-    set(SERIALPORT_SRC "src/driver/serial_win.h" "src/driver/serial_win.cpp")
+    set(SERIALPORT_SRC "src/driver/serial.h" "src/driver/serial_win.cpp")
 endif()
 
 

@@ -15,8 +15,12 @@ public:
     std::string receive();
 
 private:
+#ifdef WIN32
     int pHandle[16];
     char synchronizeflag;
+#else
+    int fd = 0;
+#endif
 };
 
 #endif

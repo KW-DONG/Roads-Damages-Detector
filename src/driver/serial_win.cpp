@@ -1,4 +1,4 @@
-#include "serial_win.h"
+#include "serial.h"
 #include <Windows.h>
 
 SerialPort::SerialPort()
