@@ -3,8 +3,6 @@ import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
-import QtLocation 5.15
-import QtPositioning 5.15
 import PaintItemModule 1.0
 import ResultListModel 1.0
 
