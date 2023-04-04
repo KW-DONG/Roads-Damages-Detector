@@ -95,17 +95,9 @@ CMake (version 3.10 or higher)
 Make (Linux and macOS) or Visual Studio (Windows)
 
 ### Build instructions
-#### 1) Use the system's package manager to install these libraries:
+#### 1) Refer to the link to install ncnn:
 
---qtdedavative5-dev: contains the QML modules for Qt 5, which can be used to develop Qt Quick-based applications. 
-
---qtquickcontrols2-5-dev: contains the Qt Quick Controls 2 module, which provides a set of reusable UI controls. 
-
---libopenCV-dev: is the development files of the OpenCV computer vision library, providing the header files and library files needed for compilation and linking. 
-
-For example, on Ubuntu, install these libraries using the following command:
-
-sudo apt-get install qml-module-qtquick2 qml-module-qtquick-controls2 libopencv-dev
+https://github.com/Tencent/ncnn
 
 #### 2) Clone the project repository:
 
@@ -137,7 +129,20 @@ Or build the project using Visual Studio (on Windows):
 
 Open the project solution in Visual Studio and build it.
 
-#### 8) Run the project:
+#### 8) Use the system's package manager to install these libraries:
+
+--qtdedavative5-dev: contains the QML modules for Qt 5, which can be used to develop Qt Quick-based applications. 
+
+--qtquickcontrols2-5-dev: contains the Qt Quick Controls 2 module, which provides a set of reusable UI controls. 
+
+--libopenCV-dev: is the development files of the OpenCV computer vision library, providing the header files and library files needed for compilation and linking. 
+
+For example, on Ubuntu, install these libraries using the following command:
+
+sudo apt-get install qml-module-qtquick2 qml-module-qtquick-controls2 libopencv-dev
+
+
+#### 9) Run the project:
 
 ./your-project
 
