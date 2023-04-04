@@ -72,11 +72,10 @@ In summary, the software engineer responsible would be responsible for integrati
 3. Deep learning model
 4. Deep learning model weights
 5. Deep learning classification table
-6. Image preprocessing parameters （待凯文哥确认）
+6. Image preprocessing parameters 
 
 ### Output: 
-During detection, real-time display of images with identified boxes is available; detection results such as type, confidence score, size, etc. can be displayed and text reports can be sent to email; logs can also be displayed. （待凯文哥确认）
-
+During detection, real-time display of images with identified boxes is available; detection results such as type, confidence score, size, etc. can be displayed; logs can also be displayed. 
 Additional features:
 1. Support for traditional image preprocessing
 2. Display of maps with GPS coordinates
