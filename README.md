@@ -269,7 +269,7 @@ Yolov5_lite training & Yolov5_lite transefer to Raspberry Pi(C++)
 
 13.Final product
 
-Milestones:
+#### Milestones:
 
 Project launch
 
@@ -279,9 +279,8 @@ Model training
 
 Raspberry Pi camera and GPS module
 
-Actual number of osts:
-
-Number of posts: 15 posts.
+#### Actual number ofosts:
+15 posts.
 
 1. Set up a project team
 
@@ -337,7 +336,6 @@ https://www.instagram.com/reel/Cp0LJTRukch/?utm_source=ig_web_copy_link
 https://www.instagram.com/p/CqGadSis2bo/?utm_source=ig_web_copy_link
  
 11. Yolov3 training & Yolov3 transefer to Raspberry Pi(c++)
-12. 
 .pt to .weights
 
 Yolov5 training & Yolov5 transefer to Raspberry Pi(C++)
