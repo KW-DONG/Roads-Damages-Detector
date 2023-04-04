@@ -6,7 +6,7 @@ Roads Damages Detector
 A mobile application that uses roads damages detection technology to detect and classify road damages such as potholes, cracks, and other issues in real-time. The application will be designed to be efficient and user-friendly, helping road maintenance crews to identify and repair road damages more quickly. The detection algorithm will be deployed on a Raspberry Pi and operate in real-time, with the location of each damage recorded via a GNSS module and a report generated after each detection mission.
 ### Target users: 
 Road maintenance crews.
-Competitive product analysis: 
+### Competitive product analysis: 
 Visual check of field technicians who detect pavement Failure. 
 
 ## User Requirements
@@ -31,21 +31,15 @@ Combined with pi, camera and GPS, the product can be equipped in a common staff 
 1. Real time detection;
 2. Display a picture with an identification box;
 3. Test results include type, confidence and size;
-4. Send a text report to the mailbox;
-5. Display Log.
 #### Additional functions:
 1. Support traditional graphics preprocessing;
-2. Display a map with GPS coordinate;
-3. Recognize other things.
+2. Display GPS coordinate;
 ### Priority: 
 1. Real time detection;
 2. Display a picture with an identification box;
 3. Test results include type, confidence and size;
-4. Send a text report to the mailbox;
-5. Display Log;
-6. Support traditional graphics preprocessing; 
-7. Display a map with GPS coordinate;
-8. Recognize other things.
+4. Support traditional graphics preprocessing; 
+5. Display GPS coordinate;
 
 ## Data Requirements
 ### Data list: 
@@ -63,7 +57,9 @@ Design easy-to-use, user friendly interactive ways to enhance the user experienc
 ### Design idea:
 #### 1. Home Page
 Blue frame on the left: Images captured by the live camera.
+
 Grey frame on the left: Real-time Log.
+
 Frames on the right: Type, confidence, size of the task .
 #### 2. Task Page
 Name of the task.
