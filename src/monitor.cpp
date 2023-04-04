@@ -4,14 +4,25 @@
 
 Monitor::Monitor()
 {
+    pTaskListData = nullptr;
+    pResultListData = nullptr;
+    mCurrentTask = 0;
+    mCurrentResult = 0;
     mRun = false;
+    mCurrentLatitude = 0.0;
+    mCurrentLongitude = 0.0;
+    mCurrentConfidence = 0.0;
+    mCurrentClassification = 0;
 
+    mRun = false;
     pDate = new QDate;
     pTime = new QTime;
-
     myCameraCallback.monitor = this;
-    camera = new Camera();
-    camera->registerSceneCallback(&myCameraCallback);
+    pCamera = new Camera();
+    pCamera->registerSceneCallback(&myCameraCallback);
+
+    pGNSS = new GTU7();
+    pGNSS->registerSerialCallback(&myGNSSCallback);
 }
 
 void Monitor::runDetection(const cv::Mat& mat)
@@ -70,7 +81,6 @@ void Monitor::runDetection(const cv::Mat& mat)
     mutex.unlock();
 
     emit imgChanged();
-    //cv::waitKey(50);
     QThread::msleep(50);
 }
 
@@ -163,7 +173,8 @@ void Monitor::runButton()
     if (mRun)
     {
         mRun = false;
-        camera->stop();
+        pCamera->stop();
+        pGNSS->stop();
         QImage image(640,480, QImage::Format_BGR888);
         mImg = image;
         emit imgChanged();
@@ -180,16 +191,16 @@ void Monitor::runButton()
         _result.method = "NCNN";
 
         pResultListData->addResult(_result);
-        //std::string paramPath = "/home/lochcliff/ProgramFiles/Roads-Damages-Detector/bin/best.param";
-        //std::string modelPath = "/home/lochcliff/ProgramFiles/Roads-Damages-Detector/bin/best.bin";
-        std::string paramPath = "C:/Users/Kaiwen Dong/Blackboard/UofG/Real Time Embedded Programming/Roads-Damages-Detector/bin/best.param";
-        std::string modelPath = "C:/Users/Kaiwen Dong/Blackboard/UofG/Real Time Embedded Programming/Roads-Damages-Detector/bin/best.bin";
-
-        //(*pTaskListData->data())[_currentTask].weightPath
         mNcnn.loadParam((*pTaskListData->data())[mCurrentTask].weightPath.toStdString());
         mNcnn.loadModel((*pTaskListData->data())[mCurrentTask].modelPath.toStdString());
 
-        camera->start();
+        QList<QSerialPortInfo> serialPortList = QSerialPortInfo::availablePorts();
+        if (serialPortList.size() > 0)
+        {
+            std::string portName = serialPortList[0].portName().toStdString();
+            pGNSS->start(portName);
+        }
+        pCamera->start();
     }
     emit runChanged();
 }

@@ -7,10 +7,13 @@
 #include <QMutex>
 #include <QDate>
 #include <QTime>
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
 #include "resultlistdata.h"
 #include "tasklistdata.h"
 #include "camera.h"
 #include "cusncnn.h"
+#include "gtu7.h"
 
 class Monitor : public QObject
 {
@@ -36,6 +39,15 @@ public:
                         monitor->runDetection(mat);
                     }
                 }
+    };
+
+    struct MyGNSSCallback : GTU7::SerialCallback {
+        Monitor* monitor = nullptr;
+        virtual void next(double lat, double lon) {
+            if (nullptr != monitor) {
+                monitor->setCurrentGNSS(lat, lon);
+            }
+        }
     };
 
 signals:
@@ -73,7 +85,8 @@ public slots:
     QImage img();
 
 private:
-    Camera* camera;
+    Camera* pCamera;
+    GTU7* pGNSS;
     TaskListData* pTaskListData;
     ResultListData* pResultListData;
 
@@ -87,12 +100,14 @@ private:
     QTime* pTime;
 
     MyCameraCallback myCameraCallback;
+    MyGNSSCallback myGNSSCallback;
+
     ncnn::CusNCNN mNcnn;
 
-    double mCurrentLatitude = 0.0;
-    double mCurrentLongitude = 0.0;
-    double mCurrentConfidence = 0.0;
-    int mCurrentClassification = 0;
+    double mCurrentLatitude;
+    double mCurrentLongitude;
+    double mCurrentConfidence;
+    int mCurrentClassification;
 };
 
 #endif
