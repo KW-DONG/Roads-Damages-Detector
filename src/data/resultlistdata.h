@@ -5,7 +5,6 @@
 #include <QString>
 #include <QVector>
 #include <QImage>
-#include <opencv2/opencv.hpp>
 
 struct ResultListData_t
 {
