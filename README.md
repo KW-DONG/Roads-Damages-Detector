@@ -60,6 +60,11 @@ In summary, the software engineer responsible would be responsible for integrati
 #### 1. Raspberry
 
 Raspberry Pi is a series of small single-board computers (SBCs).
+<div align="left">
+
+![下载](https://user-images.githubusercontent.com/108115404/229914655-8b3e9d27-c049-413c-8d92-b83fff582939.jpeg)
+  
+</div>
 
 ##### Raspberry Pi for Real Time Embedded Programming
 Raspberry Pi can be used for real-time embedded programming as it has the capability to handle real-time applications with its powerful processor and various I/O ports.
