@@ -76,6 +76,9 @@ QImage ResultListData::img()
     if (mItems.size() == 0)
         return QImage();
 
+    if (mItems[currentResult].imgName.size() == 0)
+        return QImage();
+
     QString _imgPath = resultFolderPath + "/" +
             mItems[currentResult].date + "/" +
             mItems[currentResult].imgName[currentImg];
@@ -130,8 +133,8 @@ QString ResultListData::imgShowIdx()
     if (mItems.size() == 0)
         return "0 / 0";
 
-    QString str = QString::number(currentImg) + " / " +
-            QString::number(mItems[currentResult].imgName.size()-1);
+    QString str = QString::number(currentImg + 1) + " / " +
+            QString::number(mItems[currentResult].imgName.size());
     return str;
 }
 
