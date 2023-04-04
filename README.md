@@ -62,7 +62,9 @@ In summary, the software engineer responsible would be responsible for integrati
 
 #### 2. Pi Camera
 ---Raspberry Pi v2.1 8 MP 1080p Camera Module
-
+<div align="left">
+<img src="images/camera.png" height=240/>
+</div>
 Memory storage capacity: 12 GB
 
 Wireless Type:	Infrared
@@ -79,7 +81,9 @@ More information: https://www.amazon.co.uk/Raspberry-Pi-1080p-Camera-Module/dp/B
 
 #### 3. GPS Module Receiver
 ---GPS Module Receiver,Navigation Satellite Positioning NEO-6M (Arduino GPS, Drone Microcontroller, GPS Receiver) Compatible with 51 Microcontroller STM32 Arduino UNO R3 with Antenna High Sensitivity
-
+<div align="left">
+<img src="images/GPS.png" height=240/>
+</div>
 High Sensitivity:The GPS module uses the original 7th generation chip and the software is compatible with NEO-6M. The GT-U7 module features high sensitivity, low power consumption, and miniaturization. Its extremely high tracking sensitivity greatly expands its coverage.
 
 Features:With a USB interface, you can directly use the phone data cable on the computer point of view positioning effect; With IPEX antenna interface, the default distribution of active antenna, can be quickly &high-precision positioned.
