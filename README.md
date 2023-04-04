@@ -51,7 +51,7 @@ In summary, the software engineer responsible would be responsible for integrati
 3. Collect and organize project information and technical documents to help engineers better understand project background and technical details.
 4. Assist engineers in technical research and experimentation, such as writing code, running tests, and writing technical documentation.
 
-## 4. Architecture
+## 4. Architecture（driver 待确认）
 <div align="left">
 <img src="images/Architecture.png" height=240/>
 </div>
@@ -72,10 +72,10 @@ In summary, the software engineer responsible would be responsible for integrati
 3. Deep learning model
 4. Deep learning model weights
 5. Deep learning classification table
-6. Image preprocessing parameters
+6. Image preprocessing parameters （待凯文哥确认）
 
 ### Output: 
-During detection, real-time display of images with identified boxes is available; detection results such as type, confidence score, size, etc. can be displayed and text reports can be sent to email; logs can also be displayed.
+During detection, real-time display of images with identified boxes is available; detection results such as type, confidence score, size, etc. can be displayed and text reports can be sent to email; logs can also be displayed. （待凯文哥确认）
 Additional features:
 1. Support for traditional image preprocessing
 2. Display of maps with GPS coordinates
