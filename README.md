@@ -57,9 +57,38 @@ In summary, the software engineer responsible would be responsible for integrati
 </div>
 
 ### Hardware: 
-1. Raspberry 
-2. Pi Camera
-3. GPS Module Receiver
+#### 1. Raspberry (yang 待更新)
+
+
+#### 2. Pi Camera
+---Raspberry Pi v2.1 8 MP 1080p Camera Module
+
+Memory storage capacity: 12 GB
+
+Wireless Type:	Infrared
+
+Second Generation Raspberry Pi Camera Module with Fixed Focus Lens
+
+Sony Exmor IMX219 Sensor Capable of 4K30 1080P60 720P180 8MP Still
+
+3280 (H) x 2464 (V) Active Pixel Count
+
+Maximum of 1080P30 and 8MP Stills in Raspberry Pi Board
+
+More information: https://www.amazon.co.uk/Raspberry-Pi-1080p-Camera-Module/dp/B01ER2SKFS
+
+#### 3. GPS Module Receiver
+---GPS Module Receiver,Navigation Satellite Positioning NEO-6M (Arduino GPS, Drone Microcontroller, GPS Receiver) Compatible with 51 Microcontroller STM32 Arduino UNO R3 with Antenna High Sensitivity
+
+High Sensitivity:The GPS module uses the original 7th generation chip and the software is compatible with NEO-6M. The GT-U7 module features high sensitivity, low power consumption, and miniaturization. Its extremely high tracking sensitivity greatly expands its coverage.
+
+Features:With a USB interface, you can directly use the phone data cable on the computer point of view positioning effect; With IPEX antenna interface, the default distribution of active antenna, can be quickly &high-precision positioned.
+
+Application:Vehicle-mounted, handheld devices such as PDAs, Vehicle-monitoring, Mobile phones, camcorders and other mobile positioning systems, Sharing bike, Sharing mobile power.
+
+Note: This GPS module will not search for signals when the weather is bad, and it will not search for stars indoors. When using it, please make sure that the GPS module is in an open location.
+
+More information: https://www.amazon.co.uk/Navigation-Positioning-Microcontroller-Compatible-Sensitivity/dp/B08XGN4YLY/ref=sr_1_3?crid=2KXS44IICOL34&keywords=Quectel+gps&qid=1674314365&s=electronics&sprefix=quectel+gps%2Celectronics%2C72&sr=1-3
 
 ### Software: 
 <div align="left">
@@ -164,7 +193,7 @@ https://github.com/KW-DONG/Roads-Damages-Detector/blob/yolo_training/yolo_traini
 
 
 
-硬件文档：GPS文档、相机、树莓派? 程序设计（UML图）?--kaiwen
+硬件文档： 程序设计（UML图）?--kaiwen
 
 测试文档?--yujie
 
