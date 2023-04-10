@@ -19,7 +19,7 @@
 ## 1.set up roads damages dataset, we collect roads damages pictures from established dataset(https://github.com/titanmu/RoadCrackDetection)，online pictures, pictures taken in glasgow.
 ## 2.utilizing labelimg to label our pictures 
 ![labelimg](https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/labelimg.png)
-Finally, we get 6 kinds of roads damages 
+Finally, we get 5 kinds of roads damages 
 |Label|	Describe|
 |:--:|:--:|
 |D10|Linear crack|
