@@ -1,7 +1,0 @@
-train: ./2012_train.txt
-val: ./2012_val.txt
-#number of classes
-nc: 2
-
-#class names
-names: ['face','face_mask']
