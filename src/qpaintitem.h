@@ -29,8 +29,8 @@ public slots:
     int getHeight();
 
 protected:
-    QSGNode* updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *) override;
-    void paint(QPainter *painter) override;
+    //QSGNode* updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *) override;
+    void paint(QPainter *painter);
 private:
     QImage m_imageThumb;
 };

@@ -5,9 +5,16 @@
 #include <QStringList>
 #include <QImage>
 #include <QMutex>
+#include <QDate>
+#include <QTime>
+#include <QTimer>
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
 #include "resultlistdata.h"
 #include "tasklistdata.h"
 #include "camera.h"
+#include "cusncnn.h"
+#include "gtu7.h"
 
 class Monitor : public QObject
 {
@@ -17,13 +24,16 @@ class Monitor : public QObject
     Q_PROPERTY(QStringList taskList READ taskList NOTIFY taskListChanged)
     Q_PROPERTY(QImage img READ img NOTIFY imgChanged)
     Q_PROPERTY(bool run READ run NOTIFY runChanged)
+    Q_PROPERTY(QString currentGNSSStr READ currentGNSSStr NOTIFY currentGNSSStrChanged)
+    Q_PROPERTY(QString currentConfidenceStr READ currentConfidenceStr NOTIFY currentConfidenceStrChanged)
+    Q_PROPERTY(QString currentClassificationStr READ currentClassificationStr NOTIFY currentClassificationStrChanged)
 
 public:
     Monitor();
 
     void runDetection(const cv::Mat& mat);
 
-    struct MyCallback : Camera::SceneCallback {
+    struct MyCameraCallback : Camera::SceneCallback {
         Monitor* monitor = nullptr;
         virtual void nextScene(const cv::Mat &mat) {
                     if (nullptr != monitor) {
@@ -32,23 +42,39 @@ public:
                 }
     };
 
+    struct MyGNSSCallback : GTU7::SerialCallback {
+        Monitor* monitor = nullptr;
+        virtual void next(double lat, double lon) {
+            if (nullptr != monitor) {
+                monitor->setCurrentGNSS(lat, lon);
+            }
+        }
+    };
+
 signals:
     void currentTaskChanged();
     void localImgPathChanged();
     void logChanged();
     void taskListChanged();
     void runChanged();
-
     void imgChanged();
+    void currentGNSSStrChanged();
+    void currentConfidenceStrChanged();
+    void currentClassificationStrChanged();
 
 public slots:
     void setCurrentTask(int i);
     int currentTask();
 
-    void setLocalImgPath(QString path);
-    QString localImgPath();
+    void setCurrentGNSS(double lat, double log);
+    QString currentGNSSStr();
 
-    QStringList log();
+    void setCurrentConfidence(double value);
+    QString currentConfidenceStr();
+
+    void setCurrentClassification(int value);
+    QString currentClassificationStr();
+
     QStringList taskList();
 
     bool run();
@@ -60,20 +86,32 @@ public slots:
     QImage img();
 
 private:
-    Camera* camera;
+    Camera* pCamera;
+    GTU7* pGNSS;
     TaskListData* pTaskListData;
     ResultListData* pResultListData;
 
     //properties
-    int _currentTask;
-    bool _run;
-    QString _localImgPath;
-    QStringList _log;
+    int mCurrentTask;
+    int mCurrentResult;
+    bool mRun;
     QMutex mutex;
-    QImage _img;
+    QImage mImg;
+    QDate* pDate;
+    QTime* pTime;
+    QTimer* pTimer;
 
-    MyCallback myCallback;
+    MyCameraCallback myCameraCallback;
+    MyGNSSCallback myGNSSCallback;
 
+    ncnn::CusNCNN mNcnn;
+
+    double mCurrentLatitude;
+    double mCurrentLongitude;
+    double mCurrentConfidence;
+    int mCurrentClassification;
+
+    bool timeOut;
 };
 
 #endif

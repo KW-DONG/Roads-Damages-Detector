@@ -102,9 +102,10 @@ Item {
                 resetRect();
                 dataRect.visible = true;
                 selection = 2
+                resultListData.imgIdx = 0
+                resultListData.index = 0
             }
         }
-
 
         MouseArea {
             id: settingMouseArea

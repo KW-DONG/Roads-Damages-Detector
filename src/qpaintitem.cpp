@@ -1,27 +1,36 @@
 #include "qpaintitem.h"
 #include <iostream>
+#include <QTimer>
+#include <QThread>
 
 PaintItem::PaintItem(QQuickPaintedItem *parent) : QQuickPaintedItem(parent)
 {
-    //这句不加会报错
     setFlag(ItemHasContents, true);
-    //默认图片
+    m_imageThumb = QImage(640,480,QImage::Format_RGB888);
 }
 
 PaintItem::~PaintItem()
 {
-    std::cout << "paint item destroyed" << std::endl;
+
 }
 
 void PaintItem::updateImage(const QImage &image)
 {
-    m_imageThumb = image;
+    if (image.size().isEmpty())
+    {
+        m_imageThumb = QImage();
+    }
+    else
+    {
+        m_imageThumb = image;
+    }
+
     emit widthChanged();
     emit heightChanged();
     update();
-    //std::cout << "paint item update" << std::endl;
 }
 
+/*
 QSGNode * PaintItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNodeData *)
 {
     auto node = dynamic_cast<QSGSimpleTextureNode *>(oldNode);
@@ -37,11 +46,11 @@ QSGNode * PaintItem::updatePaintNode(QSGNode *oldNode, QQuickItem::UpdatePaintNo
     node->setTexture(m_texture);
     return node;
 }
+*/
 
 void PaintItem::paint(QPainter *painter)
 {
     painter->drawImage(this->boundingRect(), m_imageThumb);
-    static int i = 0;
 }
 
 int PaintItem::getHeight()

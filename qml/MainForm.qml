@@ -63,6 +63,7 @@ Item {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.right: parent.right
+        z: 998
         visible: toolBar.selection === 3
     }
 }

@@ -26,8 +26,8 @@ void Camera::start(int deviceID, int apiID){
     }
 }
 
-void Camera::stop(){  
-    cap.release();
-    cameraThread.detach();
+void Camera::stop(){
     run=false;
+    cap.release();
+    cameraThread.join();
 }

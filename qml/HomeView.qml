@@ -16,7 +16,7 @@ Item {
                 id: borderImage
                 color: "darkslateblue"
                 implicitWidth: homeItem.width > 580 ? homeItem.width - 280 : 300
-                implicitHeight: homeItem.height * 0.7
+                implicitHeight: homeItem.height * 0.95
                 PaintItem {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
@@ -25,12 +25,6 @@ Item {
                     img: monitor.img
                     antialiasing: true
                 }
-
-            }
-            TextArea {
-                implicitWidth: borderImage.width
-                Layout.fillHeight: true
-                enabled: false
             }
         }
         ColumnLayout {
@@ -48,25 +42,52 @@ Item {
                     anchors.fill: parent
                     ColumnLayout
                     {
-                       anchors.fill: parent
-                       Text {
-                           color: "#ffffff"
-                           text: "GNSS: "
-                           font.family: "Microsoft YaHei"
-                           font.pointSize: 12
-                       }
-                       Text {
-                           color: "#ffffff"
-                           text: "Confidence: "
-                           font.family: "Microsoft YaHei"
-                           font.pointSize: 12
-                       }
-                       Text {
-                           color: "#ffffff"
-                           text: "Classification: "
-                           font.family: "Microsoft YaHei"
-                           font.pointSize: 12
-                       }
+                        anchors.fill: parent
+                        Row {
+                            spacing: 10
+                            Text {
+                                color: "#ffffff"
+                                text: "GNSS: "
+                                font.family: "Microsoft YaHei"
+                                font.pointSize: 12
+                            }
+                            Text {
+                                color: "#ffffff"
+                                text: monitor.currentGNSSStr
+                                font.family: "Microsoft YaHei"
+                                font.pointSize: 12
+                            }
+                        }
+                        Row {
+                            spacing: 10
+                            Text {
+                                color: "#ffffff"
+                                text: "Confidence: "
+                                font.family: "Microsoft YaHei"
+                                font.pointSize: 12
+                            }
+                            Text {
+                                color: "#ffffff"
+                                text: monitor.currentConfidenceStr
+                                font.family: "Microsoft YaHei"
+                                font.pointSize: 12
+                            }
+                        }
+                        Row {
+                            spacing: 10
+                            Text {
+                                color: "#ffffff"
+                                text: "Classification: "
+                                font.family: "Microsoft YaHei"
+                                font.pointSize: 12
+                            }
+                            Text {
+                                color: "#ffffff"
+                                text: monitor.currentClassificationStr
+                                font.family: "Microsoft YaHei"
+                                font.pointSize: 12
+                            }
+                        }
                     }
                 }
             }
@@ -81,6 +102,7 @@ Item {
                 font.pointSize: 12
             }
             ComboBox {
+                id: taskComboBox
                 implicitWidth: 200
                 model: monitor.taskList
                 enabled: !monitor.run
@@ -88,28 +110,12 @@ Item {
                     monitor.currentTask = currentIndex
                 }
             }
-            Text {
-                color: "#ffffff"
-                text: qsTr("Select Image")
-                font.family: "Microsoft YaHei"
-                font.pointSize: 12
-            }
-            Row {
-                spacing: 10
-                TextField {
-                    enabled: !monitor.run
-                    width: 200
-                }
-                Button {
-                    enabled: !monitor.run
-                    text: "Select"
-                }
-            }
+
             Button {
                 implicitHeight: 50
                 implicitWidth: parent.width
                 text: monitor.run ? qsTr("Stop") : qsTr("Start")
-
+                enabled: taskComboBox.currentIndex != -1
                 onClicked: {
                     monitor.runButton()
                 }

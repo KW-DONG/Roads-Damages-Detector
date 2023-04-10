@@ -11,7 +11,6 @@ struct TaskListData_t
 {
     QString modelPath;
     QString weightPath;
-    QString classPath;
     QString title;
     QString description;
     double confidence;
@@ -28,7 +27,6 @@ public:
     ~TaskListData();
     Q_PROPERTY(QString modelPath READ modelPath WRITE setModelPath NOTIFY modelPathChanged);
     Q_PROPERTY(QString weightPath READ weightPath WRITE setWeightPath NOTIFY weightPathChanged);
-    Q_PROPERTY(QString classPath READ classPath WRITE setClassPath NOTIFY classPathChanged);
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged);
     Q_PROPERTY(double confidence READ confidence WRITE setConfidence NOTIFY confidenceChanged);
     Q_PROPERTY(double threshold READ threshold WRITE setThreshold NOTIFY thresholdChanged);
@@ -76,9 +74,6 @@ public slots:
 
     void setWeightPath(QString& value);
     QString weightPath();
-
-    void setClassPath(QString& value);
-    QString classPath();
 
     void setConfidence(double value);
     double confidence();

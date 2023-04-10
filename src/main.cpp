@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     QQuickStyle::setStyle("Universal");
     qmlRegisterType<TaskListModel>("TaskListModel", 1, 0, "TaskListModel");
-    qmlRegisterType<TaskListModel>("ResultListModel", 1, 0, "ResultListModel");
+    qmlRegisterType<ResultListModel>("ResultListModel", 1, 0, "ResultListModel");
     qmlRegisterType<PaintItem>("PaintItemModule",1,0,"PaintItem");
 
     TaskListData taskListData;
@@ -40,6 +40,5 @@ int main(int argc, char *argv[])
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
     engine.load(url);
-
     return app.exec();
 }
