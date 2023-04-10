@@ -37,9 +37,13 @@ Test Result Images:
 <img src="images/test1.png" height=360/>
 <img src="images/test2.png" height=360/>
 </div>
+GPS 结果待上传照片）
+<div align="left">
+<img src="gps.png" height=360/>
+</div>
 
 3. TC006-Display results
-（GPS 结果待上传照片）
+
 <div align="left">
  <img src="images/Result_List.png" height=360/>
 </div>
