@@ -17,27 +17,37 @@ Test Result Images:
 1. TC001-Create new task
 
 <div align="left">
-<img src="images/Add_Task.png" height=120/>
+<img src="images/Add_Task.png" height=360/>
 </div>
 
 2. TC004-Execute task
+ <div align="left">
+<img src="images/Run_Task.png" height=360/>
+</div>
+
+|Defect Type|Label|
+|---|---|
+|Linear Crack	|1|
+|Alligator Crack	|2|
+|Road Rut	|3|
+|Pothole	|4|
+|White Cross Blur	|5|
 
 <div align="left">
-<img src="images/Run_Task.png" height=120/>
-<img src="images/test1.png" height=120/>
-<img src="images/test2.png" height=120/>
+<img src="images/test1.png" height=360/>
+<img src="images/test2.png" height=360/>
 </div>
 
 3. TC006-Display results
 （GPS 结果待上传照片）
 <div align="left">
- <img src="images/Result_List.png" height=120/>
+ <img src="images/Result_List.png" height=360/>
 </div>
 
 4. TC008,TC009-Setting page
 
 <div align="left">
-<img src="images/Setting.png" height=120/>
+<img src="images/Setting.png" height=360/>
 </div>
 
 
