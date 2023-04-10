@@ -4,11 +4,11 @@
 ### Step2. After comparing the models performance, we finally choose yolov5_litec model since its higher accuracy than yolov3 tiny and faster than yolov5. Then, we test the images utilizing yolov5_litec (ncnn) on different equipments.
 
 ## yolov3-tiny, yolov5s, yolov5_litec compare results
-|model|Params|Size(M)|Map@0.5()|Map@.5:0.95|Running time on laptop(480*320 )(ms)|
-|:---:|:---:|:---:|:---:|:---:|:---:|
-|Yolov3-tiny|	6.06|	23.0|	33.1|	16.6|	None|
-|Yolov5s|7.23M|14.0|56.0|37.2|113.23ms|
-|Yolov5_litec|4.57M|9.2|50.9|32.5|59.15ms|
+|model|Params|Size(M)|Map@0.5()|Map@.5:0.95|Running time on laptop(480*320 )(ms)|Running time on RaspberryPi 4B|Running time on Raspberry 1|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|Yolov3-tiny|	6.06|	23.0|	33.1|	16.6|	None| None| None|
+|Yolov5s|7.23M|14.0|56.0|37.2|113.23ms|150.85ms| 560.13ms|
+|Yolov5_litec|4.57M|9.2|50.9|32.5|59.15ms|80.56ms |286.34ms|
 
 ## label and description 
 
