@@ -37,7 +37,8 @@ Test Result Images:
 <img src="images/test1.png" height=360/>
 <img src="images/test2.png" height=360/>
 </div>
-GPS 结果待上传照片）
+
+GPS:
 <div align="left">
 <img src="gps.png" height=360/>
 </div>
