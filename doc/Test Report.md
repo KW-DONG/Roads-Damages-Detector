@@ -29,7 +29,7 @@ Test Result Images:
 </div>
 
 3. TC006-Display results
-
+（GPS 结果待上传照片）
 <div align="left">
  <img src="images/Result_List.png" height=120/>
 </div>
