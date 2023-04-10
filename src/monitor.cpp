@@ -17,6 +17,10 @@ Monitor::Monitor()
     mRun = false;
     pDate = new QDate;
     pTime = new QTime;
+    pTimer = new QTimer(this);
+    connect(pTimer, &QTimer::timeout, [=](){timeOut = true;});
+    pTimer->start(50);
+
     myCameraCallback.monitor = this;
     pCamera = new Camera();
     pCamera->registerSceneCallback(&myCameraCallback);
@@ -24,6 +28,7 @@ Monitor::Monitor()
     myGNSSCallback.monitor = this;
     pGNSS = new GTU7();
     pGNSS->registerSerialCallback(&myGNSSCallback);
+
 }
 
 void Monitor::runDetection(const cv::Mat& mat)
@@ -76,13 +81,19 @@ void Monitor::runDetection(const cv::Mat& mat)
         cv::imwrite(imgPath.toStdString(), mat);
     }
 
+
     mutex.lock();
     cv::Mat display = dst.clone();
     mImg = QImage(display.data, display.cols, display.rows, QImage::Format_BGR888);
     mutex.unlock();
 
-    emit imgChanged();
-    QThread::msleep(50);
+    if (timeOut)
+    {
+        emit imgChanged();
+        timeOut = false;
+    }
+
+    //QThread::msleep(50);
 }
 
 void Monitor::setCurrentTask(int i)
@@ -158,6 +169,7 @@ void Monitor::setTaskListData(TaskListData* ptr)
 {
     pTaskListData = ptr;
     connect(pTaskListData, &TaskListData::sizeChanged, this, [this](){ emit taskListChanged();});
+    connect(pTaskListData, &TaskListData::titleChanged, this, [this](){ emit taskListChanged();});
 }
 
 void Monitor::setResultListData(ResultListData* ptr)

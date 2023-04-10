@@ -7,6 +7,7 @@
 #include <QMutex>
 #include <QDate>
 #include <QTime>
+#include <QTimer>
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 #include "resultlistdata.h"
@@ -98,6 +99,7 @@ private:
     QImage mImg;
     QDate* pDate;
     QTime* pTime;
+    QTimer* pTimer;
 
     MyCameraCallback myCameraCallback;
     MyGNSSCallback myGNSSCallback;
@@ -108,6 +110,8 @@ private:
     double mCurrentLongitude;
     double mCurrentConfidence;
     int mCurrentClassification;
+
+    bool timeOut;
 };
 
 #endif
