@@ -23,7 +23,7 @@ Test Result Images:
 2. TC004-Execute task
 
 <div align="left">
-<img src="images/Run Task.png" height=120/>
+<img src="images/Run_Task.png" height=120/>
 <img src="images/test1.png" height=120/>
 <img src="images/test2.png" height=120/>
 </div>
@@ -31,7 +31,7 @@ Test Result Images:
 3. TC006-Display results
 
 <div align="left">
- <img src="images/Result List.png" height=120/>
+ <img src="images/Result_List.png" height=120/>
 </div>
 
 3. TC008,TC009-Setting page
