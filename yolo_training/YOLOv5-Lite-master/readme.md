@@ -22,7 +22,6 @@
 Finally, we get 6 kinds of roads damages 
 |Label|	Describe|
 |:--:|:--:|
-|D00|Longitudinal crack|
 |D10|Linear crack|
 |D20|Alligator crack|
 |D40|Pothole|
