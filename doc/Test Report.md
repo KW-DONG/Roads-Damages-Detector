@@ -13,6 +13,7 @@
 |TC009|	Setting page: Click "Setting" and configure device settings such as "External Trigger" and "Signal Output".	|The device settings should be configured as specified.	|Pass|
 
 Test Result Images:
+
 1. TC001-Create new task
 
 <div align="left">
