@@ -13,12 +13,15 @@
 |TC009|	Setting page: Click "Setting" and configure device settings such as "External Trigger" and "Signal Output".	|The device settings should be configured as specified.	|Pass|
 
 Test Result Images:
+
 1. TC001-Create new task
+
 <div align="left">
 <img src="images/Add Task.png" height=120/>
 </div>
 
 2. TC004-Execute task
+
 <div align="left">
 <img src="images/Run Task.png" height=120/>
 <img src="images/test1.png" height=120/>
@@ -26,11 +29,13 @@ Test Result Images:
 </div>
 
 3. TC006-Display results
+
 <div align="left">
  <img src="images/Result List.png" height=120/>
 </div>
 
 3. TC008,TC009-Setting page
+
 <div align="left">
 <img src="images/Setting.png" height=120/>
 </div>
