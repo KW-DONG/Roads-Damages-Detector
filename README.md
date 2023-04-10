@@ -230,13 +230,14 @@ https://github.com/KW-DONG/Roads-Damages-Detector/blob/yolo_training/yolo_traini
 
 
 
-硬件文档： 程序设计（UML图）?--kaiwen
+硬件文档： 程序设计（UML图）?\部署、发布（到main）
+，--kaiwen
 
 Test Case & Report:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Test%20Report.md)
 
 ### Management File
-Plan: ?--yujie
+Plan: ?(缺凯文)--yujie-->更新会议纪要
 
 Process Management:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Process%20Management.md
