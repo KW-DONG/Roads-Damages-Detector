@@ -60,9 +60,11 @@ void TaskListData::addTask()
     task.threshold = 50;
     mItems.push_back(task);
     emit postTaskAppend();
-    emit sizeChanged();
+
     if (mItems.size() == 0)
         setIndex(0);
+    emit sizeChanged();
+    emit titleChanged();
 }
 
 void TaskListData::removeTask(int id)
