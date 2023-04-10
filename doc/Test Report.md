@@ -17,7 +17,7 @@ Test Result Images:
 1. TC001-Create new task
 
 <div align="left">
-<img src="images/Add Task.png" height=120/>
+<img src="images/Add_Task.png" height=120/>
 </div>
 
 2. TC004-Execute task
@@ -34,7 +34,7 @@ Test Result Images:
  <img src="images/Result_List.png" height=120/>
 </div>
 
-3. TC008,TC009-Setting page
+4. TC008,TC009-Setting page
 
 <div align="left">
 <img src="images/Setting.png" height=120/>
