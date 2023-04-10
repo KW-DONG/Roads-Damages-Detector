@@ -1,7 +1,0 @@
-train: ./roads_train.txt
-val: ./roads_val.txt
-#number of classes
-nc: 6
-
-#class names
-names: ['DOO','D10','D20','D30','D40','D43']
