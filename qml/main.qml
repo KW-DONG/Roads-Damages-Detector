@@ -8,7 +8,7 @@ Window {
     width: 640
     height: 480
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Monitor")
 
     Universal.theme: Universal.Dark
     Universal.accent: Universal.BlueGrey
