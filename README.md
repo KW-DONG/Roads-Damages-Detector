@@ -28,15 +28,15 @@ There are five types of roads damages: alligator cracks, linear cracks, pothole,
 2. Developing and maintaining code libraries with a focus on code quality and readability.
 3. Collaborating closely with other team members, especially software developers and quality assurance experts, to ensure smooth project progress.
 4. Assisting the testing team with system testing to ensure that the detection algorithm performs accurately in various scenarios.
-5.Analyzing and solving technical issues that arise during the project, working with other team members to develop and implement solutions.
+5. Analyzing and solving technical issues that arise during the project, working with other team members to develop and implement solutions.
 
 Overall, the C++ engineer's role is to ensure that the C++ algorithms and data structures used in the project are accurately integrated into the Raspberry Pi platform and to collaborate with other team members to ensure the project progresses according to plan.
 
 ### Wenjia HAO:
-1. Integrating the YOLOv5 model into the application and integrating it with other modules such as the image acquisition module developed by the C
-2. Optimizing and debugging the YOLOv5 model to improve the accuracy and efficiency of detection.
-3. Conducting model training and testing using existing datasets or generating their own datasets by collecting and labeling data.
-4. Proficiency in deep learning frameworks, and strong mathematical and statistical knowledge, capable of understanding and applying the principles and mathematical models behind machine learning algorithms.
+1. Training different model such as Yolov3, Yolov5, Yolov5_lite and compare their performance to find best one.
+2. Integrating the YOLOv5_lite model into the application and integrating it with other modules such as the image acquisition module.
+3. Optimizing and debugging the YOLOv5_lite model to improve the accuracy and efficiency of detection.
+4. Conducting model training and testing using existing datasets or generating their own datasets by collecting and labeling data.
 5. Collaborating with other team members such as the C++ engineer, testing engineer, and project manager to ensure smooth project progress.
 6. Continuously improving and optimizing the road damage detection application to enhance the accuracy and efficiency of the detection.
 
