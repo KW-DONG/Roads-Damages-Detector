@@ -12,7 +12,7 @@ There are five types of roads damages: alligator cracks, linear cracks, pothole,
 <img src="images/Linear_crack.png" height=120/>
 <img src="images/pothole.png" height=120/>
 <img src="images/road_rut.png" height=120/>
-<img src="images/white_road_blur.png" height=120/>
+<img src="images/white_road_blur.png" height=120 width=160/>
 </div>
 
 ## 3. Team Organization
