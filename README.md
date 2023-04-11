@@ -5,7 +5,7 @@
 The Roads Damages Detector project aims to develop a mobile application that uses roads damages detection technology to detect and classify road damages such as potholes, cracks, and other issues in real-time. The application will be designed to be efficient and user-friendly, helping road maintenance crews to identify and repair road damages more quickly. The detection algorithm will be deployed on a Raspberry Pi and operate in real-time, with the location of each damage recorded via a GNSS module and a report generated after each detection mission.
 
 ## 2. Backgrounds
-There are three types of roads damages: alligator cracks, linear cracks and pothole cracks. The repair methods and task urgency of these threes are different, it is necessary to do investigations before taking action.
+There are five types of roads damages: alligator cracks, linear cracks, pothole, white road blur and road rut. The repair methods and task urgency of these roads damages are different, it is necessary to do investigations before taking action.
 
 <div align="left">
 <img src="images/Alligator_crack.png" height=120/>
