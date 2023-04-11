@@ -1,5 +1,5 @@
 # <div align=center>Roads Damages Detector</div>
-<div align=center><img src="https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/roads_logo.png" height=240/></div>
+<div align=center><img src="https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/roads_logo.png" height=480/></div>
 
 <div align=center><img [src="https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/roads_logo.png](https://img.shields.io/badge/build-passing-%7Bblue%7D.svg)"></div>
 
@@ -7,9 +7,12 @@
 
 ## Following us !
 
-[click to ins](https://www.instagram.com/haodongll/?igshid=YmMyMTA2M2Y=)
+[click to Ins](https://www.instagram.com/haodongll/?igshid=YmMyMTA2M2Y=)
 
 [click to youtube](https://www.youtube.com/@roadsdamagesdetectorhaodongll)
+
+## Demo
+
 
 ## 1. Project Overview
 The Roads Damages Detector project aims to develop a mobile application that uses roads damages detection technology to detect and classify road damages such as potholes, cracks, and other issues in real-time. The application will be designed to be efficient and user-friendly, helping road maintenance crews to identify and repair road damages more quickly. The detection algorithm will be deployed on a Raspberry Pi and operate in real-time, with the location of each damage recorded via a GNSS module and a report generated after each detection mission.
