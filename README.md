@@ -1,7 +1,11 @@
 # <div align=center>Roads Damages Detector</div>
 <div align=center><img src="https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/roads_logo.png" height=240/></div>
 
-![build_passing](https://img.shields.io/badge/build-passing-%7Bblue%7D.svg) ![docs_passing](https://img.shields.io/docsrs/re)
+<div align=center><img [src="https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/roads_logo.png](https://img.shields.io/badge/build-passing-%7Bblue%7D.svg)"></div>
+
+<div align=center><img src="https://img.shields.io/badge/LICENSE-GPL--3.0-blue"/> <img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/> <img src="https://img.shields.io/docsrs/re"/> <img src="https://img.shields.io/badge/Source-open-yellowgreen"/></div>
+
+
 open source? 
 license?
 click to ins https://www.instagram.com/haodongll/?igshid=YmMyMTA2M2Y=
