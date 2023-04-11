@@ -35,9 +35,10 @@ public:
 
 private:
     ResultListData* pList = nullptr;
+
+#ifdef UNIT_TEST
+friend class Test_ResultListModel;
+#endif
 };
-
-
-
 
 #endif

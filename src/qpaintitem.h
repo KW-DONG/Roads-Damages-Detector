@@ -2,10 +2,10 @@
 #define QPAINTITEM_H
 
 #include <QQuickPaintedItem>
-#include <QSGNode>
-#include <QSGSimpleRectNode>
-#include <QSGSimpleTextureNode>
-#include <QQuickWindow>
+//#include <QSGNode>
+//#include <QSGSimpleRectNode>
+//#include <QSGSimpleTextureNode>
+//#include <QQuickWindow>
 #include <QImage>
 #include <QPainter>
 
@@ -33,10 +33,10 @@ protected:
     void paint(QPainter *painter);
 private:
     QImage m_imageThumb;
+
+#ifdef UNIT_TEST
+friend class Test_PaintedItem;
+#endif
 };
-
-
-
-
 
 #endif

@@ -77,6 +77,9 @@ private:
     QString rootPath;
     QString resultFolderPath;
 
+#ifdef UNIT_TEST
+friend class Test_ResultListData;
+#endif
 };
 
 #endif

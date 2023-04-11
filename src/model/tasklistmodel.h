@@ -35,6 +35,10 @@ public:
 
 private:
     TaskListData* pList = nullptr;
+
+#ifndef UNIT_TEST
+friend class Test_TaskListModel;
+#endif
 };
 
 #endif // TASKLISTMODEL_H

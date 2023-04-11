@@ -112,6 +112,11 @@ private:
     int mCurrentClassification;
 
     bool timeOut;
+
+#ifdef UNIT_TEST
+friend class Test_Monitor;
+#endif
+
 };
 
 #endif

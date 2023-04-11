@@ -97,6 +97,10 @@ private:
     QVector<TaskListData_t> mItems;
     int _index = 0;
     int cnt = 0;
+
+#ifdef UNIT_TEST
+friend class Test_TaskListData;
+#endif
 };
 
 #endif // TASKLISTDATA_H

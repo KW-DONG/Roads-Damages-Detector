@@ -25,4 +25,8 @@ private:
 	std::thread cameraThread;
     bool run = false;
 	SceneCallback* sceneCallback = nullptr;
+
+#ifdef UNIT_TEST
+friend class Test_Camera;
+#endif
 };
