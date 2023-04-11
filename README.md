@@ -60,7 +60,7 @@ In summary, the software engineer responsible would be responsible for integrati
 </div>
 
 ### Hardware: 
-#### 1. Raspberry
+#### 1) Raspberry
 
 Raspberry Pi is a series of small single-board computers (SBCs).
 <div align="left">
@@ -96,7 +96,7 @@ I2C. Inter-Integrated Circuit.
 ##### Value of Raspberry Pi:
 Raspberry Pi can be a effective solution for real-time embedded programming, and it requires proper configuration and software development skills to ensure the system operates in real-time with the required accuracy and precision.
 
-#### 2. Pi Camera
+#### 2) Pi Camera
 ---Raspberry Pi v2.1 8 MP 1080p Camera Module
 <div align="left">
 <img src="images/camera.png" height=240/>
@@ -115,7 +115,7 @@ Maximum of 1080P30 and 8MP Stills in Raspberry Pi Board
 
 More information: https://www.amazon.co.uk/Raspberry-Pi-1080p-Camera-Module/dp/B01ER2SKFS
 
-#### 3. GPS Module Receiver
+#### 3) GPS Module Receiver
 ---GPS Module Receiver,Navigation Satellite Positioning NEO-6M (Arduino GPS, Drone Microcontroller, GPS Receiver) Compatible with 51 Microcontroller STM32 Arduino UNO R3 with Antenna High Sensitivity
 <div align="left">
 <img src="images/GPS.png" height=240/>
