@@ -1,15 +1,31 @@
-# Roads Damages Detector
+# <div align=center>Roads Damages Detector</div>
+<div align=center><img src="https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/roads_logo.png" height=480/></div>
+
+<div align=center><img [src="https://raw.githubusercontent.com/KW-DONG/Roads-Damages-Detector/yolo_training/yolo_training/pictures/roads_logo.png](https://img.shields.io/badge/build-passing-%7Bblue%7D.svg)"></div>
+
+<div align=center><img src="https://img.shields.io/badge/LICENSE-GPL--3.0-blue"/> <img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/> <img src="https://img.shields.io/docsrs/re"/> <img src="https://img.shields.io/badge/Source-open-yellowgreen"/></div>
+
+## Following us !
+
+[click to Ins](https://www.instagram.com/haodongll/?igshid=YmMyMTA2M2Y=)
+
+[click to youtube](https://www.youtube.com/@roadsdamagesdetectorhaodongll)
+
+## Demo
+[![Watch the video](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/video.png)](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/demo.mp4)
 
 ## 1. Project Overview
 The Roads Damages Detector project aims to develop a mobile application that uses roads damages detection technology to detect and classify road damages such as potholes, cracks, and other issues in real-time. The application will be designed to be efficient and user-friendly, helping road maintenance crews to identify and repair road damages more quickly. The detection algorithm will be deployed on a Raspberry Pi and operate in real-time, with the location of each damage recorded via a GNSS module and a report generated after each detection mission.
 
 ## 2. Backgrounds
-There are three types of roads damages: alligator cracks, linear cracks and pothole cracks. The repair methods and task urgency of these threes are different, it is necessary to do investigations before taking action.
+There are five types of roads damages: alligator cracks, linear cracks, pothole, white road blur and road rut. The repair methods and task urgency of these roads damages are different, it is necessary to do investigations before taking action.
 
 <div align="left">
 <img src="images/Alligator_crack.png" height=120/>
 <img src="images/Linear_crack.png" height=120/>
 <img src="images/pothole.png" height=120/>
+<img src="images/road_rut.png" height=120/>
+<img src="images/white_road_blur.png" height=120 width=160/>
 </div>
 
 ## 3. Team Organization
@@ -25,17 +41,16 @@ There are three types of roads damages: alligator cracks, linear cracks and poth
 2. Developing and maintaining code libraries with a focus on code quality and readability.
 3. Collaborating closely with other team members, especially software developers and quality assurance experts, to ensure smooth project progress.
 4. Assisting the testing team with system testing to ensure that the detection algorithm performs accurately in various scenarios.
-5.Analyzing and solving technical issues that arise during the project, working with other team members to develop and implement solutions.
+5. Analyzing and solving technical issues that arise during the project, working with other team members to develop and implement solutions.
 
 Overall, the C++ engineer's role is to ensure that the C++ algorithms and data structures used in the project are accurately integrated into the Raspberry Pi platform and to collaborate with other team members to ensure the project progresses according to plan.
 
 ### Wenjia HAO:
-1. Integrating the YOLOv5 model into the application and integrating it with other modules such as the image acquisition module developed by the C
-2. Optimizing and debugging the YOLOv5 model to improve the accuracy and efficiency of detection.
+1. Training different model such as Yolov3, Yolov5, Yolov5_lite and compare their performance to find best one.
+2. Integrating the YOLOv5_lite model into the application and integrating it with other modules such as the image acquisition module.
 3. Conducting model training and testing using existing datasets or generating their own datasets by collecting and labeling data.
-4. Proficiency in deep learning frameworks, and strong mathematical and statistical knowledge, capable of understanding and applying the principles and mathematical models behind machine learning algorithms.
-5. Collaborating with other team members such as the C++ engineer, testing engineer, and project manager to ensure smooth project progress.
-6. Continuously improving and optimizing the road damage detection application to enhance the accuracy and efficiency of the detection.
+4. Collaborating with other team members such as the C++ engineer, testing engineer, and project manager to ensure smooth project progress.
+5. Continuously improving and optimizing the road damage detection application to enhance the accuracy and efficiency of the detection.
 
 In summary, the software engineer responsible would be responsible for integrating and optimizing the YOLOv5 model, conducting model training and testing, ensuring the smooth integration and collaboration of the model with the application, and continuously improving and optimizing the road damage detection application to enhance the accuracy and efficiency of detection.
 
@@ -57,7 +72,7 @@ In summary, the software engineer responsible would be responsible for integrati
 </div>
 
 ### Hardware: 
-#### 1. Raspberry
+#### 1) Raspberry
 
 Raspberry Pi is a series of small single-board computers (SBCs).
 <div align="left">
@@ -93,7 +108,7 @@ I2C. Inter-Integrated Circuit.
 ##### Value of Raspberry Pi:
 Raspberry Pi can be a effective solution for real-time embedded programming, and it requires proper configuration and software development skills to ensure the system operates in real-time with the required accuracy and precision.
 
-#### 2. Pi Camera
+#### 2) Pi Camera
 ---Raspberry Pi v2.1 8 MP 1080p Camera Module
 <div align="left">
 <img src="images/camera.png" height=240/>
@@ -112,7 +127,7 @@ Maximum of 1080P30 and 8MP Stills in Raspberry Pi Board
 
 More information: https://www.amazon.co.uk/Raspberry-Pi-1080p-Camera-Module/dp/B01ER2SKFS
 
-#### 3. GPS Module Receiver
+#### 3) GPS Module Receiver
 ---GPS Module Receiver,Navigation Satellite Positioning NEO-6M (Arduino GPS, Drone Microcontroller, GPS Receiver) Compatible with 51 Microcontroller STM32 Arduino UNO R3 with Antenna High Sensitivity
 <div align="left">
 <img src="images/GPS.png" height=240/>
@@ -219,7 +234,7 @@ Note: This assumes that the project generates an executable named "your-project"
 Product Requirements Document:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Product%20Requirements%20Document.md
 
-C++程序设计（UML图）?\部署、发布（到main）--kaiwen
+C++程序设计（UML图）?\部署、发布（到main）、Cmake 交叉编译--kaiwen
 
 yolov5 training process: 
 https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_training/yolov5#readme.md
@@ -229,6 +244,8 @@ https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_traini
 
 yolo training compare and test:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/yolo_training/yolo_training/readme.md
+
+单元测试:？
 
 Test Case & Report:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Test%20Report.md)
