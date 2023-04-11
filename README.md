@@ -222,7 +222,7 @@ Note: This assumes that the project generates an executable named "your-project"
 Product Requirements Document:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Product%20Requirements%20Document.md
 
-C++程序设计（UML图）?\部署、发布（到main）--kaiwen
+C++程序设计（UML图）?\部署、发布（到main）、Cmake 交叉编译--kaiwen
 
 yolov5 training process: 
 https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_training/yolov5#readme.md
@@ -232,6 +232,8 @@ https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_traini
 
 yolo training compare and test:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/yolo_training/yolo_training/readme.md
+
+单元测试:？
 
 Test Case & Report:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Test%20Report.md)
