@@ -84,24 +84,17 @@ A list of the result.
 
 ### UI Prototype:
 #### 1. Home Page
-<div align="left">
-  
-  ![Home](https://user-images.githubusercontent.com/108115404/231116492-24d8978d-7522-496f-9513-7a77f090066f.png)
 
-  
-</div>
+![Home](https://user-images.githubusercontent.com/108115404/231204748-cbcdf2fd-46d5-4d8f-8b46-b33bee17f577.png)
 
 #### 2. Task Page
-<div align="left">
- 
-![Task](https://user-images.githubusercontent.com/108115404/231116556-f09ba077-3519-4d1d-a34b-1bdd455d8f78.png)
+![Task](https://user-images.githubusercontent.com/108115404/231204936-03d969f9-13d7-4139-9b79-3a242122bccf.png)
 
-</div>
 
 #### 3. Result Page
-
-![Result](https://user-images.githubusercontent.com/108115404/231116641-60f011d9-4e90-48db-897d-5b405784bb2f.png)
-
+![Result](https://user-images.githubusercontent.com/108115404/231204849-2280d3d0-1f2f-4859-a92f-6eb7b06522f3.png)
 #### 4. Setting Page
-![Setting](https://user-images.githubusercontent.com/108115404/231116732-1faf164f-4601-4525-bbeb-141ea2d669c3.png)
+![Setting](https://user-images.githubusercontent.com/108115404/231204916-1ae5ac57-ddc1-44cd-9f88-9267694e2207.png)
+
+
 
