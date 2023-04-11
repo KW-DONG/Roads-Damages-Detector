@@ -35,10 +35,9 @@ Overall, the C++ engineer's role is to ensure that the C++ algorithms and data s
 ### Wenjia HAO:
 1. Training different model such as Yolov3, Yolov5, Yolov5_lite and compare their performance to find best one.
 2. Integrating the YOLOv5_lite model into the application and integrating it with other modules such as the image acquisition module.
-3. Optimizing and debugging the YOLOv5_lite model to improve the accuracy and efficiency of detection.
-4. Conducting model training and testing using existing datasets or generating their own datasets by collecting and labeling data.
-5. Collaborating with other team members such as the C++ engineer, testing engineer, and project manager to ensure smooth project progress.
-6. Continuously improving and optimizing the road damage detection application to enhance the accuracy and efficiency of the detection.
+3. Conducting model training and testing using existing datasets or generating their own datasets by collecting and labeling data.
+4. Collaborating with other team members such as the C++ engineer, testing engineer, and project manager to ensure smooth project progress.
+5. Continuously improving and optimizing the road damage detection application to enhance the accuracy and efficiency of the detection.
 
 In summary, the software engineer responsible would be responsible for integrating and optimizing the YOLOv5 model, conducting model training and testing, ensuring the smooth integration and collaboration of the model with the application, and continuously improving and optimizing the road damage detection application to enhance the accuracy and efficiency of detection.
 
