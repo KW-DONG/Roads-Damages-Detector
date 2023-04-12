@@ -1,0 +1,33 @@
+# Raspberry Pi for Real Time Embedded Programming 
+
+## Raspberry Pi 
+
+Raspberry Pi is a series of small single-board computers (SBCs).
+
+## Raspberry Pi for Real Time Embedded Programming
+
+Raspberry Pi can be used for real-time embedded programming as it has the capability to handle real-time applications with its powerful processor and various I/O ports. 
+
+## Function of Raspberry Pi for Real-time Embedded Programming
+
+Control: Raspberry Pi can be used to control various electronic devices and systems, including robotics, automation, and IoT devices.
+
+Data processing: Raspberry Pi can acquire, process and analyze data in real-time, making it useful for applications that require real-time data processing. With its Input/Output ports, it can interface with a wide range of sensors and actuators, enabling the collection of data and control of hardware in real-time;
+
+Programming languages: Raspberry Pi can be used to develop and test real-time applications using a variety of programming languages, including Python, C, and C++;
+
+Communication: Raspberry Pi can be used to communicate with other devices and systems.
+
+## I/O ports of Raspberry Pi:
+I/O ports can be interface with external devices and sensors. These ports can be used for various real-time applications, such as robotics, automation, and control systems.
+
+UART. Universal Asynchronous Receiver-Transmitter;
+
+GPIO. General Purpose Input/Output;
+
+SPI. Serial Peripheral Interface;
+
+I2C. Inter-Integrated Circuit.
+
+## Value of Raspberry Pi:
+Raspberry Pi can be a effective solution for real-time embedded programming, and it requires proper configuration and software development skills to ensure the system operates in real-time with the required accuracy and precision.
