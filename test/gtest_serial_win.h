@@ -1,4 +1,0 @@
-#ifndef GTEST_SERIAL_WIN_H
-#define GTEST_SERIAL_WIN_H
-
-#endif // GTEST_SERIAL_WIN_H
