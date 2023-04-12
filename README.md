@@ -89,7 +89,7 @@ Control: Raspberry Pi can be used to control various electronic devices and syst
 
 Data processing: Raspberry Pi can acquire, process and analyze data in real-time, making it useful for applications that require real-time data processing. With its Input/Output ports, it can interface with a wide range of sensors and actuators, enabling the collection of data and control of hardware in real-time;
 
-Programming languages: Raspberry Pi can be used to develop and test real-time applications using a variety of programming languages, including Python, C, and C++;
+Programming languages: Raspberry Pi can be used to develop and test real-time applications using a variety of programming languages, including Python, C, and C++; In this project the main language utilized is C++.
 
 Communication: Raspberry Pi can be used to communicate with other devices and systems.
 
