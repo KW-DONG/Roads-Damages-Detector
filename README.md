@@ -91,7 +91,7 @@ Data processing: Raspberry Pi can acquire, process and analyze data in real-time
 
 Programming languages: Raspberry Pi can be used to develop and test real-time applications using a variety of programming languages, including Python, C, and C++; In this project the main language utilized is C++.
 
-Communication: Raspberry Pi can be used to communicate with other devices and systems.
+Communication: Raspberry Pi can be used to communicate with other devices and systems. In this project we communicate with GNSS module and camera module.
 
 ##### I/O ports of Raspberry Pi:
 I/O ports can be interface with external devices and sensors. These ports can be used for various real-time applications, such as robotics, automation, and control systems.
