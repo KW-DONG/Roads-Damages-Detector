@@ -96,7 +96,7 @@ Communication: Raspberry Pi can be used to communicate with other devices and sy
 ##### I/O ports of Raspberry Pi:
 I/O ports can be interface with external devices and sensors. These ports can be used for various real-time applications, such as robotics, automation, and control systems.
 
-UART. Universal Asynchronous Receiver-Transmitter;
+UART. Universal Asynchronous Receiver-Transmitter; In this project, we utilize UART to communicate with GNSS module.
 
 GPIO. General Purpose Input/Output;
 
