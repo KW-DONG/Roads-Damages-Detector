@@ -15,7 +15,7 @@
 
 |Source|State|
 |---|---|
-|test_camera|2749039D|
+|test_camera|<img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/>|
 |test_gtu7(gps module)|2729835H|
 |test_listdtata|2749545L|
 |test_serial|2544989lL|
