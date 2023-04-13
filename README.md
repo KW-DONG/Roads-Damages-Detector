@@ -68,7 +68,7 @@ In summary, the software engineer responsible would be responsible for integrati
 
 ## 4. Architecture
 <div align="left">
-<img src="images/Architecture.png" height=240/>
+<img src="images/architecture.png" height=240/>
 </div>
 
 ### Hardware: 
