@@ -13,6 +13,13 @@
 
 ## Auto Unit test
 
+|Source|State|
+|---|---|
+|Kaiwen DONG|2749039D|
+|Wenjia HAO|2729835H|
+|Yang LIU|2749545L|
+|Yujie LIU|2544989lL|
+
 ## Demo
 [![Watch the video](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/video.png)](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/demo.mp4)
 
