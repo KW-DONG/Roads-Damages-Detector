@@ -67,8 +67,9 @@ In summary, the software engineer responsible would be responsible for integrati
 4. Assist engineers in technical research and experimentation, such as writing code, running tests, and writing technical documentation.
 
 ## 4. Architecture
-![Flowchart_01](https://user-images.githubusercontent.com/108115404/231311307-e40050a5-23eb-44af-aa91-3a5f5832698b.png)
-
+<div align="left">
+<img src="images/Architecture.png" height=240/>
+</div>
 
 ### Hardware: 
 #### 1) Raspberry
@@ -244,13 +245,11 @@ https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_traini
 yolo training compare and test:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/yolo_training/yolo_training/readme.md
 
-单元测试:？
-
 Test Case & Report:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Test%20Report.md)
 
 ### Management File
-Plan: ？
+Plan: https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Plan.xlsx
 
 Process Management:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Process%20Management.md
