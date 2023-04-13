@@ -244,13 +244,11 @@ https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_traini
 yolo training compare and test:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/yolo_training/yolo_training/readme.md
 
-单元测试:？
-
 Test Case & Report:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Test%20Report.md)
 
 ### Management File
-Plan: ？
+Plan: https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Plan.xlsx
 
 Process Management:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Process%20Management.md
