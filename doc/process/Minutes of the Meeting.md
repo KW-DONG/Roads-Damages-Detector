@@ -1,16 +1,122 @@
+# 2023/4/11
+
+## Completed：
+
+monitor
+
+## In progress：
+
+Deploy
+
+# 2023/4/4
+
+## Completed：
+
+Deep learning model training-yolov5_lite transefer to Raspberry Pi(C++)
+
+QT "Result" window design
+
+qpaintitem
+
+algorithm:cusncnn
+
+GNSS driver design
+
+serial driver design
+
+## In progress：
+
+monitor
+
 # 2023/3/28
-## Completed：
+
 ## In progress：
+
+Deep learning model training-yolov5_lite transefer to Raspberry Pi(C++)
+
+QT "Result" window design
+
+monitor
+
+qpaintitem
+
 # 2023/3/21
+
 ## Completed：
+
+yolov5 transefer to Raspberry Pi(C++)
+
+YOLOv5_lite training
+
+UML diagram
+
+CMakeLists.txt
+
 ## In progress：
+qml：
+
+QT "Result" window design
+
+C++ code
+
+monitor
+
+qpaintitem
+
 # 2023/3/14
+
 ## Completed：
+
+QT "Task" window design
+
+main
+
+Camera driver design
+
 ## In progress：
+
+Deep learning model training-yolov5 transefer to Raspberry Pi(C++)
+QT "Result" window design
+
+UML diagram
+
+CMakeLists.txt
+
+monitor
+
+qpaintitem
+
+Combine code
+
 # 2023/3/7：
 The meeting has been cancelled due to two team members falling ill.
+
 ## Completed：
+
+yolov5 training
+
+main.qml
+
+ConfigView.qml
+
+CusTitleBar.qml
+
+CusToolBar.qml
+
+QT "Home" window design
+
+MainForm.qml
+
+QT "Setting" window design
+
 ## In progress：
+
+Deep learning model training-yolov5 transefer to Raspberry Pi(C++)
+
+QT "Task" window design
+
+Combine code
+
 # 2023/2/28
 ## Completed：
 
