@@ -19,7 +19,7 @@
 |test_gtu7(gps module)|2729835H|
 |test_listdtata|2749545L|
 |test_serial|2544989lL|
-
+|test_ncnn|2544989lL|
 ## Demo
 [![Watch the video](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/video.png)](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/demo.mp4)
 
