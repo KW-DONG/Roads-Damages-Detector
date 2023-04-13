@@ -11,6 +11,8 @@
 
 [click to youtube](https://www.youtube.com/@roadsdamagesdetectorhaodongll)
 
+## Auto Unit test
+
 ## Demo
 [![Watch the video](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/video.png)](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/demo.mp4)
 
