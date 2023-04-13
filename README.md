@@ -17,7 +17,7 @@
 |---|---|
 |test_camera|<img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/>|
 |test_gtu7(gps module)|<img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/>|
-|test_listdtata|2749545L|
+|test_listdtata|<img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/>|
 |test_serial|2544989lL|
 |test_ncnn|2544989lL|
 ## Demo
