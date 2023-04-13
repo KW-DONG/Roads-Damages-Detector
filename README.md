@@ -250,7 +250,7 @@ Test Case & Report:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Test%20Report.md)
 
 ### Management File
-Plan: ?(缺凯文)--yujie-->更新会议纪要
+Plan: ？
 
 Process Management:
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Process%20Management.md
