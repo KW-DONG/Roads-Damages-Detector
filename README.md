@@ -67,8 +67,9 @@ In summary, the software engineer responsible would be responsible for integrati
 4. Assist engineers in technical research and experimentation, such as writing code, running tests, and writing technical documentation.
 
 ## 4. Architecture
-![Flowchart_01](https://user-images.githubusercontent.com/108115404/231311307-e40050a5-23eb-44af-aa91-3a5f5832698b.png)
-
+<div align="left">
+<img src="images/Architecture.png" height=240/>
+</div>
 
 ### Hardware: 
 #### 1) Raspberry
