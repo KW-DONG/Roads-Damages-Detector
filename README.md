@@ -19,7 +19,7 @@
 |test_gtu7(gps module)|<img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/>|
 |test_listdtata|<img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/>|
 |test_serial|<img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/>|
-|test_ncnn|2544989lL|
+|test_ncnn|<img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/>|
 ## Demo
 [![Watch the video](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/video.png)](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/demo.mp4)
 
