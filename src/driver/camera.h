@@ -1,3 +1,5 @@
+#ifndef CAMERA_H
+#define CAMERA_H
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <stdlib.h>
@@ -7,13 +9,12 @@ class Camera {
 public:
 	struct SceneCallback {
 		virtual void nextScene(const cv::Mat &mat) = 0;
-        //virtual void beforeStop() = 0;
 	};
 
 	Camera() = default;
 
-	void start(int deviceID = 0, int apiID = 0);
-	void stop();
+    bool start(int deviceID = 0, int apiID = 0);
+    bool stop();
 	void registerSceneCallback(SceneCallback* sc) {
 		sceneCallback = sc;
 	}
@@ -23,10 +24,12 @@ private:
 	void threadLoop();
     cv::VideoCapture cap;
 	std::thread cameraThread;
-    bool run = false;
+    bool mRun = false;
 	SceneCallback* sceneCallback = nullptr;
 
 #ifdef UNIT_TEST
 friend class Test_Camera;
 #endif
 };
+
+#endif
