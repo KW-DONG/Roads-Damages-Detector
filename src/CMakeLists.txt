@@ -36,6 +36,7 @@ include_directories(./
                     ./driver
                     ../qml
                     ./algorithm
+                    ./interface
                     ${NCNN_INCLUDE_PATH}
                     )
 
@@ -84,6 +85,7 @@ set(PROJECT_SOURCES
     driver/gtu7.h driver/gtu7.cpp
     driver/camera.h driver/camera.cpp
     main.cpp
+    interface/imgrecog.h interface/gnss.h
     monitor.h monitor.cpp
     qpaintitem.h qpaintitem.cpp
     data/tasklistdata.h data/tasklistdata.cpp
