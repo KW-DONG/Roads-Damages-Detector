@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
-        <file>qml/CusTitleBar.qml</file>
         <file>icon/add_gray.png</file>
         <file>icon/add_white.png</file>
         <file>icon/angle_gray.png</file>

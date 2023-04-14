@@ -27,15 +27,12 @@ void GTU7::getMessage()
             std::string sub = croppedStr.substr(0, pos);
             if (sub.size() == 0)
                 return;
-            std::cout << "sub: " << sub << std::endl;
             vStr.push_back(sub);
             croppedStr.erase(0, pos + delimiter.length());
         }
 
-        std::cout << "Found" << vStr.size() << std::endl;
         double lat = vStr[2] == "N" ? std::stod(vStr[1]) : -std::stod(vStr[1]);
         double lon = vStr[4] == "W" ? std::stod(vStr[3]) : -std::stod(vStr[3]);
-        std::cout << "latitude: " << lat << " longitude: " << lon << std::endl;
         mSerialCallback->next(lat, lon);
     }
 }

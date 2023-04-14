@@ -25,6 +25,10 @@ private:
     std::thread mThread;
     bool mRun = false;
     SerialCallback* mSerialCallback = nullptr;
+
+#ifdef UNIT_TEST
+friend class Test_GTU7;
+#endif
 };
 
 #endif

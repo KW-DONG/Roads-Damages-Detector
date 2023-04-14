@@ -7,13 +7,11 @@ using namespace ncnn;
 void CusNCNN::loadParam(const std::string& str)
 {
     mParamPath = str;
-    //mNet.load_param(str.c_str());
 }
 
 void CusNCNN::loadModel(const std::string& str)
 {
     mModelPath = str;
-    //mNet.load_model(str.c_str());
 }
 
 int CusNCNN::detect(const cv::Mat& bgr, std::vector<Object>& objects)
@@ -166,7 +164,6 @@ int CusNCNN::detect(const cv::Mat& bgr, std::vector<Object>& objects)
     }
 
     return 0;
-
 }
 
 void CusNCNN::drawObjects(const cv::Mat& bgr, cv::Mat& dst, const std::vector<Object>& objects, std::vector<std::string>& classNames)

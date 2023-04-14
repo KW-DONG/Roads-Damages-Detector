@@ -1,3 +1,6 @@
+#ifndef CUSNCNN_H
+#define CUSNCNN_H
+
 #include "layer.h"
 #include "net.h"
 #include <opencv2/opencv.hpp>
@@ -31,5 +34,9 @@ private:
 
     std::string mParamPath;
     std::string mModelPath;
+#ifdef UNIT_TEST
+    friend class Test_CusNCNN;
+#endif
 };
 }
+#endif

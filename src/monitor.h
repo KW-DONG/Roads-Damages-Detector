@@ -4,10 +4,8 @@
 #include <QObject>
 #include <QStringList>
 #include <QImage>
-#include <QMutex>
 #include <QDate>
 #include <QTime>
-#include <QTimer>
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
 #include "resultlistdata.h"
@@ -22,7 +20,7 @@ class Monitor : public QObject
 
     Q_PROPERTY(int currentTask READ currentTask WRITE setCurrentTask NOTIFY currentTaskChanged)
     Q_PROPERTY(QStringList taskList READ taskList NOTIFY taskListChanged)
-    Q_PROPERTY(QImage img READ img NOTIFY imgChanged)
+    Q_PROPERTY(QImage img READ img NOTIFY imgChanged )
     Q_PROPERTY(bool run READ run NOTIFY runChanged)
     Q_PROPERTY(QString currentGNSSStr READ currentGNSSStr NOTIFY currentGNSSStrChanged)
     Q_PROPERTY(QString currentConfidenceStr READ currentConfidenceStr NOTIFY currentConfidenceStrChanged)
@@ -62,6 +60,8 @@ signals:
     void currentConfidenceStrChanged();
     void currentClassificationStrChanged();
 
+    void liveImgChanged(QImage);
+
 public slots:
     void setCurrentTask(int i);
     int currentTask();
@@ -95,11 +95,9 @@ private:
     int mCurrentTask;
     int mCurrentResult;
     bool mRun;
-    QMutex mutex;
     QImage mImg;
     QDate* pDate;
     QTime* pTime;
-    QTimer* pTimer;
 
     MyCameraCallback myCameraCallback;
     MyGNSSCallback myGNSSCallback;
@@ -110,8 +108,10 @@ private:
     double mCurrentLongitude;
     double mCurrentConfidence;
     int mCurrentClassification;
+#ifdef UNIT_TEST
+friend class Test_Monitor;
+#endif
 
-    bool timeOut;
 };
 
 #endif

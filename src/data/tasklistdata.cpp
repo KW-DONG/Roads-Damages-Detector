@@ -38,30 +38,29 @@ void TaskListData::refresh()
     emit modelPathChanged();
     emit weightPathChanged();
     emit classPathChanged();
-    emit confidenceChanged();
+    emit labelsChanged();
     emit thresholdChanged();
     emit algorithmChanged();
     emit modelTypeChanged();
-    std::cout << "refresh" << std::endl;
 }
 
 void TaskListData::addTask()
 {
     emit preTaskAppend();
     TaskListData_t task;
-    task.title = "Undefined";
+    task.title = "Untitled";
     task.title += std::to_string(cnt).c_str();
     cnt++;
     task.algorithm = 0;
     task.modelPath = "null";
     task.weightPath = "null";
-    task.confidence = 0.5;
+    task.labels = 10;
     task.modelType = 0;
-    task.threshold = 50;
+    task.threshold = 0.5;
     mItems.push_back(task);
     emit postTaskAppend();
 
-    if (mItems.size() == 0)
+    if (mItems.size() == 0 || mItems.size() == 1)
         setIndex(0);
     emit sizeChanged();
     emit titleChanged();
@@ -93,7 +92,6 @@ void TaskListData::setIndex(int value)
         emit indexChanged();
         refresh();
     }
-    std::cout << "current index: " << _index << std::endl;
 }
 
 int TaskListData::index()
@@ -159,19 +157,25 @@ QString TaskListData::weightPath()
     return "null";
 }
 
-void TaskListData::setConfidence(double value)
+void TaskListData::setLabels(int value)
 {
     if (mItems.size() > _index)
     {
-        mItems[_index].confidence = value;
-        emit confidenceChanged();
+        std::cout << "set label: " << value << std::endl;
+        mItems[_index].labels = value;
+        emit labelsChanged();
     }
 }
 
-double TaskListData::confidence()
+int TaskListData::labels()
 {
+
     if (mItems.size() > _index)
-        return mItems[_index].confidence;
+    {
+        std::cout << "read labels: " << mItems[_index].labels << std::endl;
+        return mItems[_index].labels;
+    }
+
     return 0.0;
 }
 
@@ -249,8 +253,8 @@ void TaskListData::readConfig()
                         _task.modelPath = xml.readElementText();
                     else if (xml.name() == QLatin1String("weightpath"))
                         _task.weightPath = xml.readElementText();
-                    else if (xml.name() == QLatin1String("confidence"))
-                        _task.confidence = xml.readElementText().toDouble();
+                    else if (xml.name() == QLatin1String("labels"))
+                        _task.labels = xml.readElementText().toInt();
                     else if (xml.name() == QLatin1String("threshold"))
                         _task.threshold = xml.readElementText().toDouble();
                     else if (xml.name() == QLatin1String("algorithm"))
@@ -283,7 +287,7 @@ void TaskListData::saveConfig()
             xml.writeTextElement("title", mItems[i].title);
             xml.writeTextElement("modelpath", mItems[i].modelPath);
             xml.writeTextElement("weightpath", mItems[i].weightPath);
-            xml.writeTextElement("confidence", QString::number(mItems[i].confidence));
+            xml.writeTextElement("labels", QString::number(mItems[i].labels));
             xml.writeTextElement("threshold", QString::number(mItems[i].threshold));
             xml.writeTextElement("algorithm", QString::number(mItems[i].algorithm));
             xml.writeTextElement("model", QString::number(mItems[i].modelType));

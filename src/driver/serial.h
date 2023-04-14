@@ -21,6 +21,10 @@ private:
 #else
     int fd = 0;
 #endif
+
+#ifdef UNIT_TEST
+friend class Test_SerialPort;
+#endif
 };
 
 #endif

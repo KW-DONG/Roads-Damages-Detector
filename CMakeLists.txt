@@ -1,100 +1,16 @@
 cmake_minimum_required(VERSION 3.14)
+project(SmartCam)
 
-project(Monitor VERSION 0.1 LANGUAGES CXX)
+add_subdirectory(src)
+add_subdirectory(test)
 
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
+set_target_properties(SmartCam PROPERTIES RUNTIME_OUTPUT_DIRECTORY ../build_smartcam/)
+set_property(TARGET SmartCam PROPERTY AUTOMOC ON)
+add_compile_options(-Wall)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+enable_testing()
 
-if(CMAKE_SYSTEM_NAME MATCHES "Linux")
-    set(ncnn_DIR "/home/lochcliff/ProgramFiles/ncnn/build/install/lib/cmake/ncnn")
-    find_package(ncnn REQUIRED)
-    set(NCNN_INCLUDE_PATH "/home/lochcliff/ProgramFiles/ncnn/src"
-                         "/home/lochcliff/ProgramFiles/ncnn/build/src")
-    set(NCNN_LIB ncnn)
-    set(SERIALPORT_SRC "src/driver/serial.h" "src/driver/serial_linux.cpp")
-else()
-    set(NCNN_INCLUDE_PATH "C:/ncnn/src" "C:/ncnn/build/src")
-    set(NCNN_LIB "C:/ncnn/build/src/Release/ncnn.lib")
-    set(SERIALPORT_SRC "src/driver/serial.h" "src/driver/serial_win.cpp")
-endif()
-
-
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick SerialPort)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick SerialPort)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui Qml Quick QuickControls2 SerialPort REQUIRED)
-find_package(OpenCV REQUIRED)
-#find_package(Threads REQUIRED)
-
-include_directories( ${OpenCV_INCLUDE_DIRS} )
-
-include_directories(./src
-                    ./src/data
-                    ./src/model
-                    ./src/driver
-                    ./qml
-                    ./src/algorithm
-                    ${NCNN_INCLUDE_PATH}
-                    )
-
-set(PROJECT_SOURCES
-        ${SERIALPORT_SRC}
-        src/driver/gtu7.h src/driver/gtu7.cpp
-        src/driver/camera.h src/driver/camera.cpp
-        src/main.cpp
-        src/monitor.h src/monitor.cpp
-        src/qpaintitem.h src/qpaintitem.cpp
-        src/data/tasklistdata.h src/data/tasklistdata.cpp
-        src/data/resultlistdata.h src/data/resultlistdata.cpp
-        src/model/tasklistmodel.h src/model/tasklistmodel.cpp
-        src/model/resultlistmodel.h src/model/resultlistmodel.cpp
-        src/algorithm/cusncnn.h src/algorithm/cusncnn.cpp
-        qml.qrc
+add_test(
+        NAME test
+        COMMAND ./test/main
 )
-
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(Monitor
-        MANUAL_FINALIZATION
-        ${PROJECT_SOURCES}
-    )
-# Define target properties for Android with Qt 6 as:
-#    set_property(TARGET Monitor APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
-#                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
-# For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
-else()
-    if(ANDROID)
-        add_library(Monitor SHARED
-            ${PROJECT_SOURCES}
-        )
-# Define properties for Android with Qt 5 after find_package() calls as:
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
-    else()
-        add_executable(Monitor
-          ${PROJECT_SOURCES}
-        )
-    endif()
-endif()
-
-target_link_libraries(Monitor PUBLIC ${OpenCV_LIBS} ${NCNN_LIB}
-    PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::QuickControls2
-    Qt${QT_VERSION_MAJOR}::SerialPort)
-
-set_target_properties(Monitor PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
-)
-
-install(TARGETS Monitor
-    BUNDLE DESTINATION .
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
-
-if(QT_VERSION_MAJOR EQUAL 6)
-    qt_import_qml_plugins(Monitor)
-    qt_finalize_executable(Monitor)
-endif()

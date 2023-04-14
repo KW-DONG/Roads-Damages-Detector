@@ -13,7 +13,7 @@ struct TaskListData_t
     QString weightPath;
     QString title;
     QString description;
-    double confidence;
+    int labels;
     double threshold;
     int algorithm;
     int modelType;
@@ -28,7 +28,7 @@ public:
     Q_PROPERTY(QString modelPath READ modelPath WRITE setModelPath NOTIFY modelPathChanged);
     Q_PROPERTY(QString weightPath READ weightPath WRITE setWeightPath NOTIFY weightPathChanged);
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged);
-    Q_PROPERTY(double confidence READ confidence WRITE setConfidence NOTIFY confidenceChanged);
+    Q_PROPERTY(double labels READ labels WRITE setLabels NOTIFY labelsChanged);
     Q_PROPERTY(double threshold READ threshold WRITE setThreshold NOTIFY thresholdChanged);
     Q_PROPERTY(int algorithm READ algorithm WRITE setAlgorithm NOTIFY algorithmChanged);
     Q_PROPERTY(int modelType READ modelType WRITE setModelType NOTIFY modelTypeChanged);
@@ -52,7 +52,7 @@ signals:
     void weightPathChanged();
     void classPathChanged();
     void titleChanged();
-    void confidenceChanged();
+    void labelsChanged();
     void thresholdChanged();
     void algorithmChanged();
     void modelTypeChanged();
@@ -75,8 +75,8 @@ public slots:
     void setWeightPath(QString& value);
     QString weightPath();
 
-    void setConfidence(double value);
-    double confidence();
+    void setLabels(int value);
+    int labels();
 
     void setThreshold(double value);
     double threshold();
@@ -97,6 +97,10 @@ private:
     QVector<TaskListData_t> mItems;
     int _index = 0;
     int cnt = 0;
+
+#ifdef UNIT_TEST
+friend class Test_TaskListData;
+#endif
 };
 
 #endif // TASKLISTDATA_H
