@@ -1,9 +1,8 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Window 2.15
-import QtQuick.Controls.Material 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Dialogs 1.3
+import QtQuick 2.10
+import QtQuick.Controls 2.4
+import QtQuick.Window 2.10
+import QtQuick.Layouts 1.10
+import QtQuick.Dialogs 1.0
 
 Item {
     property int pathIndex: 0
@@ -45,30 +44,15 @@ Item {
             }
             Text {
                 color: "#ffffff"
-                text: "Camera"
-                font.family: "Microsoft YaHei"
-                font.pointSize: 12
-            }
-            ComboBox {
-
-            }
-            Text {
-                color: "#ffffff"
-                text: "Algorithm"
-                font.family: "Microsoft YaHei"
-                font.pointSize: 12
-            }
-            ComboBox {
-
-            }
-            Text {
-                color: "#ffffff"
                 text: "Model Type"
                 font.family: "Microsoft YaHei"
                 font.pointSize: 12
             }
             ComboBox {
-
+                implicitWidth: 150
+                model: ListModel {
+                    ListElement { text: "YOLOV5LITE" }
+                }
             }
             Text {
                 color: "#ffffff"
@@ -124,22 +108,6 @@ Item {
             }
             Text {
                 color: "#ffffff"
-                text: "Confidence"
-                font.family: "Microsoft YaHei"
-                font.pointSize: 12
-            }
-            TextField {
-                implicitWidth: 100
-                text: taskListData.confidence
-                font.family: "Microsoft YaHei"
-                font.pointSize: 12
-                onEditingFinished: {
-                    taskListData.confidence = text
-                    focus = false
-                }
-            }
-            Text {
-                color: "#ffffff"
                 text: "Threshold"
                 font.family: "Microsoft YaHei"
                 font.pointSize: 12
@@ -153,6 +121,26 @@ Item {
                     taskListData.threshold = text
                     focus = false
                 }
+            }
+
+            Text {
+                color: "#ffffff"
+                text: "Labels"
+                font.family: "Microsoft YaHei"
+                font.pointSize: 12
+            }
+            TextField {
+                implicitWidth: 100
+                text: taskListData.labels
+                font.family: "Microsoft YaHei"
+                font.pointSize: 12
+                onEditingFinished: {
+                    taskListData.labels = text
+                    focus = false
+                }
+            }
+            Item {
+                implicitHeight: 30
             }
         }
     }
@@ -169,7 +157,6 @@ Item {
 
     FileDialog {
         id: fds
-
         onAccepted: {
             if (pathIndex === 1)
                 taskListData.modelPath = fds.fileUrl
