@@ -1,8 +1,7 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Window 2.15
-import QtQuick.Controls.Material 2.15
-import QtQuick.Layouts 1.15
+import QtQuick 2.10
+import QtQuick.Controls 2.4
+import QtQuick.Window 2.10
+import QtQuick.Layouts 1.10
 import PaintItemModule 1.0
 
 Item {
@@ -20,8 +19,10 @@ Item {
                 PaintItem {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
-                    width: parent.height < parent.width / 4 * 3 ? (parent.height / 3 * 4 - 4) : (parent.width - 4)
-                    height: parent.height < parent.width / 4 * 3 ? (parent.height - 4) : (parent.width / 4 * 3 - 4)
+                    width: parent.height < parent.width / imgWidth * imgHeight ? (parent.height / imgHeight * imgHeight - 4) : (parent.width - 4)
+                    height: parent.height < parent.width / imgWidth * imgHeight ? (parent.height - 4) : (parent.width / imgWidth * imgHeight - 4)
+                    //width: parent.height < parent.width / 4 * 3 ? (parent.height / 3 * 4 - 4) : (parent.width - 4)
+                    //height: parent.height < parent.width / 4 * 3 ? (parent.height - 4) : (parent.width / 4 * 3 - 4)
                     img: monitor.img
                     antialiasing: true
                 }
