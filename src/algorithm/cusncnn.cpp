@@ -4,14 +4,11 @@ using namespace ncnn;
 
 #define MAX_STRIDE 64
 
-void CusNCNN::loadParam(const std::string& str)
-{
-    mParamPath = str;
-}
 
-void CusNCNN::loadModel(const std::string& str)
+void CusNCNN::setPath(const std::vector<std::string>& paths)
 {
-    mModelPath = str;
+    mModelPath = paths[0];
+    mParamPath = paths[1];
 }
 
 int CusNCNN::detect(const cv::Mat& bgr, std::vector<Object>& objects)
