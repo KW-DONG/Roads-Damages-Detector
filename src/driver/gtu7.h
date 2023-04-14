@@ -1,21 +1,18 @@
-#ifndef _GTU7_H
-#define _GTU7_H
+#ifndef GTU7_H
+#define GTU7_H
 
 #include <thread>
 #include "serial.h"
+#include "gnss.h"
 
-class GTU7 : public SerialPort
+class GTU7 : public SerialPort, public GNSS
 {
 public:
-    struct SerialCallback {
-        virtual void next(double lat, double lon) = 0;
-    };
-
     GTU7() = default;
 
-    void start(std::string& portName);
-    void stop();
-    void registerSerialCallback(SerialCallback* sc) {
+    virtual bool start(std::string& portName);
+    virtual bool stop();
+    virtual void registerCallback(Callback* sc) {
         mSerialCallback = sc;
     }
 
@@ -24,7 +21,7 @@ private:
     void threadLoop();
     std::thread mThread;
     bool mRun = false;
-    SerialCallback* mSerialCallback = nullptr;
+    Callback* mSerialCallback = nullptr;
 
 #ifdef UNIT_TEST
 friend class Test_GTU7;
