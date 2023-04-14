@@ -1,6 +1,5 @@
 #include "monitor.h"
 #include <QDateTime>
-#include <QThread>
 
 Monitor::Monitor()
 {
@@ -17,9 +16,6 @@ Monitor::Monitor()
     mRun = false;
     pDate = new QDate;
     pTime = new QTime;
-    pTimer = new QTimer(this);
-    connect(pTimer, &QTimer::timeout, [=](){timeOut = true;});
-    pTimer->start(50);
 
     myCameraCallback.monitor = this;
     pCamera = new Camera();
@@ -28,7 +24,6 @@ Monitor::Monitor()
     myGNSSCallback.monitor = this;
     pGNSS = new GTU7();
     pGNSS->registerSerialCallback(&myGNSSCallback);
-
 }
 
 void Monitor::runDetection(const cv::Mat& mat)
@@ -41,59 +36,52 @@ void Monitor::runDetection(const cv::Mat& mat)
 
     std::vector<std::string> className;
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < (*pTaskListData->data())[mCurrentTask].labels; i++)
     {
         className.push_back(std::to_string(i));
     }
 
-    mNcnn.drawObjects(dst, dst, objects, className);
-
-    //save results
-
-    //save image when some things is detected
-
-    ResultListData_t* pResult = &(*pResultListData->data())[pResultListData->size() - 1];
-
     if (objects.size() > 0)
     {
-        setCurrentClassification(objects[0].label);
-        pResult->label.push_back(mCurrentClassification);
+        double prob = objects[0].prob;
+        if (prob >= (*pTaskListData->data())[mCurrentTask].threshold)
+        {
+            mNcnn.drawObjects(dst, dst, objects, className);
 
-        setCurrentConfidence(objects[0].prob);
-        pResult->confidence.push_back(mCurrentConfidence);
+            //save image when some things is detected
+            ResultListData_t* pResult = &(*pResultListData->data())[pResultListData->size() - 1];
 
-        pResult->latitude.push_back(mCurrentLatitude);
-        pResult->longitude.push_back(mCurrentLongitude);
+            setCurrentClassification(objects[0].label);
+            pResult->label.push_back(mCurrentClassification);
 
-        QRect roiRect(objects[0].rect.x,
-                      objects[0].rect.y,
-                      objects[0].rect.width,
-                      objects[0].rect.height);
+            setCurrentConfidence(objects[0].prob);
+            pResult->confidence.push_back(mCurrentConfidence);
 
-        pResult->roi.push_back(roiRect);
+            pResult->latitude.push_back(mCurrentLatitude);
+            pResult->longitude.push_back(mCurrentLongitude);
 
-        QString imgName = QString::number(pResult->imgName.size()) + ".jpg";
-        pResult->imgName.push_back(imgName);
-        QString imgPath = pResultListData->getResultFolderPath() + "/" +
-                        pResult->date + "/" +
-                        imgName;
-        std::cout << imgPath.toStdString() << std::endl;
-        cv::imwrite(imgPath.toStdString(), mat);
+            QRect roiRect(objects[0].rect.x,
+                          objects[0].rect.y,
+                          objects[0].rect.width,
+                          objects[0].rect.height);
+
+            pResult->roi.push_back(roiRect);
+
+            QString imgName = QString::number(pResult->imgName.size()) + ".jpg";
+            pResult->imgName.push_back(imgName);
+            QString imgPath = pResultListData->getResultFolderPath() + "/" +
+                            pResult->date + "/" +
+                            imgName;
+            cv::imwrite(imgPath.toStdString(), mat);
+        }
     }
 
-
-    mutex.lock();
     cv::Mat display = dst.clone();
-    mImg = QImage(display.data, display.cols, display.rows, QImage::Format_BGR888);
-    mutex.unlock();
+    cv::cvtColor(display, display, cv::COLOR_BGR2RGB);
+    QImage _img = QImage(display.data, display.cols, display.rows, QImage::Format_RGB888);
 
-    if (timeOut)
-    {
-        emit imgChanged();
-        timeOut = false;
-    }
-
-    //QThread::msleep(50);
+    mImg = _img.copy();
+    emit imgChanged();
 }
 
 void Monitor::setCurrentTask(int i)
@@ -189,7 +177,7 @@ void Monitor::runButton()
         mRun = false;
         pCamera->stop();
         pGNSS->stop();
-        QImage image(640,480, QImage::Format_BGR888);
+        QImage image(640,480, QImage::Format_RGB888);
         mImg = image;
         emit imgChanged();
         pResultListData->save();
@@ -214,6 +202,7 @@ void Monitor::runButton()
             std::string portName = serialPortList[0].portName().toStdString();
             pGNSS->start(portName);
         }
+
         pCamera->start();
     }
     emit runChanged();
@@ -221,10 +210,5 @@ void Monitor::runButton()
 
 QImage Monitor::img()
 {
-    QImage img;
-    mutex.lock();
-    img = mImg;
-    mutex.unlock();
-    return img;
+    return mImg;
 }
-
