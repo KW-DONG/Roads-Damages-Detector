@@ -1,33 +1,48 @@
 #include "camera.h"
 
-void Camera::threadLoop(){
-    while(run){
+void Camera::threadLoop()
+{
+    while(mRun){
         getFrame();
     }
 }
 
-void Camera::getFrame(){
+void Camera::getFrame()
+{
     if(sceneCallback == nullptr) return;
     cv::Mat mat;
     cap >> mat;
 
-    if (mat.empty()) {
+    if (mat.empty())
+    {
         std::cerr << "ERROR! blank frame grabbed\n";
         return;
     }
     sceneCallback->nextScene(mat);
 }
 
-void Camera::start(int deviceID, int apiID){ 
-    if (cap.open(deviceID))
+bool Camera::start(int deviceID, int apiID)
+{
+    if (!mRun)
     {
-        cameraThread = std::thread(&Camera::threadLoop, this);
-        run = true;
+        if (cap.open(deviceID))
+        {
+            cameraThread = std::thread(&Camera::threadLoop, this);
+            mRun = true;
+            return true;
+        }
     }
+    return false;
 }
 
-void Camera::stop(){
-    run=false;
-    cap.release();
-    cameraThread.join();
+bool Camera::stop()
+{
+    if (mRun)
+    {
+        mRun=false;
+        cap.release();
+        cameraThread.join();
+        return true;
+    }
+    return false;
 }
