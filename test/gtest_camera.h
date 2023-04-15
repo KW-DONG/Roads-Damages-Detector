@@ -1,9 +1,9 @@
 #ifndef GTEST_CAMERA_H
 #define GTEST_CAMERA_H
 #include <gtest/gtest.h>
-#include "camera.h"
+#include "rtcam.h"
 
-class Test_Camera
+class Test_RtCam
 {
 public:
     bool checkIsStart(int id)
@@ -19,18 +19,18 @@ public:
         mCam.stop();
         return mCam.mRun == false;
     }
-    Camera mCam;
+    RtCam mCam;
 };
 
 TEST(camera_test, checkIsStart)
 {
-    Test_Camera test;
+    Test_RtCam test;
     EXPECT_EQ(test.checkIsStart(0), true);
 }
 
 TEST(camera_test, checkIsStop)
 {
-    Test_Camera test;
+    Test_RtCam test;
     EXPECT_EQ(test.checkIsStop(0), true);
 }
 
