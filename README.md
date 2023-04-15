@@ -175,6 +175,37 @@ Final output presentation (QT): Page design + coding
 
 
 ## 5. How to Build
+### 5.1 Build on Ubuntu and Raspberry Pi
+#### 5.1.1 Basic packages
+```
+sudo apt update
+sudo apt upgrade
+sudo apt install ssh vim gcc g++ screen htop git make
+```
+#### 5.1.2 Clone the repository
+```
+git clone https://github.com/KW-DONG/Roads-Damages-Detector.git
+```
+#### 5.1.3 Install develop libraries
+```
+sudo apt install qt5-default qtbase5-dev qtdeclarative5-dev qtquickcontrols2-5-dev libqt5serialport5-dev libopencv-dev libgtest-dev
+sudo apt install qml-module-qtquick-dialogs qml-module-qtquick-controls2 qml-module-qt-labs-folderlistmodel qml-module-qt-labs-settings
+```
+#### 5.1.4 Build NCNN library
+Clone and build the NCNN library by referencing the following link.
+
+https://github.com/Tencent/ncnn
+#### 5.1.5 Set NCNN path
+Add the directory that contains ncnnConfig.cmake to /etc/profile
+
+https://github.com/Tencent/ncnn/wiki/use-ncnn-with-own-project
+#### 5.1.6 Build
+```
+cd Roads-Damages-Detector
+cmake
+make
+```
+
 ### Prerequisites
 Make sure the following software is installed on your system:
 
@@ -187,7 +218,7 @@ Make (Linux and macOS) or Visual Studio (Windows)
 ### Build instructions
 #### 1) Refer to the link to install ncnn:
 
-https://github.com/Tencent/ncnn
+
 
 #### 2) Clone the project repository:
 
