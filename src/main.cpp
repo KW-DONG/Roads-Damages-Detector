@@ -6,6 +6,9 @@
 #include "resultlistmodel.h"
 #include "qpaintitem.h"
 #include "monitor.h"
+#include "cusncnn.h"
+#include "camera.h"
+#include "gtu7.h"
 
 int main(int argc, char *argv[])
 {
@@ -23,9 +26,15 @@ int main(int argc, char *argv[])
 
     TaskListData taskListData;
     ResultListData resultListData;
+    CusNCNN imgRecog;
     Monitor monitor;
-    monitor.setResultListData(&resultListData);
-    monitor.setTaskListData(&taskListData);
+    Camera camera;
+    GTU7 gnss;
+    monitor.registerResultListData(&resultListData);
+    monitor.registerTaskListData(&taskListData);
+    monitor.registerImgRecog(&imgRecog);
+    monitor.registerCamera(&camera);
+    monitor.registerGNSS(&gnss);
 
     QQmlApplicationEngine engine;
     QQmlContext *root = engine.rootContext();

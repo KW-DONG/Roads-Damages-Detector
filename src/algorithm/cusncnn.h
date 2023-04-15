@@ -6,24 +6,15 @@
 #include <opencv2/opencv.hpp>
 #include <vector>
 #include <string>
+#include "imgrecog.h"
 
-namespace ncnn
-{
 
-struct Object
-{
-    cv::Rect_<float> rect;
-    int label;
-    float prob;
-};
-
-class CusNCNN
+class CusNCNN : public ImgRecog
 {
 public:
-    void loadParam(const std::string& str);
-    void loadModel(const std::string& str);
-    int detect(const cv::Mat& bgr, std::vector<Object>& object);
-    void drawObjects(const cv::Mat& src, cv::Mat& dst, const std::vector<Object>& objects, std::vector<std::string>& classNames);
+    virtual void setPath(const std::vector<std::string>& paths) override;
+    virtual int detect(const cv::Mat& bgr, std::vector<Object>& object) override;
+    virtual void drawObjects(const cv::Mat& src, cv::Mat& dst, const std::vector<Object>& objects, std::vector<std::string>& classNames) override;
 private:
     float intersectionArea(const Object& a, const Object& b);
     void qsortDescentInplace(std::vector<Object>& faceobjects, int left, int right);
@@ -38,5 +29,4 @@ private:
     friend class Test_CusNCNN;
 #endif
 };
-}
 #endif

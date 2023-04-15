@@ -9,7 +9,7 @@ public:
     bool checkIsStart(int id)
     {
         mCam.start(id);
-        bool result = mCam.run == true;
+        bool result = mCam.mRun == true;
         mCam.stop();
         return result;
     }
@@ -17,7 +17,7 @@ public:
     {
         mCam.start(id);
         mCam.stop();
-        return mCam.run == false;
+        return mCam.mRun == false;
     }
     Camera mCam;
 };

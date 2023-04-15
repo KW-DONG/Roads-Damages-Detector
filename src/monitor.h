@@ -11,8 +11,8 @@
 #include "resultlistdata.h"
 #include "tasklistdata.h"
 #include "camera.h"
-#include "cusncnn.h"
-#include "gtu7.h"
+#include "gnss.h"
+#include "imgrecog.h"
 
 class Monitor : public QObject
 {
@@ -40,7 +40,7 @@ public:
                 }
     };
 
-    struct MyGNSSCallback : GTU7::SerialCallback {
+    struct MyGNSSCallback : GNSS::Callback {
         Monitor* monitor = nullptr;
         virtual void next(double lat, double lon) {
             if (nullptr != monitor) {
@@ -80,29 +80,31 @@ public slots:
     bool run();
     void runButton();
 
-    void setTaskListData(TaskListData* ptr);
-    void setResultListData(ResultListData* ptr);
+    void registerTaskListData(TaskListData* ptr);
+    void registerResultListData(ResultListData* ptr);
+    void registerImgRecog(ImgRecog* ptr);
+    void registerGNSS(GNSS* ptr);
+    void registerCamera(Camera* ptr);
 
     QImage img();
 
 private:
-    Camera* pCamera;
-    GTU7* pGNSS;
-    TaskListData* pTaskListData;
-    ResultListData* pResultListData;
+    Camera* pCamera = nullptr;
+    GNSS* pGNSS = nullptr;
+    ImgRecog* pImgRecog = nullptr;
+    TaskListData* pTaskListData = nullptr;
+    ResultListData* pResultListData = nullptr;
+    QDate* pDate = nullptr;
+    QTime* pTime = nullptr;
 
     //properties
     int mCurrentTask;
     int mCurrentResult;
     bool mRun;
     QImage mImg;
-    QDate* pDate;
-    QTime* pTime;
 
     MyCameraCallback myCameraCallback;
     MyGNSSCallback myGNSSCallback;
-
-    ncnn::CusNCNN mNcnn;
 
     double mCurrentLatitude;
     double mCurrentLongitude;
