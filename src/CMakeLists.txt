@@ -9,26 +9,22 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if(CMAKE_SYSTEM_NAME MATCHES "Linux")
-    set(ncnn_DIR "/home/lochcliff/ProgramFiles/ncnn/build/install/lib/cmake/ncnn")
-    find_package(ncnn REQUIRED)
-    set(NCNN_INCLUDE_PATH "/home/lochcliff/ProgramFiles/ncnn/src"
-                         "/home/lochcliff/ProgramFiles/ncnn/build/src")
-    set(NCNN_LIB ncnn)
     set(SERIALPORT_SRC "driver/serial.h" "driver/serial_linux.cpp")
 else()
-    set(NCNN_INCLUDE_PATH "C:/ncnn/src" "C:/ncnn/build/src")
-    set(NCNN_LIB "C:/ncnn/build/src/Release/ncnn.lib")
     set(SERIALPORT_SRC "driver/serial.h" "driver/serial_win.cpp")
 endif()
-
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick SerialPort)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick SerialPort)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui Qml Quick QuickControls2 SerialPort REQUIRED)
 find_package(OpenCV REQUIRED)
+
+set(ncnn_DIR ${NCNN_INSTALL_PATH}/lib/camke/ncnn)
+find_package(ncnn REQUIRED)
 #find_package(Threads REQUIRED)
 
 include_directories( ${OpenCV_INCLUDE_DIRS} )
+include_directories( ${NCNN_INSTALL_PATH}/include/ncnn)
 
 include_directories(./
                     ./data
@@ -37,13 +33,11 @@ include_directories(./
                     ../qml
                     ./algorithm
                     ./interface
-                    ${NCNN_INCLUDE_PATH}
                     )
 
 #build objects for testing as static libs
-
 add_library(CusNCNN algorithm/cusncnn.h algorithm/cusncnn.cpp)
-target_link_libraries(CusNCNN ${NCNN_LIB} ${OpenCV_LIBS})
+target_link_libraries(CusNCNN ncnn ${OpenCV_LIBS})
 target_compile_definitions(CusNCNN PRIVATE UNIT_TEST)
 
 add_library(ResultListData data/resultlistdata.h data/resultlistdata.cpp)
@@ -107,11 +101,9 @@ else()
     )
 endif()
 
-target_link_libraries(SmartCam PUBLIC ${OpenCV_LIBS} ${NCNN_LIB}
+target_link_libraries(SmartCam PUBLIC ${OpenCV_LIBS} ncnn
     PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::QuickControls2
     Qt${QT_VERSION_MAJOR}::SerialPort)
-
-
 
 install(TARGETS SmartCam
     BUNDLE DESTINATION .
