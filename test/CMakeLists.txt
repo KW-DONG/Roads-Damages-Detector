@@ -78,7 +78,7 @@ target_link_libraries(utest PRIVATE Threads::Threads
                                     CusNCNN
                                     ResultListData
                                     TaskListData
-                                    Camera
+                                    RtCam
                                     Serial
                                     GTU7
                                     ResultListModel

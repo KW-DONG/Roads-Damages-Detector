@@ -4,7 +4,6 @@ using namespace ncnn;
 
 #define MAX_STRIDE 64
 
-
 void CusNCNN::setPath(const std::vector<std::string>& paths)
 {
     mModelPath = paths[0];

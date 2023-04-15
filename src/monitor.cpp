@@ -16,23 +16,15 @@ Monitor::Monitor()
     mRun = false;
     pDate = new QDate;
     pTime = new QTime;
-
-    myCameraCallback.monitor = this;
-    pCamera = new Camera();
-    pCamera->registerSceneCallback(&myCameraCallback);
-
-    myGNSSCallback.monitor = this;
-    pGNSS = new GTU7();
-    pGNSS->registerSerialCallback(&myGNSSCallback);
 }
 
 void Monitor::runDetection(const cv::Mat& mat)
 { 
-    std::vector<ncnn::Object> objects;
+    std::vector<ImgRecog::Object> objects;
 
     cv::Mat dst = mat.clone();
     cv::resize(mat, dst, cv::Size(mat.cols,mat.rows), cv::INTER_LINEAR);
-    mNcnn.detect(dst,objects);
+    pImgRecog->detect(dst,objects);
 
     std::vector<std::string> className;
 
@@ -46,7 +38,7 @@ void Monitor::runDetection(const cv::Mat& mat)
         double prob = objects[0].prob;
         if (prob >= (*pTaskListData->data())[mCurrentTask].threshold)
         {
-            mNcnn.drawObjects(dst, dst, objects, className);
+            pImgRecog->drawObjects(dst, dst, objects, className);
 
             //save image when some things is detected
             ResultListData_t* pResult = &(*pResultListData->data())[pResultListData->size() - 1];
@@ -153,16 +145,35 @@ QStringList Monitor::taskList()
     return list;
 }
 
-void Monitor::setTaskListData(TaskListData* ptr)
+void Monitor::registerTaskListData(TaskListData* ptr)
 {
     pTaskListData = ptr;
     connect(pTaskListData, &TaskListData::sizeChanged, this, [this](){ emit taskListChanged();});
     connect(pTaskListData, &TaskListData::titleChanged, this, [this](){ emit taskListChanged();});
 }
 
-void Monitor::setResultListData(ResultListData* ptr)
+void Monitor::registerResultListData(ResultListData* ptr)
 {
     pResultListData = ptr;
+}
+
+void Monitor::registerImgRecog(ImgRecog* ptr)
+{
+    pImgRecog = ptr;
+}
+
+void Monitor::registerGNSS(GNSS* ptr)
+{
+    pGNSS = ptr;
+    myGNSSCallback.monitor = this;
+    pGNSS->registerCallback(&myGNSSCallback);
+}
+
+void Monitor::registerCamera(Camera* ptr)
+{
+    pCamera = ptr;
+    myCameraCallback.monitor = this;
+    pCamera->registerSceneCallback(&myCameraCallback);
 }
 
 bool Monitor::run()
@@ -193,8 +204,12 @@ void Monitor::runButton()
         _result.method = "NCNN";
 
         pResultListData->addResult(_result);
-        mNcnn.loadParam((*pTaskListData->data())[mCurrentTask].weightPath.toStdString());
-        mNcnn.loadModel((*pTaskListData->data())[mCurrentTask].modelPath.toStdString());
+
+        std::vector<std::string> _paths;
+        _paths.push_back((*pTaskListData->data())[mCurrentTask].modelPath.toStdString());
+        _paths.push_back((*pTaskListData->data())[mCurrentTask].weightPath.toStdString());
+
+        pImgRecog->setPath(_paths);
 
         QList<QSerialPortInfo> serialPortList = QSerialPortInfo::availablePorts();
         if (serialPortList.size() > 0)

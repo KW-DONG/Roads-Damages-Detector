@@ -187,7 +187,7 @@ void ResultListData::readSave()
                             QString fileLine = in.readLine();
                             if (i!= 0)
                             {
-                                list = fileLine.split(",", Qt::SkipEmptyParts);
+                                list = fileLine.split(",");
                                 _result.imgName.push_back(list[1]);
                                 _result.longitude.push_back(list[2].toDouble());
                                 _result.latitude.push_back(list[3].toDouble());

@@ -36,6 +36,7 @@ include_directories(./
                     ./driver
                     ../qml
                     ./algorithm
+                    ./interface
                     ${NCNN_INCLUDE_PATH}
                     )
 
@@ -53,9 +54,9 @@ add_library(TaskListData data/tasklistdata.h data/tasklistdata.cpp)
 target_link_libraries(TaskListData Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Gui)
 target_compile_definitions(TaskListData PRIVATE UNIT_TEST)
 
-add_library(Camera driver/camera.h driver/camera.cpp)
-target_link_libraries(Camera ${OpenCV_LIBS})
-target_compile_definitions(Camera PRIVATE UNIT_TEST)
+add_library(RtCam driver/rtcam.h driver/rtcam.cpp interface/camera.h)
+target_link_libraries(RtCam ${OpenCV_LIBS})
+target_compile_definitions(RtCam PRIVATE UNIT_TEST)
 
 add_library(Serial ${SERIALPORT_SRC})
 target_compile_definitions(Serial PRIVATE UNIT_TEST)
@@ -82,8 +83,9 @@ target_link_libraries(Monitor PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION
 set(PROJECT_SOURCES
     ${SERIALPORT_SRC}
     driver/gtu7.h driver/gtu7.cpp
-    driver/camera.h driver/camera.cpp
+    driver/rtcam.h driver/rtcam.cpp
     main.cpp
+    interface/imgrecog.h interface/gnss.h interface/camera.h
     monitor.h monitor.cpp
     qpaintitem.h qpaintitem.cpp
     data/tasklistdata.h data/tasklistdata.cpp

@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <regex>
+#include <iostream>
 
 void GTU7::threadLoop()
 {
@@ -37,20 +38,28 @@ void GTU7::getMessage()
     }
 }
 
-void GTU7::start(std::string& portName)
+bool GTU7::start(std::string& portName)
 {
-    if (open(portName.c_str(),115200,0,8,1,1))
+    if (!mRun)
     {
-        mThread = std::thread(&GTU7::threadLoop, this);
-        mRun = true;
+        if (open(portName.c_str(),115200,0,8,1,1))
+        {
+            mThread = std::thread(&GTU7::threadLoop, this);
+            mRun = true;
+            return true;
+        }
     }
+    return false;
 }
 
-void GTU7::stop()
+bool GTU7::stop()
 {
-    if (mRun == true)
+    if (mRun)
     {
+        close();
         mRun = false;
         mThread.join();
+        return true;
     }
+    return false;
 }
