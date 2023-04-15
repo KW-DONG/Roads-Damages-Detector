@@ -7,7 +7,7 @@
 #include "qpaintitem.h"
 #include "monitor.h"
 #include "cusncnn.h"
-#include "camera.h"
+#include "rtcam.h"
 #include "gtu7.h"
 
 int main(int argc, char *argv[])
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
     ResultListData resultListData;
     CusNCNN imgRecog;
     Monitor monitor;
-    Camera camera;
+    RtCam camera;
     GTU7 gnss;
     monitor.registerResultListData(&resultListData);
     monitor.registerTaskListData(&taskListData);
