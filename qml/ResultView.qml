@@ -1,7 +1,7 @@
 import QtQuick 2.10
 import QtQuick.Controls 2.4
 import QtQuick.Window 2.10
-import QtQuick.Layouts 1.15
+import QtQuick.Layouts 1.10
 import PaintItemModule 1.0
 import ResultListModel 1.0
 
