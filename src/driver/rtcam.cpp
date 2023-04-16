@@ -16,9 +16,13 @@ void RtCam::capLoop()
         cap.read(mat);
         if (!mat.empty())
         {
-            if (imgBuf.size() > 1)
-                imgBuf.pop();
-            imgBuf.push(mat);
+            if (mtx.try_lock())
+            {
+                if (imgBuf.size() > 0)
+                    imgBuf.pop();
+                imgBuf.push(mat);
+                mtx.unlock();
+            }
         }
     }
 }
@@ -26,11 +30,13 @@ void RtCam::capLoop()
 void RtCam::getFrame()
 {
     if(sceneCallback == nullptr) return;
-    if (imgBuf.size()!=0)
+    if (imgBuf.size() > 0)
     {
+        mtx.lock();
         cv::Mat mat = imgBuf.front();
-        imgBuf.pop();
         sceneCallback->nextScene(mat);
+        imgBuf.pop();
+        mtx.unlock();
     }
 }
 

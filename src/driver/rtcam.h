@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <thread>
 #include <queue>
+#include <mutex>
 #include "interface/camera.h"
 
 class RtCam : public Camera
@@ -30,6 +31,7 @@ private:
     bool mRun = false;
 	SceneCallback* sceneCallback = nullptr;
     std::queue<cv::Mat> imgBuf;
+    std::mutex mtx;
 
 #ifdef UNIT_TEST
 friend class Test_RtCam;

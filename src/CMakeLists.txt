@@ -19,12 +19,11 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick SerialPort)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Gui Qml Quick QuickControls2 SerialPort REQUIRED)
 find_package(OpenCV REQUIRED)
 
-set(ncnn_DIR ${NCNN_INSTALL_PATH}/lib/camke/ncnn)
 find_package(ncnn REQUIRED)
 #find_package(Threads REQUIRED)
 
 include_directories( ${OpenCV_INCLUDE_DIRS} )
-include_directories( ${NCNN_INSTALL_PATH}/include/ncnn)
+include_directories( ${ncnn_DIR}/../../../include/ncnn)
 
 include_directories(./
                     ./data
