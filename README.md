@@ -174,68 +174,69 @@ Final output presentation (QT): Page design + coding
 
 
 ## 5. How to Build
-### Prerequisites
-Make sure the following software is installed on your system:
+### Build for Ubuntu and Raspberry Pi
+Install basic packages
+```
+sudo apt update
+sudo apt upgrade
+sudo apt install vim gcc g++ git make
+```
+Clone the repository:
+```
+git clone https://github.com/KW-DONG/Roads-Damages-Detector.git
+```
+Install develop libraries:
+```
+sudo apt install qt5-default qtbase5-dev qtdeclarative5-dev qtquickcontrols2-5-dev libqt5serialport5-dev libopencv-dev libgtest-dev
+```
+Download and build NCNN library from https://github.com/Tencent/ncnn. 
+Make sure you have generated the `install` folder by executing `make install`.
+Generally, the `install` contains three folders: `bin`, `include` and `lib`
 
-C++ compiler
-
-CMake (version 3.10 or higher)
-
-Make (Linux and macOS) or Visual Studio (Windows)
-
-### Build instructions
-#### 1) Refer to the link to install ncnn:
-
-https://github.com/Tencent/ncnn
-
-#### 2) Clone the project repository:
-
-git clone https://github.com/your-username/your-project.git
-
-#### 3) Navigate to the project directory:
-
-cd your-project
-
-#### 4) Create a build directory:
-
-mkdir build
-
-#### 5) Navigate to the build directory:
-
-cd build
-
-#### 6) Generate build files using CMake:
-
-cmake ..
-
-Note: You can specify additional options to CMake as needed.
-
-#### 7) Build the project using Make (on Linux and macOS):
-
+Register the `lib/cmake/ncnn` folder which contains ncnnConfig.cmake to `/etc/profile`
+```
+sudo vim /etc/profile
+```
+And add:
+```
+ncnn_DIR = <your folder that contains ncnnConfig.cmake>
+```
+Build the project:
+```
+cd Roads-Damages-Detector
+cmake
 make
+```
+Install runtime libraries:
+```
+sudo apt install qml-module-qtquick-dialogs qml-module-qtquick-controls2 qml-module-qt-labs-folderlistmodel qml-module-qt-labs-settings
+```
+### Build for Windows using Visual Studio 2022
 
-Or build the project using Visual Studio (on Windows):
+Download and install Visual Studio 2022 community from https://visualstudio.microsoft.com/vs/community/
 
-Open the project solution in Visual Studio and build it.
+Install Qt from https://www.qt.io/
 
-#### 8) Use the system's package manager to install these libraries:
+You can download the qt online installer from the official website and the Qt version supported is from 5.10 to 5.15
 
---qtdedavative5-dev: contains the QML modules for Qt 5, which can be used to develop Qt Quick-based applications. 
+Install cmake from https://cmake.org/
 
---qtquickcontrols2-5-dev: contains the Qt Quick Controls 2 module, which provides a set of reusable UI controls. 
+Download and extract OpenCV from https://opencv.org/
 
---libopenCV-dev: is the development files of the OpenCV computer vision library, providing the header files and library files needed for compilation and linking. 
+Find the folder that contains OpenCVConfig.cmake such as `opencv/build/x64/vc16/lib` and register it as environment variable `OpenCV_DIR`
 
-For example, on Ubuntu, install these libraries using the following command:
+Download and build NCNN from https://github.com/Tencent/ncnn
 
-sudo apt-get install qml-module-qtquick2 qml-module-qtquick-controls2 libopencv-dev
+Find the folder that contains ncnnConfig.cmake and register it as environment variable `ncnn_DIR`.
 
+Create a folder for storing compiled files and run CMake GUI select the project root folder as source. By clicking configuration and generation a visual studio solution file `.sln` will be generated. Double click the solution file and compile the project with visual studio.
 
-#### 9) Run the project:
+Run Qt console for example "Qt 5.15.2 (MSVC 2019 64-bit)" and switch to the folder that contains `SmartCam.exe`
 
-./your-project
-
-Note: This assumes that the project generates an executable named "your-project". If your project generates a different executable name, replace "your-project" with the correct name.
+Run windeployqt:
+```
+windeployqt SmartCam.exe --qmldir <your qml path such as "Qt\5.15.2\msvc2019_64\qml">
+```
 
 ## 6. Documents
 ### Technical Documents:
