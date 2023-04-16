@@ -5,12 +5,15 @@
 
 <div align=center><img src="https://img.shields.io/badge/LICENSE-GPL--3.0-blue"/> <img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/> <img src="https://img.shields.io/docsrs/re"/> <img src="https://img.shields.io/badge/Source-open-yellowgreen"/></div>
 
-## Following us !
+## Following us !🚀🚀
 
-[click to Ins](https://www.instagram.com/haodongll/?igshid=YmMyMTA2M2Y=)
+🎞️[click to Ins](https://www.instagram.com/haodongll/?igshid=YmMyMTA2M2Y=)
 
-[click to youtube](https://www.youtube.com/@roadsdamagesdetectorhaodongll)
+🎥[click to youtube](https://www.youtube.com/@roadsdamagesdetectorhaodongll)
 
+📻[click to BiliBili](https://www.bilibili.com/video/BV1fM41157bw/?vd_source=9fa995d1b84843dbd0a37825e1aefcab)
+
+👓[click to Tiktok](https://www.douyin.com/user/self?modal_id=7222734212317629734)
 ## Auto Unit test
 
 |Source|State|
