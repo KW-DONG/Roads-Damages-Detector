@@ -175,99 +175,69 @@ Final output presentation (QT): Page design + coding
 
 
 ## 5. How to Build
-### 5.1 Build on Ubuntu and Raspberry Pi
-#### 5.1.1 Basic packages
+### Build for Ubuntu and Raspberry Pi
+Install basic packages
 ```
 sudo apt update
 sudo apt upgrade
-sudo apt install ssh vim gcc g++ screen htop git make
+sudo apt install vim gcc g++ git make
 ```
-#### 5.1.2 Clone the repository
+Clone the repository:
 ```
 git clone https://github.com/KW-DONG/Roads-Damages-Detector.git
 ```
-#### 5.1.3 Install develop libraries
+Install develop libraries:
 ```
 sudo apt install qt5-default qtbase5-dev qtdeclarative5-dev qtquickcontrols2-5-dev libqt5serialport5-dev libopencv-dev libgtest-dev
-sudo apt install qml-module-qtquick-dialogs qml-module-qtquick-controls2 qml-module-qt-labs-folderlistmodel qml-module-qt-labs-settings
 ```
-#### 5.1.4 Build NCNN library
-Clone and build the NCNN library by referencing the following link.
+Download and build NCNN library from https://github.com/Tencent/ncnn. 
+Make sure you have generated the `install` folder by executing `make install`.
+Generally, the `install` contains three folders: `bin`, `include` and `lib`
 
-https://github.com/Tencent/ncnn
-#### 5.1.5 Set NCNN path
-Add the directory that contains ncnnConfig.cmake to /etc/profile
-
-https://github.com/Tencent/ncnn/wiki/use-ncnn-with-own-project
-#### 5.1.6 Build
+Register the `lib/cmake/ncnn` folder which contains ncnnConfig.cmake to `/etc/profile`
+```
+sudo vim /etc/profile
+```
+And add:
+```
+ncnn_DIR = <your folder that contains ncnnConfig.cmake>
+```
+Build the project:
 ```
 cd Roads-Damages-Detector
 cmake
 make
 ```
+Install runtime libraries:
+```
+sudo apt install qml-module-qtquick-dialogs qml-module-qtquick-controls2 qml-module-qt-labs-folderlistmodel qml-module-qt-labs-settings
+```
+### Build for Windows using Visual Studio 2022
 
-### Prerequisites
-Make sure the following software is installed on your system:
+Download and install Visual Studio 2022 community from https://visualstudio.microsoft.com/vs/community/
 
-C++ compiler
+Install Qt from https://www.qt.io/
 
-CMake (version 3.10 or higher)
+You can download the qt online installer from the official website and the Qt version supported is from 5.10 to 5.15
 
-Make (Linux and macOS) or Visual Studio (Windows)
+Install cmake from https://cmake.org/
 
-### Build instructions
-#### 1) Refer to the link to install ncnn:
+Download and extract OpenCV from https://opencv.org/
 
+Find the folder that contains OpenCVConfig.cmake such as `opencv/build/x64/vc16/lib` and register it as environment variable `OpenCV_DIR`
 
+Download and build NCNN from https://github.com/Tencent/ncnn
 
-#### 2) Clone the project repository:
+Find the folder that contains ncnnConfig.cmake and register it as environment variable `ncnn_DIR`.
 
-git clone https://github.com/your-username/your-project.git
+Create a folder for storing compiled files and run CMake GUI select the project root folder as source. By clicking configuration and generation a visual studio solution file `.sln` will be generated. Double click the solution file and compile the project with visual studio.
 
-#### 3) Navigate to the project directory:
+Run Qt console for example "Qt 5.15.2 (MSVC 2019 64-bit)" and switch to the folder that contains `SmartCam.exe`
 
-cd your-project
-
-#### 4) Create a build directory:
-
-mkdir build
-
-#### 5) Navigate to the build directory:
-
-cd build
-
-#### 6) Generate build files using CMake:
-
-cmake ..
-
-Note: You can specify additional options to CMake as needed.
-
-#### 7) Build the project using Make (on Linux and macOS):
-
-make
-
-Or build the project using Visual Studio (on Windows):
-
-Open the project solution in Visual Studio and build it.
-
-#### 8) Use the system's package manager to install these libraries:
-
---qtdedavative5-dev: contains the QML modules for Qt 5, which can be used to develop Qt Quick-based applications. 
-
---qtquickcontrols2-5-dev: contains the Qt Quick Controls 2 module, which provides a set of reusable UI controls. 
-
---libopenCV-dev: is the development files of the OpenCV computer vision library, providing the header files and library files needed for compilation and linking. 
-
-For example, on Ubuntu, install these libraries using the following command:
-
-sudo apt-get install qml-module-qtquick2 qml-module-qtquick-controls2 libopencv-dev
-
-
-#### 9) Run the project:
-
-./your-project
-
-Note: This assumes that the project generates an executable named "your-project". If your project generates a different executable name, replace "your-project" with the correct name.
+Run windeployqt:
+```
+windeployqt SmartCam.exe --qmldir <your qml path such as "Qt\5.15.2\msvc2019_64\qml">
+```
 
 ## 6. Documents
 ### Technical Documents:
