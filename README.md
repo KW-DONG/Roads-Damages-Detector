@@ -210,7 +210,7 @@ make
 ```
 Install runtime libraries:
 ```
-sudo apt install qml-module-qtquick-dialogs qml-module-qtquick-controls2 qml-module-qt-labs-folderlistmodel qml-module-qt-labs-settings
+sudo apt install qml-module-qtquick-dialogs qml-module-qtquick-controls2 qml-module-qtquick-controls qml-module-qt-labs-folderlistmodel qml-module-qt-labs-settings qml-module-qtquick-layouts
 ```
 ### Build for Windows using Visual Studio 2022
 
