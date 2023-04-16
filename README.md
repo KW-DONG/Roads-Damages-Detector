@@ -24,8 +24,10 @@
 |test_serial|<img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/>|
 |test_ncnn|<img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/>|
 ## Demo
+### indoor demo on raspberry Pi
 [![Watch the video](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/demotest.gif)](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/demotest.gif)
-
+### outdoor demo on Linux to test GPS
+[![Watch the video](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/outdoordemotest%20(2).gif)](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/outdoordemotest%20(2).gif)
 ## 1. Project Overview
 The Roads Damages Detector project aims to develop a mobile application that uses roads damages detection technology to detect and classify road damages such as potholes, cracks, and other issues in real-time. The application will be designed to be efficient and user-friendly, helping road maintenance crews to identify and repair road damages more quickly. The detection algorithm will be deployed on a Raspberry Pi and operate in real-time, with the location of each damage recorded via a GNSS module and a report generated after each detection mission.
 
