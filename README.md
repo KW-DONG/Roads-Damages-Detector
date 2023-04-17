@@ -44,12 +44,12 @@ There are five types of roads damages: alligator cracks, linear cracks, pothole,
 
 ## 3. Team Organization
 
-|Name|ID|Role|
-|---|---|---|
-|Kaiwen DONG|2749039D|C++ Engineer|
-|Wenjia HAO|2729835H|Software Engineer|
-|Yang LIU|2749545L|UI & Marketing Designer|
-|Yujie LIU|2544989lL|Engineering Assistant|
+|Name|Github ID|ID|Role|
+|---|---|---|---|
+|Kaiwen DONG|[KW-DONG](https://github.com/KW-DONG)|2749039D|C++ Engineer|
+|Wenjia HAO|[yeren3hao](https://github.com/yeren3hao)|2729835H|Software Engineer|
+|Yang LIU|[SonjaAZ](https://github.com/SonjaAZ)|2749545L|UI & Marketing Designer|
+|Yujie LIU|[yujieliu6](https://github.com/yujieliu6)|2544989lL|Engineering Assistant|
 ### Kaiwen DONG:
 1. Designing and implementing algorithms and data structures in C++ to integrate automated road damage detection technology into the Raspberry Pi platform.
 2. Developing and maintaining code libraries with a focus on code quality and readability.
@@ -83,7 +83,7 @@ In summary, the software engineer responsible would be responsible for integrati
 ## 4. Architecture
 ### Software Architecture
 <div align="left">
-<img src="images/architecture.png" height=240/>
+<img src="images/architecture.png" height=400/>
 </div>
 
 |Layer|-|Comments|
