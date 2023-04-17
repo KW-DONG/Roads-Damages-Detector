@@ -5,12 +5,15 @@
 
 <div align=center><img src="https://img.shields.io/badge/LICENSE-GPL--3.0-blue"/> <img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/> <img src="https://img.shields.io/docsrs/re"/> <img src="https://img.shields.io/badge/Source-open-yellowgreen"/></div>
 
-## Following us !
+## Following us !🚀🚀
 
-[click to Ins](https://www.instagram.com/haodongll/?igshid=YmMyMTA2M2Y=)
+🎞️[click to Ins](https://www.instagram.com/haodongll/?igshid=YmMyMTA2M2Y=)
 
-[click to youtube](https://www.youtube.com/@roadsdamagesdetectorhaodongll)
+🎥[click to youtube](https://www.youtube.com/@roadsdamagesdetectorhaodongll)
 
+📻[click to BiliBili](https://www.bilibili.com/video/BV1fM41157bw/?vd_source=9fa995d1b84843dbd0a37825e1aefcab)
+
+👓[click to Tiktok](https://www.douyin.com/user/self?modal_id=7222734212317629734)
 ## Auto Unit test
 
 |Source|State|
@@ -21,8 +24,10 @@
 |test_serial|<img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/>|
 |test_ncnn|<img src="https://img.shields.io/badge/Build%20and%20Test-passing-yellowgreen"/>|
 ## Demo
+### indoor demo on raspberry Pi
 [![Watch the video](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/demotest.gif)](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/demotest.gif)
-
+### outdoor demo on Linux to test GPS
+[![Watch the video](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/outdoordemotest%20(2).gif)](https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/images/outdoordemotest%20(2).gif)
 ## 1. Project Overview
 The Roads Damages Detector project aims to develop a mobile application that uses roads damages detection technology to detect and classify road damages such as potholes, cracks, and other issues in real-time. The application will be designed to be efficient and user-friendly, helping road maintenance crews to identify and repair road damages more quickly. The detection algorithm will be deployed on a Raspberry Pi and operate in real-time, with the location of each damage recorded via a GNSS module and a report generated after each detection mission.
 
@@ -75,11 +80,34 @@ In summary, the software engineer responsible would be responsible for integrati
 3. Collect and organize project information and technical documents to help engineers better understand project background and technical details.
 4. Assist engineers in technical research and experimentation, such as writing code, running tests, and writing technical documentation.
 
-## 4. Architecture（driver 待确认）
+|Layer|-|Comments|
+|---|---|---|
+|QML GUI Layer|-|Provide graphical user interface in QML, and use javascript calling cpp classes
+|Cpp Logical Layer|-|Inherited from QObjects, can communicate with qml items|
+|Interface Layer|-|Virtual classes that called by logical layer|
+|Hardware Driver Layer|-|Inherited from interface classes, implementation of specific hardware or algorithm module|
+|Lower Level Driver Layer|-|Existing libraries or drivers that directly call the system api|
 
-![Flowchart_01](https://user-images.githubusercontent.com/108115404/231313666-8d082d71-d9d7-4228-8b96-07d309633d93.png)
+### System Inputs: 
+1. Camera video stream
+2. GPS coordinates
+3. Deep learning model
+4. Deep learning model weights
+5. Image preprocessing parameters 
 
-### Hardware: 
+### System Output: 
+During detection, real-time display of images with identified boxes is available; detection results such as type, confidence score, size, etc. can be displayed; logs can also be displayed. 
+Additional features:
+1. Support for traditional image preprocessing
+2. Display of maps with GPS coordinates
+3. Ability to recognize other objects
+
+### UML
+<div align="left">
+<img src="images/UML.png" height=600/>
+</div>
+
+### Hardware
 #### 1) Raspberry
 
 Raspberry Pi is a series of small single-board computers (SBCs).
@@ -150,29 +178,6 @@ Note: This GPS module will not search for signals when the weather is bad, and i
 
 More information: https://www.amazon.co.uk/Navigation-Positioning-Microcontroller-Compatible-Sensitivity/dp/B08XGN4YLY/ref=sr_1_3?crid=2KXS44IICOL34&keywords=Quectel+gps&qid=1674314365&s=electronics&sprefix=quectel+gps%2Celectronics%2C72&sr=1-3
 
-### Software: 
-<div align="left">
-<img src="images/software.png" height=360/>
-</div>
-
-### Input: 
-1. Camera video stream
-2. GPS coordinates
-3. Deep learning model
-4. Deep learning model weights
-5. Deep learning classification table
-6. Image preprocessing parameters 
-
-### Output: 
-During detection, real-time display of images with identified boxes is available; detection results such as type, confidence score, size, etc. can be displayed; logs can also be displayed. 
-Additional features:
-1. Support for traditional image preprocessing
-2. Display of maps with GPS coordinates
-3. Ability to recognize other objects
-
-Final output presentation (QT): Page design + coding
-
-
 ## 5. How to Build
 ### Build for Ubuntu and Raspberry Pi
 Install basic packages
@@ -197,19 +202,26 @@ Register the `lib/cmake/ncnn` folder which contains ncnnConfig.cmake to `/etc/pr
 ```
 sudo vim /etc/profile
 ```
-And add:
+Add the following to the bottom and reboot
 ```
-ncnn_DIR = <your folder that contains ncnnConfig.cmake>
+export ncnn_DIR="<your folder that contains ncnnConfig.cmake>"
 ```
 Build the project:
 ```
 cd Roads-Damages-Detector
-cmake
+mkdir build
+cd build
+cmake ../
 make
 ```
 Install runtime libraries:
 ```
-sudo apt install qml-module-qtquick-dialogs qml-module-qtquick-controls2 qml-module-qt-labs-folderlistmodel qml-module-qt-labs-settings
+sudo apt install qml-module-qtquick-dialogs qml-module-qtquick-controls2 qml-module-qtquick-controls qml-module-qt-labs-folderlistmodel qml-module-qt-labs-settings qml-module-qtquick-layouts
+```
+Run
+```
+cd build_SmartCam
+sudo ./SmartCam
 ```
 ### Build for Windows using Visual Studio 2022
 
@@ -233,35 +245,33 @@ Create a folder for storing compiled files and run CMake GUI select the project 
 
 Run Qt console for example "Qt 5.15.2 (MSVC 2019 64-bit)" and switch to the folder that contains `SmartCam.exe`
 
-Run windeployqt:
+Deploy the project with windeployqt:
 ```
 windeployqt SmartCam.exe --qmldir <your qml path such as "Qt\5.15.2\msvc2019_64\qml">
 ```
+Double click `SmartCam.exe`
 
 ## 6. Documents
-### Technical Documents:
-Product Requirements Document:
-https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Product%20Requirements%20Document.md
+[Product Requirements Document](
+https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Product%20Requirements%20Document.md)
 
-C++程序设计（UML图）?\部署、发布（到main）、Cmake 交叉编译--kaiwen
+[Yolov5 Training Process]( 
+https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_training/yolov5#readme.md)
 
-yolov5 training process: 
-https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_training/yolov5#readme.md
+[Yolov5_lite Training Process](
+https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_training/YOLOv5-Lite-master#readme.md)
 
-yolov5_lite training process:
-https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_training/YOLOv5-Lite-master#readme.md
+[Yolo training compare and test](
+https://github.com/KW-DONG/Roads-Damages-Detector/blob/yolo_training/yolo_training/readme.md)
 
-yolo training compare and test:
-https://github.com/KW-DONG/Roads-Damages-Detector/blob/yolo_training/yolo_training/readme.md
-
-Test Case & Report:
+[Test Case & Report](
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Test%20Report.md)
 
-### Management File
-Plan: https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Plan.xlsx
+[Project Plan](
+https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Plan.xlsx)
 
-Process Management:
-https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Process%20Management.md
+[Process Management](
+https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Process%20Management.md)
 
-### Promotion of the Work:
-https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Promotion%20of%20the%20Work.md
+[Promotion of the Work](
+https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Promotion%20of%20the%20Work.md)
