@@ -81,11 +81,39 @@ In summary, the software engineer responsible would be responsible for integrati
 4. Assist engineers in technical research and experimentation, such as writing code, running tests, and writing technical documentation.
 
 ## 4. Architecture
+### Software Architecture
 <div align="left">
 <img src="images/architecture.png" height=240/>
 </div>
 
-### Hardware: 
+|Layer|-|Comments|
+|---|---|---|
+|QML GUI Layer|-|Provide graphical user interface in QML, and use javascript calling cpp classes
+|Cpp Logical Layer|-|Inherited from QObjects, can communicate with qml items|
+|Interface Layer|-|Virtual classes that called by logical layer|
+|Hardware Driver Layer|-|Inherited from interface classes, implementation of specific hardware or algorithm module|
+|Lower Level Driver Layer|-|Existing libraries or drivers that directly call the system api|
+
+### System Inputs: 
+1. Camera video stream
+2. GPS coordinates
+3. Deep learning model
+4. Deep learning model weights
+5. Image preprocessing parameters 
+
+### System Output: 
+During detection, real-time display of images with identified boxes is available; detection results such as type, confidence score, size, etc. can be displayed; logs can also be displayed. 
+Additional features:
+1. Support for traditional image preprocessing
+2. Display of maps with GPS coordinates
+3. Ability to recognize other objects
+
+### UML
+<div align="left">
+<img src="images/uml.png" height=500/>
+</div>
+
+### Hardware
 #### 1) Raspberry
 
 Raspberry Pi is a series of small single-board computers (SBCs).
@@ -156,29 +184,6 @@ Note: This GPS module will not search for signals when the weather is bad, and i
 
 More information: https://www.amazon.co.uk/Navigation-Positioning-Microcontroller-Compatible-Sensitivity/dp/B08XGN4YLY/ref=sr_1_3?crid=2KXS44IICOL34&keywords=Quectel+gps&qid=1674314365&s=electronics&sprefix=quectel+gps%2Celectronics%2C72&sr=1-3
 
-### Software: 
-<div align="left">
-<img src="images/software.png" height=360/>
-</div>
-
-### Input: 
-1. Camera video stream
-2. GPS coordinates
-3. Deep learning model
-4. Deep learning model weights
-5. Deep learning classification table
-6. Image preprocessing parameters 
-
-### Output: 
-During detection, real-time display of images with identified boxes is available; detection results such as type, confidence score, size, etc. can be displayed; logs can also be displayed. 
-Additional features:
-1. Support for traditional image preprocessing
-2. Display of maps with GPS coordinates
-3. Ability to recognize other objects
-
-Final output presentation (QT): Page design + coding
-
-
 ## 5. How to Build
 ### Build for Ubuntu and Raspberry Pi
 Install basic packages
@@ -203,19 +208,26 @@ Register the `lib/cmake/ncnn` folder which contains ncnnConfig.cmake to `/etc/pr
 ```
 sudo vim /etc/profile
 ```
-And add:
+Add the following to the bottom and reboot
 ```
-ncnn_DIR = <your folder that contains ncnnConfig.cmake>
+export ncnn_DIR="<your folder that contains ncnnConfig.cmake>"
 ```
 Build the project:
 ```
 cd Roads-Damages-Detector
-cmake
+mkdir build
+cd build
+cmake ../
 make
 ```
 Install runtime libraries:
 ```
 sudo apt install qml-module-qtquick-dialogs qml-module-qtquick-controls2 qml-module-qtquick-controls qml-module-qt-labs-folderlistmodel qml-module-qt-labs-settings qml-module-qtquick-layouts
+```
+Run
+```
+cd build_SmartCam
+sudo ./SmartCam
 ```
 ### Build for Windows using Visual Studio 2022
 
@@ -239,35 +251,33 @@ Create a folder for storing compiled files and run CMake GUI select the project 
 
 Run Qt console for example "Qt 5.15.2 (MSVC 2019 64-bit)" and switch to the folder that contains `SmartCam.exe`
 
-Run windeployqt:
+Deploy the project with windeployqt:
 ```
 windeployqt SmartCam.exe --qmldir <your qml path such as "Qt\5.15.2\msvc2019_64\qml">
 ```
+Double click `SmartCam.exe`
 
 ## 6. Documents
-### Technical Documents:
-Product Requirements Document:
-https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Product%20Requirements%20Document.md
+[Product Requirements Document](
+https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Product%20Requirements%20Document.md)
 
-C++程序设计（UML图）?\部署、发布（到main）、Cmake 交叉编译--kaiwen
+[Yolov5 Training Process]( 
+https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_training/yolov5#readme.md)
 
-yolov5 training process: 
-https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_training/yolov5#readme.md
+[Yolov5_lite Training Process](
+https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_training/YOLOv5-Lite-master#readme.md)
 
-yolov5_lite training process:
-https://github.com/KW-DONG/Roads-Damages-Detector/tree/yolo_training/yolo_training/YOLOv5-Lite-master#readme.md
+[Yolo training compare and test](
+https://github.com/KW-DONG/Roads-Damages-Detector/blob/yolo_training/yolo_training/readme.md)
 
-yolo training compare and test:
-https://github.com/KW-DONG/Roads-Damages-Detector/blob/yolo_training/yolo_training/readme.md
-
-Test Case & Report:
+[Test Case & Report](
 https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Test%20Report.md)
 
-### Management File
-Plan: https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Plan.xlsx
+[Project Plan](
+https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Plan.xlsx)
 
-Process Management:
-https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Process%20Management.md
+[Process Management](
+https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/process/Process%20Management.md)
 
-### Promotion of the Work:
-https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Promotion%20of%20the%20Work.md
+[Promotion of the Work](
+https://github.com/KW-DONG/Roads-Damages-Detector/blob/develop_qml/doc/Promotion%20of%20the%20Work.md)
