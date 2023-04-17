@@ -83,7 +83,7 @@ In summary, the software engineer responsible would be responsible for integrati
 ## 4. Architecture
 ### Software Architecture
 <div align="left">
-<img src="images/architecture.png" height=240/>
+<img src="images/architecture.png" height=350/>
 </div>
 
 |Layer|-|Comments|
@@ -110,7 +110,7 @@ Additional features:
 
 ### UML
 <div align="left">
-<img src="images/uml.png" height=500/>
+<img src="images/UML.png" height=600/>
 </div>
 
 ### Hardware
