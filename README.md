@@ -80,12 +80,6 @@ In summary, the software engineer responsible would be responsible for integrati
 3. Collect and organize project information and technical documents to help engineers better understand project background and technical details.
 4. Assist engineers in technical research and experimentation, such as writing code, running tests, and writing technical documentation.
 
-## 4. Architecture
-### Software Architecture
-<div align="left">
-<img src="images/architecture.png" height=350/>
-</div>
-
 |Layer|-|Comments|
 |---|---|---|
 |QML GUI Layer|-|Provide graphical user interface in QML, and use javascript calling cpp classes
